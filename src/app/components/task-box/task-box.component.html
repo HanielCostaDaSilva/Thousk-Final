@@ -1,0 +1,16 @@
+<mat-card class="taskCard">
+    <mat-card-header>
+      <mat-card-title>{{title}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]= "imageLink" [alt]="title">
+    <mat-card-content>
+      <p>
+        {{description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button><mat-icon>visibility</mat-icon></button>
+      <button mat-button><mat-icon>delete</mat-icon></button>
+    </mat-card-actions>
+    
+  </mat-card>

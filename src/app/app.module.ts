@@ -8,16 +8,13 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { TaskBoxComponent } from './components/task-box/task-box.component';
-import { UserTasksComponent } from './components/user-tasks/user-tasks.component';
 import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    TaskBoxComponent,
-    UserTasksComponent,
-    
+    TaskBoxComponent,    
   ],
   imports: [
     BrowserModule,

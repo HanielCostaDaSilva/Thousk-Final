@@ -1,9 +1,11 @@
-<app-header [titleCompany] = getTitleCompany()></app-header>
+<app-header [titleCompany] = titleCompany></app-header>
 <br>
 <div>
     <h2> Task You are Doing:</h2>
-    <section class="doingTask" *ngFor="let task of tasksDoing">
-        <app-task-box [title]="task.title" [description]="task.description" [imageLink]="task.imageLink"></app-task-box>
-        <div ></div>
+    <section class="taskSection" id="DoingTaskSection" >
+        <app-task-box class="taskBoxes" 
+        *ngFor="let task of tasksDoing"[task]="task"  
+        (removeTaskUserEvent)="removeTaskDoing(task)">
+    </app-task-box>
     </section>
 </div>

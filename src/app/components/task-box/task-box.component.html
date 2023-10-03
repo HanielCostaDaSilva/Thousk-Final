@@ -1,16 +1,17 @@
 <mat-card class="taskCard">
     <mat-card-header>
-      <mat-card-title>{{title}}</mat-card-title>
+      <mat-card-title>{{task.title}}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image [src]= "imageLink" [alt]="title">
+    <img mat-card-image [src]= "task.imageLink" [alt]="task.title">
     <mat-card-content>
       <p>
-        {{description}}
+        {{task.description}}
       </p>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions class="buttonBox">
       <button mat-button><mat-icon>visibility</mat-icon></button>
-      <button mat-button><mat-icon>delete</mat-icon></button>
+      <button mat-button><mat-icon>edit</mat-icon></button>
+      <button mat-button (click)="removeTask()"><mat-icon>delete</mat-icon></button>
     </mat-card-actions>
     
   </mat-card>

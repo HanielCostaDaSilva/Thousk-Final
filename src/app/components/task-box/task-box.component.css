@@ -1,8 +1,14 @@
 .taskCard{
     max-width: 400px;
+    min-height: 350px;
+    padding: 10;
   }
-
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
+.buttonBox{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+.buttonBox button{
+  width: 100%;
+}

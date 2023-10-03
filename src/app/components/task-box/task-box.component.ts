@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import TaskUser from 'src/model/TaskUser';
 
 @Component({
@@ -6,10 +6,16 @@ import TaskUser from 'src/model/TaskUser';
   templateUrl: './task-box.component.html',
   styleUrls: ['./task-box.component.css']
 })
+
+
 export class TaskBoxComponent {
 
-  
-  @Input() title: string =""; 
-  @Input() description: string =""; 
-  @Input() imageLink: string ="";
+  @Input() task!: TaskUser;
+  @Output() removeTaskUserEvent = new EventEmitter();
+
+  removeTask() {
+    console.log(this.task);
+    this.removeTaskUserEvent.emit(this.task);
+  }
+
 }

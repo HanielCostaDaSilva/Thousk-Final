@@ -1,12 +1,12 @@
 class TaskUser{
     private __title:string= ""; 
-    private __ImageLink:string= ""; 
+    private __imageLink:string= ""; 
     private __description:string= ""; 
 
     constructor(title:string,description:string,ImageLink:string){
         this.__title=title;
         this.__description=description;
-        this.__ImageLink=ImageLink;
+        this.__imageLink=ImageLink;
     }
 
     /**
@@ -27,14 +27,14 @@ class TaskUser{
      * @return string return the ImageLink
      */
      get imageLink() :string{
-        return this.__ImageLink;
+        return this.__imageLink;
     }
 
     /**
      * @param ImageLink the ImageLink to set
      */
-    set ImageLink(ImageLink:string) {
-        this.__ImageLink = ImageLink;
+    set imageLink(ImageLink:string) {
+        this.__imageLink = ImageLink;
     }
 
     /**

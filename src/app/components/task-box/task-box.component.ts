@@ -7,15 +7,18 @@ import TaskUser from 'src/model/TaskUser';
   styleUrls: ['./task-box.component.css']
 })
 
-
 export class TaskBoxComponent {
 
   @Input() task!: TaskUser;
   @Output() removeTaskUserEvent = new EventEmitter();
+  @Output() editTaskUserEvent = new EventEmitter();
 
   removeTask() {
-    console.log(this.task);
     this.removeTaskUserEvent.emit(this.task);
   }
 
+  editTask() {
+    console.log(this.task);
+    this.editTaskUserEvent.emit(this.task);
+  }
 }

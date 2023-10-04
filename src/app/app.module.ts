@@ -9,12 +9,19 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { TaskBoxComponent } from './components/task-box/task-box.component';
 import {MatCardModule} from '@angular/material/card';
+import { EditTaskModalComponent } from './components/edit-task-modal/edit-task-modal.component';
+import { FormsModule } from '@angular/forms'; 
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    TaskBoxComponent,    
+    TaskBoxComponent,
+    EditTaskModalComponent,    
   ],
   imports: [
     BrowserModule,
@@ -22,8 +29,11 @@ import {MatCardModule} from '@angular/material/card';
     MatToolbarModule, 
     MatButtonModule, 
     MatIconModule,
-    MatCardModule
-
+    MatCardModule, 
+    FormsModule,
+    MatDialogModule,
+    MatFormFieldModule, 
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent],

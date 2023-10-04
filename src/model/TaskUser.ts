@@ -1,5 +1,5 @@
 class TaskUser{
-    private __title:string= ""; 
+    private __title:string;
     private __imageLink:string= ""; 
     private __description:string= ""; 
 
@@ -51,4 +51,4 @@ class TaskUser{
         this.__description = description;
     }
 }
-export default TaskUser
+export default TaskUser;

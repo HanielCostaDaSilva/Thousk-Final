@@ -13,3 +13,11 @@
 .taskBoxes{
     margin: 0 12px;
 }
+#CreateUserTask{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 99%;
+    padding: 10px;
+}

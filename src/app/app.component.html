@@ -1,11 +1,32 @@
-<app-header [titleCompany] = titleCompany></app-header>
+<app-header [titleCompany]=titleCompany></app-header>
 <br>
 <div>
-    <h2> Task You are Doing:</h2>
-    <section class="taskSection" id="DoingTaskSection" >
-        <app-task-box class="taskBoxes" 
-        *ngFor="let task of tasksDoing"[task]="task"  
-        (removeTaskUserEvent)="removeTaskDoing(task)">
-    </app-task-box>
+    <section id="CreateUserTask">
+        <mat-form-field class="formCamp">
+            <mat-label>Atividade: </mat-label>
+            <input matInput [(ngModel)]="titleTaskDoing">
+        </mat-form-field>
+        
+        <mat-form-field class="formCamp">
+            <mat-label>Descrição: </mat-label>
+            <textarea matInput [(ngModel)]="descriptionTaskDoing"></textarea>
+        </mat-form-field>
+        
+        <mat-form-field class="formCamp">
+            <mat-label>Link Da Imagem: </mat-label>
+            <input matInput [(ngModel)]="linkImageTaskDoing">
+        </mat-form-field>
+        <button mat-button color="accent"(click)="addUserTask()">Accent</button>
     </section>
+
+    <h2> Task You are Doing:</h2>
+    
+    <section class="taskSection" id="DoingTaskSection">
+        
+        <app-task-box class="taskBoxes" *ngFor="let task of tasksDoing" [task]="task"
+            (removeTaskUserEvent)="removeTaskDoing(task)"
+            (editTaskUserEvent)="editTaskDoing(task)">
+        </app-task-box>
+    </section>
+
 </div>

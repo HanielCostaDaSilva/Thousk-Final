@@ -1,0 +1,17 @@
+<section id="CreateTask">
+    <mat-form-field class="formCamp">
+        <mat-label>Atividade: </mat-label>
+        <input matInput [(ngModel)]="titleTask">
+    </mat-form-field>
+
+    <mat-form-field class="formCamp">
+        <mat-label>Descrição: </mat-label>
+        <textarea matInput [(ngModel)]="descriptionTask"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="formCamp">
+        <mat-label>Link Da Imagem: </mat-label>
+        <input matInput [(ngModel)]="linkImageTask">
+    </mat-form-field>
+    <button class="createTaskButton" mat-button color="accent" (click)="createTask()">Create</button>
+</section>

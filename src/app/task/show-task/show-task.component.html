@@ -1,0 +1,5 @@
+<section class="taskSection" id="TaskSection">
+    <app-task-box class="taskBoxes" *ngFor="let task of tasks" [task]="task"
+        (removeTaskEvent)="removeTask(task)" (editTaskEvent)="editTask(task)">
+    </app-task-box>
+</section>

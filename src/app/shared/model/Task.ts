@@ -1,7 +1,20 @@
-class TaskUser{
+import User from "./User";
+
+class Task{
+    private __userCreator!:User;
     private __title:string;
     private __imageLink:string= ""; 
-    private __description:string= ""; 
+    private __description:string= "";
+    
+    private __state:string="waiting";
+    /*The state can be:
+
+    { "waiting": when the task is waiting be executed,
+    "executing": when the task was being executed by the user,
+    "done": when the task was successfully executed.
+    }
+
+    */
 
     constructor(title:string,description:string,ImageLink:string){
         this.__title=title;
@@ -50,5 +63,15 @@ class TaskUser{
     set description(description:string) {
         this.__description = description;
     }
+
+    get state(){
+        return this.__state;
+    }
+    set state(state:string) {
+
+        const newState:string = state.toLowerCase()
+        this.__state = newState;
+    }
 }
-export default TaskUser;
+
+export default Task;

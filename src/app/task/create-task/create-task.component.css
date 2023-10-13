@@ -1,0 +1,15 @@
+#CreateTask{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.formCamp, .createTaskButton{
+    width: 60%;
+}
+
+.createTaskButton{
+    font-size: 2.2rem;
+}

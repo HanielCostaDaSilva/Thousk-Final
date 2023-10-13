@@ -1,23 +1,27 @@
-# Thats Your Task
+# Thatsyourtask
 
-Seja bem-vindo ao **Thats Your Task**, o melhor organizador de tarefas que já existiu!
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
 
-## Propósito
+## Development server
 
-O propósito principal do **Thats Your Task** é oferecer uma plataforma simples e rápida para o gerenciamento de tarefas, seja para uso individual ou colaborativo em grupos.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Motivação
+## Code scaffolding
 
-Este projeto é um sistema web desenvolvido para o gerenciamento de atividades. Sua criação foi motivada para a obtenção da  nota final  na disciplina de Programação para a Web (PWEB) por meio da utilização do framework Angular. Além disso, o propósito da construção deste software vai além de uma mera tarefa acadêmica, mas visa também ao aprofundamento do meu conhecimento sobre o Angular, uma ferramenta extremamente poderosa.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Recursos Principais
+## Build
 
-Neste projeto, pretendo implementar os seguintes recursos:
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-- **Ambientes distintos**: O sistema permitirá que cada usuário possua o seu próprio ambiente, onde apenas ele poderá ver e alterar as suas tarefas, salvo quando estiver em grupo.
+## Running unit tests
 
-- **Gerenciamento de Tarefas**: Os usuários podem criar, editar e excluir as suas  tarefas. Eles também poderão atribuir datas de vencimento e prioridades às suas tarefas, facilitando a organização.
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-- **Colaboração em Grupo**: O sistema permitirá que os usuários criem equipes de trabalho, onde eles poderão atribuir tarefas a membros da equipe. Isso é ideal para projetos em equipe, onde a coordenação é essencial.
+## Running end-to-end tests
 
-- **Responsividade**: O sistema será acessível a partir de desktops e dispositivos móveis.
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

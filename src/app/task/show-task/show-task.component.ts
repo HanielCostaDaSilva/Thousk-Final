@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import Task from '../../shared/model/Task';
 import TASKS from '../../shared/model/TASKS';
 import { EditTaskComponent } from '../edit-task/edit-task.component';
 import { MatDialog } from '@angular/material/dialog'; // Import MatDialog
+import User from '../../shared/model/User';
 
 @Component({
   selector: 'app-show-task',
@@ -11,11 +12,14 @@ import { MatDialog } from '@angular/material/dialog'; // Import MatDialog
 })
 export class ShowTaskComponent {
 
-  tasks: Task[] = TASKS;
   private titleTask: string = '';
   private descriptionTask: string = '';
   private imageLinkTask: string = '';
   
+  @Input() userActual !: User;
+  
+  tasks: Task[] = (this.userActual == null? TASKS :this.userActual.tasks); //Mostra todas as tasks do sistema caso não tenha tasks 
+
   constructor(private dialog: MatDialog) {}
 
   removeTask(task: Task) {

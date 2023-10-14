@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatMenuModule} from '@angular/material/menu';
+import { RouterLink } from '@angular/router';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FormsModule,
     MatDialogModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatMenuModule,
+    RouterLink
 
   ],
   exports: [
@@ -33,6 +37,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
+    MatMenuModule,
+    RouterLink
 
   ]
 })

@@ -6,10 +6,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { TaskModule } from './task/task.module';
+import { PrincipalPageComponent } from './principal-page/principal-page.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    PrincipalPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -17,7 +20,8 @@ import { TaskModule } from './task/task.module';
     BrowserAnimationsModule,
     LayoutModule,
     MaterialModule,
-    TaskModule
+    TaskModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

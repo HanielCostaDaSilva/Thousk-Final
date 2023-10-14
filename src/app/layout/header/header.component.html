@@ -1,13 +1,26 @@
 <mat-toolbar id="Header">
-  <div class="logo">
+  <div  [routerLink]="['PrincipalPage']" class="logo">
     <mat-icon>task</mat-icon>
     <span > {{titleCompany}} </span>
 
   </div>
 
   <div class="choiceBox">
-    <a>Your Task</a>
-    <mat-icon>person</mat-icon>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>person</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['RegisterUser']" mat-menu-item>
+        Registrar
+      </button>
+      <button mat-menu-item [routerLink]="['Login']">
+        Login
+      </button>
+
+    
+    </mat-menu>
+    
 
   </div>
     

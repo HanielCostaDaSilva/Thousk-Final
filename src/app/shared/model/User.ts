@@ -48,8 +48,17 @@ class User{
         this.__password = newPassword;
     }
 
+    get tasks(){
+        return this.__tasks;
+    }
 
-
+    inserirTask(task: Task){
+        this.tasks.push(task);
+    }
+    
+    removerTask(task: Task){
+        this.tasks.splice(this.tasks.indexOf(task), 1);
+    }
 }
 
 export default User;

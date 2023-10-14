@@ -11,42 +11,53 @@ import USERS from "../../shared/model/USERS"
 
 export class CreateUserComponent {
   private users: User[] = USERS;
-  private __nickname: string='';
-  private __email: string='';
-  private __password: string='';
+  private __nickname: string = '';
+  private __email: string = '';
+  private __password: string = '';
 
-  errorMessage:string ='';
+  errorMessage: string = '';
 
   registerUser() {
-
-    if (this.users.filter(user => user.nickname == this.__nickname).length > 0)
-      console.error('User already registered');
-
-    else {
+    try {
       const user = new User(this.users.length, this.__nickname, this.__email, this.__password);
+      this.checkers(user);
       console.log(user);
       this.users.push(user);
+
+    } catch (error:any) {
+      this.errorMessage = error.message;
     }
 
   }
-  set nickname (newNickname:string){
+
+  checkers(user: User) {
+
+    if (!this.__email || !this.__password || !this.__nickname)
+      throw new Error(`Fill all the requireds fields`);
+
+    else if (this.users.filter(user => user.nickname == this.__nickname).length > 0)
+      throw new Error(`User ${this.nickname} already registered!`);
+  }
+
+  set nickname(newNickname: string) {
     this.__nickname = newNickname;
   }
-  
-  set email (newEmail:string){
+
+  set email(newEmail: string) {
     this.__email = newEmail;
   }
-  set password (newPassword:string){
+  set password(newPassword: string) {
     this.__password = newPassword;
   }
 
-  get nickname(){
+  get nickname() {
     return this.__nickname;
   }
-  get email(){
+  get email() {
     return this.__email;
   }
-  get password(){
+  get password() {
     return this.__password;
   }
-  }
+
+}

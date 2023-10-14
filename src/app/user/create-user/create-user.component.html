@@ -5,19 +5,19 @@
   <form (ngSubmit)="registerUser()">
     <mat-form-field class="formCamp">
       <mat-label>Insira um apelido:</mat-label>
-      <input matInput [(ngModel)]="nickname" type="text" id="nickname" name="nickname">
+      <input matInput required [(ngModel)]="nickname" type="text" id="nickname" name="nickname">
     </mat-form-field>
 
     <mat-form-field class="formCamp">
       <mat-label>Seu Email:</mat-label>
-      <input matInput [(ngModel)]="email" type="email" id="email" name="email">
+      <input matInput required [(ngModel)]="email" type="email" id="email" name="email">
     </mat-form-field>
 
     <mat-form-field class="formCamp">
       <mat-label>Senha:</mat-label>
-      <input matInput [(ngModel)]="password" type="password" id="password" name="password">
+      <input matInput required [(ngModel)]="password" type="password" id="password" name="password">
     </mat-form-field>
-    <button type="submit">Registrar-se</button>
+    <button mat-button color="accent" type="submit">Registrar-se</button>
         
     <div *ngIf="errorMessage">
       <p class="ErrorMessage"> {{errorMessage}} </p>

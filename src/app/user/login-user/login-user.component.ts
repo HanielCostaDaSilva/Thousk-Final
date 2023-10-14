@@ -28,7 +28,7 @@ export class LoginUserComponent {
     if (userLogado) {
       alert(`seja bem vindo ${userLogado.nickname}`)
     }
-    else{
+    else{ 
       this.errorMessage=' Nickname or password Invalid.'
     }
   }

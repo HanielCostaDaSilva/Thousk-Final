@@ -4,14 +4,17 @@ import AuthService from '../../shared/service/auth/auth.service';
 @Component({
   selector: 'app-login-user',
   templateUrl: './login-user.component.html',
-  styleUrls: ['./login-user.component.css']
+  styleUrls: ['./login-user.component.css',"../container-form.css"]
 })
 export class LoginUserComponent {
 
-  errorMessage: string ='';
+  statusMessage: string ='';
   private __nickname: string = '';
   private __password: string = '';
-  private authService: AuthService = new AuthService();
+  loggedUser :number = -1;
+
+  constructor(private authService: AuthService){
+  }
 
   login() {
     try{
@@ -23,8 +26,11 @@ export class LoginUserComponent {
       }
       const user= this.authService.login(this.__nickname, this.__password);
       if(user){
-        alert(`Welcome ${this.authService.currentUser?.nickname}!`)
+
+        this.loggedUser = 1;
+        this.statusMessage = `Welcome ${this.authService.currentUser?.nickname}!`
       }
+     
       else{
         throw new Error(`User ${this.__nickname} not found.`);  
 
@@ -32,7 +38,8 @@ export class LoginUserComponent {
     }
     catch(error:any){
       console.log(error);
-      this.errorMessage = error.message;
+      this.statusMessage = error.message;
+      this.loggedUser = 0
     }
   }
   

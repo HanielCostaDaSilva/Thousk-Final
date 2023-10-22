@@ -18,14 +18,12 @@ export class ShowTaskComponent {
   private titleTask: string = '';
   private descriptionTask: string = '';
   private imageLinkTask: string = '';
-
-  private taskService: TaskService = new TaskService();
-  
   @Input() userActual !: User;
-  
   tasks: Task[] = (this.userActual == null? TASKS :this.userActual.tasks); //Mostra todas as tasks do sistema caso não tenha tasks 
 
-  constructor(private dialog: MatDialog) {}
+  
+
+  constructor(private dialog: MatDialog,private taskService: TaskService) {}
 
   removeTask(task: Task) {
     this.taskService.removeTask(task);

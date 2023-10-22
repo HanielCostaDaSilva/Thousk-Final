@@ -1,8 +1,8 @@
-<section class="container">
+<section class="container" [ngClass]="{ 'success': registeredUser>0, 'failed': registeredUser==0 }">
   
   <h2 class="titlePage">Registre-se</h2>
   
-  <form (ngSubmit)="registerUser()">
+  <form (ngSubmit)="registerUser()" >
     <mat-form-field class="formCamp">
       <mat-label>Insira um apelido:</mat-label>
       <input matInput required [(ngModel)]="nickname" type="text" id="nickname" name="nickname">
@@ -18,9 +18,11 @@
       <input matInput required [(ngModel)]="password" type="password" id="password" name="password">
     </mat-form-field>
     <button mat-button color="accent" type="submit">Registrar-se</button>
-        
-    <div *ngIf="errorMessage">
-      <p class="ErrorMessage"> {{errorMessage}} </p>
+    
+    <div class='messageBox' *ngIf="statusMessage">  
+      <p [ngClass]="{ 'sucessMessage': registeredUser>0, 'errorMessage': registeredUser==0}">
+        {{statusMessage}}
+      </p>
     </div>
   </form>
 </section>

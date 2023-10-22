@@ -1,5 +1,5 @@
-<section class="container">
-    <h2 class="titlePage">Login</h2>
+<section class="container" [ngClass]="{ 'success': loggedUser>0, 'failed': loggedUser==0 }">
+  <h2 class="titlePage">Login</h2>
     <form (ngSubmit)="login()">
       <mat-form-field class="formCamp">
         <mat-label for="nickname">Nickname:</mat-label>
@@ -10,10 +10,12 @@
         <input matInput type="password" id="password" name="password" [(ngModel)]="password" required>
       </mat-form-field>
       <button mat-button color="accent" type="submit">Entrar</button>
-    </form>
-    
-    <div *ngIf="errorMessage">
-      <p class="ErrorMessage"> {{errorMessage}} </p>
+    </form> 
+    <div *ngIf="statusMessage">  
+      <p [ngClass]="{ 'sucessMessage': loggedUser>0, 'errorMessage': loggedUser==0}">
+        {{statusMessage}}
+      </p>
     </div>
-  </section>
+
+</section>
   

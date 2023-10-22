@@ -8,6 +8,8 @@ import { MaterialModule } from './material/material.module';
 import { TaskModule } from './task/task.module';
 import { PrincipalPageComponent } from './principal-page/principal-page.component';
 import { UserModule } from './user/user.module';
+import AuthService from './shared/service/auth/auth.service';
+import TaskService from './shared/service/task/task.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import { UserModule } from './user/user.module';
     TaskModule,
     UserModule
   ],
-  providers: [],
+  providers: [AuthService,TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

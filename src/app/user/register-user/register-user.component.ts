@@ -2,42 +2,37 @@ import { Component } from '@angular/core';
 
 import User from "../../shared/model/User"
 import USERS from "../../shared/model/USERS"
+import AuthService from '../../shared/service/auth/auth.service';
 
 @Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css']
+  selector: 'app-register-user',
+  templateUrl: './register-user.component.html',
+  styleUrls: ['./register-user.component.css']
 })
 
-export class CreateUserComponent {
+export class RegisterUserComponent {
   private users: User[] = USERS;
   private __nickname: string = '';
   private __email: string = '';
   private __password: string = '';
+  private authSevice :AuthService= new AuthService();
 
   errorMessage: string = '';
 
   registerUser() {
     try {
-      const user = new User(this.users.length, this.__nickname, this.__email, this.__password);
-      this.checkers(user);
+      if (!this.__email || !this.__password || !this.__nickname)
+        throw new Error(`Fill all the requireds fields`);
+      const user = this.authSevice.register(this.__nickname,this.__email,this.__password);
       console.log(user);
-      this.users.push(user);
-
-    } catch (error:any) {
+    } 
+    catch (error:any) {
       this.errorMessage = error.message;
     }
 
   }
 
-  checkers(user: User) {
 
-    if (!this.__email || !this.__password || !this.__nickname)
-      throw new Error(`Fill all the requireds fields`);
-
-    else if (this.users.filter(user => user.nickname == this.__nickname).length > 0)
-      throw new Error(`User ${this.nickname} already registered!`);
-  }
 
   set nickname(newNickname: string) {
     this.__nickname = newNickname;

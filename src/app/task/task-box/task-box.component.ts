@@ -17,7 +17,6 @@ export class TaskBoxComponent {
   }
 
   editTask() {
-    console.log(this.task);
     this.editTaskEvent.emit(this.task);
   }
 }

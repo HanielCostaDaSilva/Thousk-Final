@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import USERS from '../../shared/model/USERS';
-import User from '../../shared/model/User';
+import AuthService from '../../shared/service/auth/auth.service';
 
 @Component({
   selector: 'app-login-user',
@@ -10,27 +9,45 @@ import User from '../../shared/model/User';
 export class LoginUserComponent {
 
   errorMessage: string ='';
-  nickname: string = '';
-  password: string = '';
-  users :User[] = USERS;
+  private __nickname: string = '';
+  private __password: string = '';
+  private authService: AuthService = new AuthService();
 
   login() {
-    if(!this.nickname){
-      this.errorMessage='Please enter a nickname'
-    }
-    else if(!this.password){
-      this.errorMessage='Please enter a password';
-    }
+    try{
+      if(!this.__nickname){
+       throw new Error('Please enter a nickname')
+      }
+      else if(!this.__password){
+        throw new Error('Please enter a password');  
+      }
+      const user= this.authService.login(this.__nickname, this.__password);
+      if(user){
+        alert(`Welcome ${this.authService.currentUser?.nickname}!`)
+      }
+      else{
+        throw new Error(`User ${this.__nickname} not found.`);  
 
-    const userLogado = this.users.find(
-      user => user.nickname === this.nickname && user.password === this.password);
-
-    if (userLogado) {
-      alert(`seja bem vindo ${userLogado.nickname}`)
+      }
     }
-    else{ 
-      this.errorMessage=' Nickname or password Invalid.'
+    catch(error:any){
+      console.log(error);
+      this.errorMessage = error.message;
     }
   }
+  
+  get nickname(){
+    return this.__nickname    
+  }
+  get password(){
+    return this.__password    
+  }
+
+  set nickname(newNickname){
+    this.__nickname= newNickname;
+  }
+  set password(newPassword){
+    this.__password= newPassword;
+  }  
 }
 

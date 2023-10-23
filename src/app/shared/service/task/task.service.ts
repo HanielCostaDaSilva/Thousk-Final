@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 
-import User from '../../model/User'
 import Task from '../../model/Task';
-import TASKS from '../../model/TASKS';
+import TASKS from '../../TASKS';
 
 @Injectable({
   providedIn: 'root'
 })
 export default class TaskService {
   
-  tasks: Task[] = TASKS; //A ser substituido por uma classe repositorio
+  tasks: Task[] = TASKS;
   
   constructor() { }
 

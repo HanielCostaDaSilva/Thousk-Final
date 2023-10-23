@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import Task from '../../shared/model/Task';
-import TASKS from '../../shared/model/TASKS';
+import TASKS from '../../shared/TASKS';
 import { EditTaskComponent } from '../edit-task/edit-task.component';
 import { MatDialog } from '@angular/material/dialog'; // Import MatDialog
 import User from '../../shared/model/User';

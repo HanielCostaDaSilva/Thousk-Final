@@ -13,3 +13,10 @@
 .createTaskButton{
     font-size: 2.2rem;
 }
+
+.dateBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}

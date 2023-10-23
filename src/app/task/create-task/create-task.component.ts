@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 
 import Task from '../../shared/model/Task';
-import TASKS from '../../shared/model/TASKS';
 import AuthService from '../../shared/service/auth/auth.service';
+
+import TaskService from '../../shared/service/task/task.service';
+
+import User from '../../shared/model/User';
 
 @Component({
   selector: 'app-create-task',
@@ -11,28 +14,39 @@ import AuthService from '../../shared/service/auth/auth.service';
 })
 
 export class CreateTaskComponent {
-  private __titleTask: string = '';
-  private __descriptionTask: string = '';
-  private __imageLinkTask: string = '';
+  private __actualTask !: Task;
 
-  private __authService:AuthService = new AuthService();
-  private __actualUser =this.__authService.currentUser;
+  private dateAtual!: Date;
+
+  private __actualUser : User | undefined;
+  
+  dateStart:Date;
+  dateFinal:Date |undefined;
+
+  minDateFinal!:Date;
 
 
-  set titleTask(s: string) {
-    this.__titleTask = s;
+  constructor(private authService:AuthService, private taskService:TaskService){
+    this.dateStart= this.dateAtual;
+    this.dateFinal= this.dateAtual;
+    this.minDateFinal= this.dateAtual;
+  }
+  
+  ngOnInit() {
+    this.dateAtual = new Date();
+    this.__actualUser = this.authService.currentUser;
+    this.__actualTask = new Task('','','',this.__actualUser,  this.dateStart, this.dateFinal)
+
+  }
+  
+  create(): void {
+    console.log(this.authService.currentUser)
+
+    this.taskService.createTask(this.__actualTask);
   }
 
-  set descriptionTask(s: string) {
-    this.__descriptionTask = s;
+  get actualTask():Task{
+    return this.__actualTask;
   }
 
-  set linkImageTask(s: string) {
-    this.__imageLinkTask = s;
-  }
-  createTask(): void {
-    const newTask: Task = new Task(this.__titleTask, this.__descriptionTask, this.__imageLinkTask, this.__actualUser );
-
-    TASKS.push(newTask);
-  }
 }

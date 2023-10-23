@@ -25,7 +25,6 @@ export class RegisterUserComponent {
       if (!this.__email || !this.__password || !this.__nickname)
         throw new Error(`Fill all the requireds fields`);
       const user:User = this.authService.register(this.__nickname,this.__email,this.__password);
-      console.log(user);
       this.registeredUser=1;
       this.statusMessage="User registered successfully"
     } 

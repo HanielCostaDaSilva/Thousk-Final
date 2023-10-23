@@ -37,7 +37,6 @@ export class LoginUserComponent {
       }
     }
     catch(error:any){
-      console.log(error);
       this.statusMessage = error.message;
       this.loggedUser = 0
     }

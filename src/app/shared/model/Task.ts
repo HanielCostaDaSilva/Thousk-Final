@@ -7,6 +7,9 @@ class Task {
     private __description: string = "";
 
     private __state: string = "waiting";
+    private __dateStart: Date;
+    private __dateFinal: Date | undefined = undefined;
+   
     /*The state can be:
 
     { "waiting": when the task is waiting be executed,
@@ -16,11 +19,15 @@ class Task {
 
     */
 
-    constructor(title: string, description: string, ImageLink: string, userCreator: User | undefined) {
+    constructor(title: string, description: string, imageLink: string, userCreator: User | undefined, dateStart: Date, dateFinal: Date | undefined) {
+        
         this.__title = title;
         this.__description = description;
-        this.__imageLink = ImageLink;
+        this.__imageLink = imageLink;
         this.__userCreator = userCreator;
+        
+        this.__dateStart= dateStart;
+        this.__dateFinal = dateFinal;
     }
 
     /**
@@ -38,17 +45,17 @@ class Task {
     }
 
     /**
-     * @return string return the ImageLink
+     * @return string return the imageLink
      */
     get imageLink(): string {
         return this.__imageLink;
     }
 
     /**
-     * @param ImageLink the ImageLink to set
+     * @param imageLink the imageLink to set
      */
-    set imageLink(ImageLink: string) {
-        this.__imageLink = ImageLink;
+    set imageLink(imageLink: string) {
+        this.__imageLink = imageLink;
     }
 
     /**
@@ -74,7 +81,7 @@ class Task {
     /**
      * @param userCreator the userCreator to set
      */
-    set userCreator(userCreator: User) {
+    set userCreator(userCreator: User |undefined) {
         this.__userCreator = userCreator;
     }
 
@@ -85,6 +92,21 @@ class Task {
 
         const newState: string = state.toLowerCase()
         this.__state = newState;
+    }
+
+    get dateStart(){
+        return this.__dateStart
+    }
+
+    set dateStart(newDateStart:Date){
+        this.__dateStart = newDateStart;
+    }
+    get dateFinal(){
+        return this.__dateFinal
+    }
+
+    set dateFinal(newDateFinal:Date | undefined){
+        this.__dateFinal = newDateFinal;
     }
 }
 

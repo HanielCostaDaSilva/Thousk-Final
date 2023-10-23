@@ -13,12 +13,10 @@ export default class TaskService {
   
   constructor() { }
 
-  createTask(titleTask:string, descriptionTask:string, 
-    imageLinkTask:string,userCreator:User | undefined) :Task{
+  createTask(task :Task) :Task{
     
-      const task = new Task(titleTask, descriptionTask, imageLinkTask, userCreator);
     this.tasks.push(task);
-    userCreator?.inserirTask(task);
+    task.userCreator?.inserirTask(task);
     
     return task;
 

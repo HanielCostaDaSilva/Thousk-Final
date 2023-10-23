@@ -15,11 +15,11 @@ export default class AuthService {
   login(nickname: string, password: string):User | undefined {
     const userFinded = this.__users.find(
       user => user.nickname === nickname && user.password === password);
-    
-    if (userFinded){
-      this.__loggedIn = true;
-      this.__currentUser=userFinded;
-    }
+      if (userFinded){
+        this.__loggedIn = true;
+        this.__currentUser=userFinded;
+      }
+    console.log(this.currentUser)
     return this.__currentUser;
   }
 

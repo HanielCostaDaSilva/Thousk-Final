@@ -10,7 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatMenuModule} from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [],
@@ -25,7 +26,9 @@ import { RouterLink } from '@angular/router';
     MatInputModule,
     MatFormFieldModule,
     MatMenuModule,
-    RouterLink
+    MatDatepickerModule,
+    RouterLink,
+    MatNativeDateModule
 
   ],
   exports: [
@@ -38,7 +41,9 @@ import { RouterLink } from '@angular/router';
     MatInputModule,
     MatFormFieldModule,
     MatMenuModule,
-    RouterLink
+    MatDatepickerModule,
+    RouterLink,
+    MatNativeDateModule
 
   ]
 })

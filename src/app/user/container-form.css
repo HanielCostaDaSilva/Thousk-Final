@@ -1,0 +1,48 @@
+.container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70%;
+    width: 96%;
+    padding: 5px;
+    margin: 1% 1%;
+}
+
+
+
+.container form {
+    display: flex;
+    flex-direction: column;
+    width: 50%
+}
+
+.container button {
+    font-size: 2rem;
+}
+.messageBox{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.errorMessage {
+    color: red;
+}
+
+.sucessMessage{
+    color:green;
+}
+
+
+.success {
+    border: 2px solid green;
+    transition: border 0.5s, box-shadow 0.5s;
+    box-shadow: 0 0 10px rgba(0, 128, 0, 0.5);
+}
+
+.failed {
+    border: 2px solid red;
+    transition: border 0.5s, box-shadow 0.5s;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}

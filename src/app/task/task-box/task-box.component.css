@@ -1,7 +1,13 @@
 .taskCard{
-    max-width: 400px;
-    min-height: 350px;
-    padding: 10;
+    width: 450px;
+    height: 400px;
+    overflow:hidden;
+    padding: 10px;
+    margin: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 .buttonBox{
   display: flex;

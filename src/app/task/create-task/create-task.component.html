@@ -1,18 +1,37 @@
 <section id="CreateTask">
-    <h2 class="titlePage" >Criar Tarefa</h2>
+    <h2 class="titlePage">Criar Tarefa</h2>
     <mat-form-field class="formCamp">
         <mat-label>Atividade: </mat-label>
-        <input matInput [(ngModel)]="titleTask">
+        <input matInput required [(ngModel)]="actualTask.title">
     </mat-form-field>
 
     <mat-form-field class="formCamp">
         <mat-label>Descrição: </mat-label>
-        <textarea matInput [(ngModel)]="descriptionTask"></textarea>
+        <textarea matInput required [(ngModel)]="actualTask.description"></textarea>
     </mat-form-field>
-
+    
+    <div class="dateBox">
+        <mat-form-field>
+          <mat-label>Início:</mat-label>
+          <input matInput [matDatepicker]="pickerStart" [(ngModel)]="actualTask.dateStart">
+          <mat-hint>DD/MM/AAAA</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="pickerStart"></mat-datepicker-toggle>
+          <mat-datepicker #pickerStart></mat-datepicker>
+        </mat-form-field>
+      
+        <mat-form-field>
+          <mat-label>Final:</mat-label>
+          <input matInput [min]="minDateFinal" [matDatepicker]="pickerFinal" [(ngModel)]="actualTask.dateFinal" [min]="minDateFinal">
+          <mat-hint>DD/MM/AAAA</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="pickerFinal"></mat-datepicker-toggle>
+          <mat-datepicker #pickerFinal></mat-datepicker>
+        </mat-form-field>
+      </div>
+      
     <mat-form-field class="formCamp">
         <mat-label>Link Da Imagem: </mat-label>
-        <input matInput [(ngModel)]="linkImageTask">
+        <input matInput [(ngModel)]="actualTask.imageLink">
     </mat-form-field>
-    <button class="createTaskButton" mat-button color="accent" (click)="createTask()">Create</button>
+
+    <button class="createTaskButton" mat-button color="accent" (click)="create()">Create</button>
 </section>

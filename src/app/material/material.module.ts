@@ -12,6 +12,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [],
@@ -28,7 +29,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatMenuModule,
     MatDatepickerModule,
     RouterLink,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSidenavModule
 
   ],
   exports: [
@@ -43,7 +45,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatMenuModule,
     MatDatepickerModule,
     RouterLink,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSidenavModule
 
   ]
 })

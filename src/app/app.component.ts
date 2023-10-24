@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Thousk';
+  openMenu = false;
+  
+  toggleSidenavBar(){
+    console.log(this.openMenu)
+    this.openMenu = !this.openMenu;
+  }
 }

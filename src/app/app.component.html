@@ -1,3 +1,18 @@
-<app-header titleCompany="{{title}}"> </app-header>
-
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+    <mat-sidenav-content>
+        <!-- [ngClass]="{ 'hide': !openMenu }" -->
+        <mat-sidenav [(opened)]="openMenu" >
+            <mat-icon>home</mat-icon> Home
+            <mat-icon>task</mat-icon> Tasks
+            <mat-icon>event</mat-icon> Calendar
+            <mat-icon>settings</mat-icon> Settings
+            <mat-icon>group</mat-icon> Groups
+        </mat-sidenav>
+        
+        <mat-sidenav-container>
+            <app-header titleCompany="{{title}}" (toggle)="toggleSidenavBar()"> </app-header>
+            <router-outlet></router-outlet>
+            
+        </mat-sidenav-container>
+    </mat-sidenav-content>
+</mat-sidenav-container>

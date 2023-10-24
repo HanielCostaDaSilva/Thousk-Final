@@ -1,0 +1,10 @@
+
+.hide{
+    display: none;
+}
+
+.mat-sidenav{
+    height: calc(205vh - 115vh);
+    width: 200px;
+    background-color: cornflowerblue;
+}

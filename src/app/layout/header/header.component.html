@@ -1,9 +1,9 @@
 <mat-toolbar id="Header">
   <div>
-    <div [routerLink]="['PrincipalPage']" class="logo">
+    <div class="logo">
+      <button (click)="toggleSidenav()"> <mat-icon>menu</mat-icon></button>
       <mat-icon>task</mat-icon>
       <span>{{titleCompany}}</span>
-      <span *ngIf="currentUser">| {{currentUser.nickname}}</span>
     </div>
     <div>
       <p class="pageDescription"></p>
@@ -12,7 +12,7 @@
 
   <div class="choiceBox">
     <button mat-button [matMenuTriggerFor]="menu">
-      <mat-icon>account-circle</mat-icon>
+      <mat-icon>account_circle</mat-icon>
     </button>
 
     <mat-menu #menu="matMenu">
@@ -23,11 +23,9 @@
         Login
       </button>
     </mat-menu>
-    <button mat-button >
-      <mat-icon>event</mat-icon>
-    </button>
+
     <button mat-button>
-      <mat-icon>apps</mat-icon>
+      <mat-icon>event</mat-icon>
     </button>
   </div>
 </mat-toolbar>

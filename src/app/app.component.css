@@ -4,7 +4,9 @@
 }
 
 .mat-sidenav{
-    height: calc(205vh - 115vh);
-    width: 200px;
-    background-color: cornflowerblue;
+    position: fixed;
+    height: calc(205vh - 105vh);
+    width: 300px;
+    background-color:#233850;
+    color: white;
 }

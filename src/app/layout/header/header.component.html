@@ -1,7 +1,7 @@
 <mat-toolbar id="Header">
   <div>
-    <div class="logo">
-      <button (click)="toggleSidenav()"> <mat-icon>menu</mat-icon></button>
+    <div class="logo" [routerLink]="['PrincipalPage']">
+      <button mat-button (click)="toggleSidenav()"> <mat-icon>menu</mat-icon></button>
       <mat-icon>task</mat-icon>
       <span>{{titleCompany}}</span>
     </div>
@@ -16,7 +16,7 @@
     </button>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item [routerLink]="['RegisterUser']" mat-menu-item>
+      <button mat-menu-item [routerLink]="['RegisterUser']" >
         Registrar
       </button>
       <button mat-menu-item [routerLink]="['Login']">

@@ -1,10 +1,16 @@
-
-.hide{
-    display: none;
-}
+app-header {
+    position: absolute;
+    width: 100%;
+    z-index: 100; 
+  }
+  
+  mat-sidenav-container {
+    padding-top: 64px; /* Ajuste esta altura de acordo com a altura do app-header. */
+  }
 
 .mat-sidenav{
-    position: fixed;
+    position: absolute;
+    margin-top: 15vh;
     height: calc(205vh - 105vh);
     width: 300px;
     background-color:#233850;

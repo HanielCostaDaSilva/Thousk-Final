@@ -6,20 +6,21 @@ class Task {
     private __imageLink: string = "";
     private __description: string = "";
 
-    private __state: string = "waiting";
+    private __state:string;
+    private __category: string="";
     private __dateStart: Date;
     private __dateFinal: Date | undefined = undefined;
    
     /*The state can be:
 
     { "waiting": when the task is waiting be executed,
-    "executing": when the task was being executed by the user,
+    "doing": when the task was being executed by the user,
     "done": when the task was successfully executed.
     }
 
     */
 
-    constructor(title: string, description: string, imageLink: string, userCreator: User | undefined, dateStart: Date, dateFinal: Date | undefined) {
+    constructor(title: string, description: string, imageLink: string, userCreator: User | undefined, dateStart: Date, dateFinal: Date | undefined, state: string="waiting", category: string="") {
         
         this.__title = title;
         this.__description = description;
@@ -28,6 +29,8 @@ class Task {
         
         this.__dateStart= dateStart;
         this.__dateFinal = dateFinal;
+        this.__state = state;
+        this.__category = category;
     }
 
     /**
@@ -107,6 +110,14 @@ class Task {
 
     set dateFinal(newDateFinal:Date | undefined){
         this.__dateFinal = newDateFinal;
+    }
+
+    get category(){
+        return this.__category;
+    }
+
+    set category(newCategory:string){
+        this.__category = newCategory;
     }
 }
 

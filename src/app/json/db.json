@@ -1,0 +1,67 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "nickname": "Haniel",
+            "email": "hanielcostadasilva@gmail.com",
+            "password": "1234",
+            "tasks": [
+                {
+                    "id": 1,
+                    "userCreator": 1,
+                    "title": "Projetar o SideNavBar",
+                    "imageLink": "#FF034",
+                    "description": "É necessário acessar o angualar material e colocá-lo no módulo de layout",
+                    "state": "waiting",
+                    "dateStart": "20-10-2023",
+                    "dateFinal": "30-10-2023",
+                    "category": "work"
+                },
+                {
+                    "id": 2,
+                    "userCreator": 1,
+                    "title": "Estudar para a prova de Legislação",
+                    "imageLink": "#FF054",
+                    "description": "",
+                    "state": "doing",
+                    "dateStart": "20-10-2023",
+                    "dateFinal": "1-11-2023",
+                    "category": "study"
+                }
+            ],
+            "groups_id": [1]
+        },
+        {
+            "id": 2,
+            "nickname": "Robo",
+            "email": "gpt4@gmail.com",
+            "password": "1234",
+            "tasks": [],
+            "groups_id": []
+        },
+        {
+            "id": 3,
+            "nickname": "Maria",
+            "email": "Assert@gmail.com",
+            "password": "1234",
+            "tasks": [],
+            "groups_id": [
+                1
+            ]
+        }
+    ],
+    "groups": [
+        {
+            "id": 1,
+            "name": "Projeto Thousk",
+            "description": "Grupo fundado para a realização do projeto de gerenciamento de tarefas.",
+            "dateCreaton": "12-09-2023",
+            "userCreator": 1,
+            "participants": [
+                1,
+                3
+            ],
+            "tasks": []
+        }
+    ]
+}

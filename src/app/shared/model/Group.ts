@@ -5,19 +5,19 @@ class Group {
     private __id !: number;
     private __name!: string;
     private __description !: string;
-    private __dateCreaton !: string;
+    private __dateCreated !: string;
 
     //============Relationship
-    private __userCreator !: User;
+    private __author !: User;
     private __participants !: User[];
+    private __moderators !: User[];
     private __tasks !: Task[];
 
-    constructor(id: number, name: string, description: string, dateCreaton: string, userCreator: User) {
-        this.__id = id
+    constructor(name: string, description: string, dateCreated: string, author: User) {
         this.__name = name
         this.__description = description
-        this.__dateCreaton = dateCreaton
-        this.__userCreator = userCreator;
+        this.__dateCreated = dateCreated
+        this.__author = author;
     }
 
     get id() {
@@ -39,15 +39,15 @@ class Group {
     set description(newdescription: string) {
         this.__description = newdescription;
     }
-    get dateCreaton() {
-        return this.__dateCreaton
+    get dateCreated() {
+        return this.__dateCreated
     }
-    set dateCreaton(newdateCreaton: string) {
-        this.__dateCreaton = newdateCreaton;
+    set dateCreated(newdateCreated: string) {
+        this.__dateCreated = newdateCreated;
     }
 
-    get userCreator() {
-        return this.__userCreator;
+    get author() {
+        return this.__author;
     }
     get participants() {
         return this.__participants;
@@ -56,34 +56,58 @@ class Group {
         return this.__tasks;
     }
 
-    inserirParticipant(user: User): User | null {
+    addParticipant(user: User): User | undefined {
         if (!this.__participants.find((participant) => user.id == participant.id)) {
             this.__participants.push(user);
             return user
         }
-
+        return;
     }
 
-    removeParticipant(participant: User): User | null {
+    removeParticipant(participant: User): User | undefined {
         const participantIndex = this.__participants.indexOf(participant);
 
         if (participantIndex >= 0) {
             return this.__participants.splice(participantIndex, 1)[0];
         }
-        return;
+
+        throw new Error(`participant ${participant.nickname}} not found!` )
     }
-    inserirTask(task: Task) {
+    
+    addTask(task: Task) {
         this.__tasks.push(task);
     }
 
 
-    removeTask(task: Task): Task | null {
+    removeTask(task: Task): Task | undefined {
         const taskIndex = this.__tasks.indexOf(task);
 
         if (taskIndex >= 0) {
             return this.__tasks.splice(taskIndex, 1)[0];
         }
-        return;
+        throw new Error(`task ${task.title} not found!`)
+    }
+
+    getIndexParticiapnt(user:User) :number{
+        return this.__participants.indexOf(user);
+    }
+    
+    getIndexTask(task:Task) :number{
+        return this.__tasks.indexOf(task);
+    }
+
+    addmoderator(moderator: User) {
+        this.__moderators.push(moderator);
+    }
+
+
+    removemoderator(moderator: User): User | undefined {
+        const moderatorIndex = this.__moderators.indexOf(moderator);
+
+        if (moderatorIndex >= 0) {
+            return this.__moderators.splice(moderatorIndex, 1)[0];
+        }
+        throw new Error(`moderator ${moderator.nickname} not found!`)
     }
 
 }

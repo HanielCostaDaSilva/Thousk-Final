@@ -1,7 +1,7 @@
 import User from "./User";
 
 class Task {
-    private __userCreator: User | undefined = undefined;
+    private __author: User | undefined = undefined;
     private __title: string;
     private __imageLink: string = "";
     private __description: string = "";
@@ -20,12 +20,12 @@ class Task {
 
     */
 
-    constructor(title: string, description: string, imageLink: string, userCreator: User | undefined, dateStart: Date, dateFinal: Date | undefined, state: string="waiting", category: string="") {
+    constructor(title: string, description: string, imageLink: string, author: User | undefined, dateStart: Date, dateFinal: Date | undefined, state: string="waiting", category: string="") {
         
         this.__title = title;
         this.__description = description;
         this.__imageLink = imageLink;
-        this.__userCreator = userCreator;
+        this.__author = author;
         
         this.__dateStart= dateStart;
         this.__dateFinal = dateFinal;
@@ -75,17 +75,17 @@ class Task {
         this.__description = description;
     }
     /**
- * @return string return the userCreator
+ * @return string return the author
  */
-    get userCreator(): User|undefined {
-        return this.__userCreator;
+    get author(): User|undefined {
+        return this.__author;
     }
 
     /**
-     * @param userCreator the userCreator to set
+     * @param author the author to set
      */
-    set userCreator(userCreator: User |undefined) {
-        this.__userCreator = userCreator;
+    set author(author: User |undefined) {
+        this.__author = author;
     }
 
     get state() {

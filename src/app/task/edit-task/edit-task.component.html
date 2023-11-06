@@ -13,6 +13,15 @@
   <input matInput [(ngModel)]="data.imageLink" placeholder="Link da Imagem">
 </mat-form-field>
 
+<div class="dataBox">
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.dateStart" placeholder="Data para Iniciar">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.dateFinal" placeholder="Data para Encerrar">
+  </mat-form-field>
+    
+</div>
 <!-- Botões de ação -->
 <div class="button-container">
   <button mat-button (click)="saveChanges()">Salvar</button>

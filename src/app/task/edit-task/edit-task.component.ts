@@ -8,6 +8,9 @@ export interface DialogData {
   title: string;
   description: string;
   imageLink: string;
+  dateStart: string;
+  dateFinal: string;
+  category: string;
 }
 
 @Component({

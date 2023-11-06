@@ -1,7 +1,7 @@
 <mat-toolbar id="Header">
-  <div>
-    <div class="logo" [routerLink]="['PrincipalPage']">
-      <button mat-button (click)="toggleSidenav()"> <mat-icon>menu</mat-icon></button>
+  <div class="logo">
+    <button mat-button (click)="toggleSidenav()"> <mat-icon>menu</mat-icon></button>
+    <div [routerLink]="['PrincipalPage']">
       <mat-icon>task</mat-icon>
       <span>{{titleCompany}}</span>
     </div>

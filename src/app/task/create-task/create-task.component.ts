@@ -40,10 +40,20 @@ export class CreateTaskComponent {
   }
   
   create(): void {
-    console.log(this.authService.currentUser)
+    
+    const taskCreated= this.taskService.createTask(
+      this.__actualTask.title,
+      this.__actualTask.description,
+      this.__actualTask.imageLink,
+      this.__actualTask.author,
+      this.__actualTask.dateStart,
+      this.__actualTask.dateFinal,
+      this.__actualTask.state,
+      this.__actualTask.category);
+      this.authService.currentUser?.addTask(taskCreated);
+      console.log(this.authService.currentUser)
 
-    this.taskService.createTask(this.__actualTask);
-  }
+    }
 
   get actualTask():Task{
     return this.__actualTask;

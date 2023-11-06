@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import User from '../../model/User'
-import USERS from '../../USERS'
+import { UserApiService } from '../api/user-api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,23 @@ export default class AuthService {
   
   private __loggedIn = false;
   private __currentUser : User | undefined;
-  private __users: User[] = USERS;
+  private __users: User[] =[];
   
+  constructor(private userApi: UserApiService){
+    
+    this.userApi.getAll().subscribe({
+      next(usuario){
+        console.log(`got user : ${usuario}`);
+      },
+/*       usuarios => {
+        console.log(usuarios)
+        this.__users = usuarios
+        console.log(this.__users)
+      } */
+
+  });
+  }
+
   login(nickname: string, password: string):User | undefined {
     const userFinded = this.__users.find(
       user => user.nickname === nickname && user.password === password);
@@ -38,9 +53,15 @@ export default class AuthService {
     if (this.__users.filter(user => user.nickname == nickname).length > 0)
       throw new Error(`User ${nickname} already registered!`);
 
-    const user = new User(this.__users.length, nickname, email, password);
+    const user = new User(nickname, email, password);
 
-    this.__users.push(user);
+    this.userApi.create(user).subscribe(user =>{
+      console.log(user);
+      this.__users.push(user) 
+
+    }
+      );
+
     return user;
 
   }

@@ -15,37 +15,36 @@ import TaskService from '../../shared/service/task/task.service';
 })
 export class ShowTaskComponent {
 
-  private titleTask: string = '';
-  private descriptionTask: string = '';
-  private imageLinkTask: string = '';
   @Input() userActual !: User;
-  tasks: Task[] = (this.userActual == null? TASKS :this.userActual.tasks); //Mostra todas as tasks do sistema caso não tenha tasks 
+  tasks: Task[] = (this.userActual == null ? TASKS : this.userActual.tasks); //Mostra todas as tasks do sistema caso não tenha tasks 
 
-  
 
-  constructor(private dialog: MatDialog,private taskService: TaskService) {}
+
+  constructor(private dialog: MatDialog, private taskService: TaskService) { }
 
   removeTask(task: Task) {
     this.taskService.removeTask(task);
   }
 
   editTask(task: Task) {
-    this.titleTask = task.title;
-    this.descriptionTask = task.description;
-    this.imageLinkTask = task.imageLink;
 
     const dialogRef = this.dialog.open(EditTaskComponent, {
       width: '400px',
       data: {
-        title: this.titleTask,
-        descrption: this.descriptionTask,
-        imageLink: this.imageLinkTask,
+        title: task.title,
+        descrption: task.description,
+        imageLink: task.imageLink,
+        taskDateStart: task.dateStart,
+        taskDateFinal: task.dateFinal,
+        taskCategory: task.category
       },
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
-        this.taskService.editTask(task, result.title, result.description, result.imageLink);
+        this.taskService.editTask(task, result.title, result.description, 
+          result.imageLink,result.dateStart,
+          result.dateFinal);
       }
     });
   }

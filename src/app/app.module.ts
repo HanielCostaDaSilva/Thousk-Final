@@ -10,6 +10,7 @@ import { PrincipalPageComponent } from './principal-page/principal-page.componen
 import { UserModule } from './user/user.module';
 import AuthService from './shared/service/auth/auth.service';
 import TaskService from './shared/service/task/task.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import TaskService from './shared/service/task/task.service';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,

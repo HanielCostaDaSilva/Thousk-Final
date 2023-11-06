@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import Task from '../../model/Task';
 import TASKS from '../../TASKS';
+import User from '../../model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -12,29 +13,50 @@ export default class TaskService {
   
   constructor() { }
 
-  createTask(task :Task) :Task{
-    
-    this.tasks.push(task);
-    task.userCreator?.inserirTask(task);
-    
-    return task;
+  createTask(
+    title: string,
+    description: string,
+    imageLink: string,
+    author: User | undefined,
+    dateStart: Date,
+    dateFinal: Date | undefined,
+    state: string = 'waiting',
+    category: string = ''
+  ): Task {
 
+    const newTask = new Task(title, description, imageLink, author, dateStart, dateFinal, state, category);
+    return newTask;
+  
   }
 
   removeTask(task: Task): void{
-    const userCreator = task.userCreator;
+    const author = task.author;
     
     const index = this.tasks.indexOf(task);
     this.tasks.splice(index, 1);
     
-    userCreator?.removerTask(task); // remove a task da lista do usuário;
+    author?.removeTask(task); // remove a task da lista do usuário;
+
+
   }
 
-  editTask(task: Task,newTitleTask:string, newDescriptionTask:string, 
-    newImageLinkTask:string ):void{
+  editTask(
+    task: Task,
+    newTitleTask: string,
+    newDescriptionTask: string,
+    newImageLinkTask: string,
+    newDateStart: Date,
+    newDateFinal: Date | undefined,
+    newCategory: string = ''
+  ): Task {
+    if (task) {
       task.title = newTitleTask;
       task.description = newDescriptionTask;
-      task.imageLink = newImageLinkTask; 
-      
+      task.imageLink = newImageLinkTask;
+      task.dateStart = newDateStart;
+      task.dateFinal = newDateFinal;
+      task.category = newCategory;
     }
+    return task;
+  }
 }

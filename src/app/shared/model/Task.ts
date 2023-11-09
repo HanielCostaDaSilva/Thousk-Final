@@ -1,15 +1,15 @@
 import User from "./User";
 
 class Task {
-    private __author: User | undefined = undefined;
-    private __title: string;
-    private __imageLink: string = "";
-    private __description: string = "";
+    private _author: User | undefined = undefined;
+    private _title: string;
+    private _imageLink: string = "";
+    private _description: string = "";
 
-    private __state:string;
-    private __category: string="";
-    private __dateStart: Date;
-    private __dateFinal: Date | undefined = undefined;
+    private _state:string;
+    private _category: string="";
+    private _dateStart: Date;
+    private _dateFinal: Date | undefined = undefined;
    
     /*The state can be:
 
@@ -22,102 +22,102 @@ class Task {
 
     constructor(title: string, description: string, imageLink: string, author: User | undefined, dateStart: Date, dateFinal: Date | undefined, state: string="waiting", category: string="") {
         
-        this.__title = title;
-        this.__description = description;
-        this.__imageLink = imageLink;
-        this.__author = author;
+        this._title = title;
+        this._description = description;
+        this._imageLink = imageLink;
+        this._author = author;
         
-        this.__dateStart= dateStart;
-        this.__dateFinal = dateFinal;
-        this.__state = state;
-        this.__category = category;
+        this._dateStart= dateStart;
+        this._dateFinal = dateFinal;
+        this._state = state;
+        this._category = category;
     }
 
     /**
      * @return string return the title
      */
     get title(): string {
-        return this.__title;
+        return this._title;
     }
 
     /**
      * @param title the title to set
      */
     set title(title: string) {
-        this.__title = title;
+        this._title = title;
     }
 
     /**
      * @return string return the imageLink
      */
     get imageLink(): string {
-        return this.__imageLink;
+        return this._imageLink;
     }
 
     /**
      * @param imageLink the imageLink to set
      */
     set imageLink(imageLink: string) {
-        this.__imageLink = imageLink;
+        this._imageLink = imageLink;
     }
 
     /**
      * @return string return the description
      */
     get description(): string {
-        return this.__description;
+        return this._description;
     }
 
     /**
      * @param description the description to set
      */
     set description(description: string) {
-        this.__description = description;
+        this._description = description;
     }
     /**
  * @return string return the author
  */
     get author(): User|undefined {
-        return this.__author;
+        return this._author;
     }
 
     /**
      * @param author the author to set
      */
     set author(author: User |undefined) {
-        this.__author = author;
+        this._author = author;
     }
 
     get state() {
-        return this.__state;
+        return this._state;
     }
     set state(state: string) {
 
         const newState: string = state.toLowerCase()
-        this.__state = newState;
+        this._state = newState;
     }
 
     get dateStart(){
-        return this.__dateStart
+        return this._dateStart
     }
 
     set dateStart(newDateStart:Date){
-        this.__dateStart = newDateStart;
+        this._dateStart = newDateStart;
     }
     get dateFinal(){
-        return this.__dateFinal
+        return this._dateFinal
     }
 
     set dateFinal(newDateFinal:Date | undefined){
-        this.__dateFinal = newDateFinal;
+        this._dateFinal = newDateFinal;
     }
 
     get category(){
-        return this.__category;
+        return this._category;
     }
 
     set category(newCategory:string){
-        this.__category = newCategory;
+        this._category = newCategory;
     }
 }
 

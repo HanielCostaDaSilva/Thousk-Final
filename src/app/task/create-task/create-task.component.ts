@@ -14,11 +14,11 @@ import User from '../../shared/model/User';
 })
 
 export class CreateTaskComponent {
-  private __actualTask !: Task;
+  private _actualTask !: Task;
 
   private dateAtual!: Date;
 
-  private __actualUser : User | undefined;
+  private _actualUser : User | undefined;
   
   dateStart:Date;
   dateFinal:Date |undefined;
@@ -34,29 +34,29 @@ export class CreateTaskComponent {
   
   ngOnInit() {
     this.dateAtual = new Date();
-    this.__actualUser = this.authService.currentUser;
-    this.__actualTask = new Task('','','',this.__actualUser,  this.dateStart, this.dateFinal)
+    this._actualUser = this.authService.currentUser;
+    this._actualTask = new Task('','','',this._actualUser,  this.dateStart, this.dateFinal)
 
   }
   
   create(): void {
     
     const taskCreated= this.taskService.createTask(
-      this.__actualTask.title,
-      this.__actualTask.description,
-      this.__actualTask.imageLink,
-      this.__actualTask.author,
-      this.__actualTask.dateStart,
-      this.__actualTask.dateFinal,
-      this.__actualTask.state,
-      this.__actualTask.category);
+      this._actualTask.title,
+      this._actualTask.description,
+      this._actualTask.imageLink,
+      this._actualTask.author,
+      this._actualTask.dateStart,
+      this._actualTask.dateFinal,
+      this._actualTask.state,
+      this._actualTask.category);
       this.authService.currentUser?.addTask(taskCreated);
       console.log(this.authService.currentUser)
 
     }
 
   get actualTask():Task{
-    return this.__actualTask;
+    return this._actualTask;
   }
 
 }

@@ -10,9 +10,9 @@ import AuthService from '../../shared/service/auth/auth.service';
 })
 
 export class RegisterUserComponent {
-  private __nickname: string = '';
-  private __email: string = '';
-  private __password: string = '';
+  private _nickname: string = '';
+  private _email: string = '';
+  private _password: string = '';
 
   registeredUser: number = -1;
   statusMessage: string = '';
@@ -22,9 +22,9 @@ export class RegisterUserComponent {
   }
   registerUser() {
     try {
-      if (!this.__email || !this.__password || !this.__nickname)
+      if (!this._email || !this._password || !this._nickname)
         throw new Error(`Fill all the requireds fields`);
-      const user:User = this.authService.register(this.__nickname,this.__email,this.__password);
+      const user:User = this.authService.register(this._nickname,this._email,this._password);
       this.registeredUser=1;
       this.statusMessage="User registered successfully"
     } 
@@ -36,24 +36,24 @@ export class RegisterUserComponent {
   }
 
   set nickname(newNickname: string) {
-    this.__nickname = newNickname;
+    this._nickname = newNickname;
   }
 
   set email(newEmail: string) {
-    this.__email = newEmail;
+    this._email = newEmail;
   }
   set password(newPassword: string) {
-    this.__password = newPassword;
+    this._password = newPassword;
   }
 
   get nickname() {
-    return this.__nickname;
+    return this._nickname;
   }
   get email() {
-    return this.__email;
+    return this._email;
   }
   get password() {
-    return this.__password;
+    return this._password;
   }
 
 }

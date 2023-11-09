@@ -12,16 +12,16 @@ export class HeaderComponent implements OnInit{
   @Input() titleCompany !: string;
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
   
-  private __currentUser !: User| undefined
+  private _currentUser !: User| undefined
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.__currentUser= this.authService.currentUser
+    this.authService.currentUser$.subscribe(user => this._currentUser = user);
   }
   
   get currentUser(){
-    return this.__currentUser
+    return this._currentUser
   }
 
   toggleSidenav() {

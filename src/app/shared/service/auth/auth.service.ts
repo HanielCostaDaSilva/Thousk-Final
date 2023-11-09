@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import User from '../../model/User'
 import { UserApiService } from '../api/user-api.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,39 +9,36 @@ import { UserApiService } from '../api/user-api.service';
 
 export default class AuthService {
   
-  private __loggedIn = false;
-  private __currentUser : User | undefined;
-  private __users: User[] =[];
+  private _loggedIn = false;
+  private _currentUserSubject: BehaviorSubject<User>;
+  private _currentUser$ :Observable<User>;
+  private _users: User[] =[];
   
-  constructor(private userApi: UserApiService){
-    
-    this.userApi.getAll().subscribe({
-      next(usuario){
-        console.log(`got user : ${usuario}`);
-      },
-/*       usuarios => {
-        console.log(usuarios)
-        this.__users = usuarios
-        console.log(this.__users)
-      } */
-
-  });
+  constructor(private userApi: UserApiService) {
+    this._currentUser$ = this._currentUserSubject.asObservable();
+    this.userApi.getAll().subscribe(
+      (usuarios) => {
+        this._users = usuarios;
+      }
+    )
+    console.log(this._users);
   }
 
-  login(nickname: string, password: string):User | undefined {
-    const userFinded = this.__users.find(
+  login(nickname: string, password: string):Observable<User> | undefined {
+    const userFinded = this._users.find(
       user => user.nickname === nickname && user.password === password);
       if (userFinded){
-        this.__loggedIn = true;
-        this.__currentUser=userFinded;
+        this._loggedIn = true;
+        this._currentUserSubject.next(userFinded);
       }
-    console.log(this.currentUser)
-    return this.__currentUser;
+    console.log(this._currentUser$)
+    return this._currentUser$;
   }
 
   logout() {
-    this.__currentUser=undefined;
-    this.__loggedIn = false;
+    const userUndefined= new User(" "," "," "); 
+    this._currentUserSubject.next(userUndefined);
+    this._loggedIn = false;
   }
   /**
    * Register a new user in the database.
@@ -49,28 +47,28 @@ export default class AuthService {
    * @param password 
    * @returns the User generated
    */
+
   register(nickname: string, email: string, password: string) : User{
-    if (this.__users.filter(user => user.nickname == nickname).length > 0)
+    if (this._users.filter(user => user.nickname == nickname).length > 0)
       throw new Error(`User ${nickname} already registered!`);
 
     const user = new User(nickname, email, password);
 
     this.userApi.create(user).subscribe(user =>{
       console.log(user);
-      this.__users.push(user) 
-
     }
-      );
+    );
+    this._users.push(user);
 
     return user;
 
   }
 
   isLoggedIn(): boolean {
-    return this.__loggedIn;
+    return this._loggedIn;
   }
 
-  get currentUser(){
-    return this.__currentUser;
+  get currentUser$(){
+    return this._currentUser$;
   }
 }

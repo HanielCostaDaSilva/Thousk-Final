@@ -10,11 +10,10 @@
     </div>
   </div>
 
-  <div class="choiceBox">
+  <div class="choiceBox" *ngIf="!this.currentUser">
     <button mat-button [matMenuTriggerFor]="menu">
       <mat-icon>account_circle</mat-icon>
     </button>
-
     <mat-menu #menu="matMenu">
       <button mat-menu-item [routerLink]="['RegisterUser']" >
         Registrar
@@ -23,9 +22,11 @@
         Login
       </button>
     </mat-menu>
-
     <button mat-button>
       <mat-icon>event</mat-icon>
     </button>
+  </div>
+  <div *ngIf="currentUser !== undefined">
+    <p>Olá, {{ currentUser.nickname }}!</p>
   </div>
 </mat-toolbar>

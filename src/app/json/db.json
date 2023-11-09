@@ -1,70 +1,78 @@
 {
   "users": [
     {
-      "__id": 1,
-      "__nickname": "Haniel",
-      "__email": "hanielcostadasilva@gmail.com",
-      "__password": "1234",
-      "__tasks": [
+      "id": 1,
+      "nickname": "Haniel",
+      "email": "hanielcostadasilva@gmail.com",
+      "password": "1234",
+      "tasks": [
         {
-          "__id": 1,
-          "__author": 1,
-          "__title": "Projetar o SideNavBar",
-          "__imageLink": "#FF034",
-          "__description": "É necessário acessar o angualar material e colocá-lo no módulo de layout",
-          "__state": "waiting",
-          "__dateStart": "20-10-2023",
-          "__dateFinal": "30-10-2023",
-          "__category": "work"
+          "id": 1,
+          "author": 1,
+          "title": "Projetar o SideNavBar",
+          "imageLink": "#FF034",
+          "description": "É necessário acessar o angualar material e colocá-lo no módulo de layout",
+          "state": "waiting",
+          "dateStart": "20-10-2023",
+          "dateFinal": "30-10-2023",
+          "category": "work"
         },
         {
-          "__id": 2,
-          "__author": 1,
-          "__title": "Estudar para a prova de Legislação",
-          "__imageLink": "#FF054",
-          "__description": "",
-          "__state": "doing",
-          "__dateStart": "20-10-2023",
-          "__dateFinal": "1-11-2023",
-          "__category": "study"
+          "id": 2,
+          "author": 1,
+          "title": "Estudar para a prova de Legislação",
+          "imageLink": "#FF054",
+          "description": "",
+          "state": "doing",
+          "dateStart": "20-10-2023",
+          "dateFinal": "1-11-2023",
+          "category": "study"
         }
       ],
-      "__groups": 1
+      "groups": 1
     },
     {
-      "__id": 2,
-      "__nickname": "Robo",
-      "__email": "gpt4@gmail.com",
-      "__password": "1234",
-      "__tasks": [],
-      "__groups": []
+      "id": 2,
+      "nickname": "Robo",
+      "email": "gpt4@gmail.com",
+      "password": "1234",
+      "tasks": [],
+      "groups": []
     },
     {
-      "__id": 3,
-      "__nickname": "Maria",
-      "__email": "Assert@gmail.com",
-      "__password": "1234",
-      "__tasks": [],
-      "__groups": [
+      "id": 3,
+      "nickname": "Maria",
+      "email": "Assert@gmail.com",
+      "password": "1234",
+      "tasks": [],
+      "groups": [
         1
       ]
     },
     {
-      "__nickname": "JohnDoe",
-      "__email": "JohnDoe.com",
-      "__password": "1234",
-      "__tasks": [],
-      "__groups": [],
-      "__id": 4
+      "nickname": "JohnDoe",
+      "email": "JohnDoe.com",
+      "password": "1234",
+      "tasks": [],
+      "groups": [],
+      "id": 4
+    },
+    {
+      "_nickname": "FERNANDO_COLLOR",
+      "_email": "FERNANDO_COLLOR",
+      "_password": "1234",
+      "_tasks": [],
+      "_groups": [],
+      "id": 5
     }
   ],
   "groups": [
     {
-      "__id": 1,
-      "__name": "Projeto Thousk",
-      "__description": "Grupo fundado para a realização do projeto de gerenciamento de tarefas.",
+      "id": 1,
+      "name": "Projeto Thousk",
+      "description": "Grupo fundado para a realização do projeto de gerenciamento de tarefas.",
       "dateCreated": "12-09-2023",
-      "__authorID": 1,
+      "authorID": 1,
       "users": [
         1,
         3
@@ -72,7 +80,7 @@
       "moderator": [
         1
       ],
-      "__tasks": []
+      "tasks": []
     }
   ]
 }

@@ -10,8 +10,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export default class AuthService {
   
   private _loggedIn = false;
-  private _currentUserSubject: BehaviorSubject<User>;
-  private _currentUser$ :Observable<User>;
+  private _currentUserSubject !: BehaviorSubject<User>;
+  private _currentUser$ !:Observable<User>;
   private _users: User[] =[];
   
   constructor(private userApi: UserApiService) {
@@ -49,6 +49,7 @@ export default class AuthService {
    */
 
   register(nickname: string, email: string, password: string) : User{
+    
     if (this._users.filter(user => user.nickname == nickname).length > 0)
       throw new Error(`User ${nickname} already registered!`);
 
@@ -68,7 +69,7 @@ export default class AuthService {
     return this._loggedIn;
   }
 
-  get currentUser$(){
+  get currentUser(){
     return this._currentUser$;
   }
 }

@@ -6,6 +6,7 @@ import AuthService from '../../shared/service/auth/auth.service';
 import TaskService from '../../shared/service/task/task.service';
 
 import User from '../../shared/model/User';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-create-task',
@@ -18,7 +19,7 @@ export class CreateTaskComponent {
 
   private dateAtual!: Date;
 
-  private _actualUser : User | undefined;
+  private _actualUser : Observable<User> ;
   
   dateStart:Date;
   dateFinal:Date |undefined;

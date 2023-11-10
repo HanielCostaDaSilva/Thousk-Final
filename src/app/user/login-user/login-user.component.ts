@@ -18,17 +18,21 @@ export class LoginUserComponent {
 
   login() {
     try{
+      
       if(!this._nickname){
        throw new Error('Please enter a nickname')
       }
       else if(!this._password){
         throw new Error('Please enter a password');  
       }
-      const user= this.authService.login(this._nickname, this._password);
-      if(user){
+
+      this.authService.login(this._nickname, this._password);
+      
+      if(this.authService.currentUser){
 
         this.loggedUser = 1;
-        this.statusMessage = `Welcome ${this.authService.currentUser?.nickname}!`
+        const userNickname = this.authService.currentUser.subscribe(user => user.nickname)
+        this.statusMessage = `Welcome ${userNickname}!`
       }
      
       else{
@@ -55,5 +59,6 @@ export class LoginUserComponent {
   set password(newPassword){
     this._password= newPassword;
   }  
+  
 }
 

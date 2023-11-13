@@ -1,12 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import Task from '../../shared/model/Task';
-import AuthService from '../../shared/service/auth/auth.service';
 
 import TaskService from '../../shared/service/task/task.service';
-
 import User from '../../shared/model/User';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-create-task',
@@ -14,50 +11,35 @@ import { Observable } from 'rxjs';
   styleUrls: ['./create-task.component.css']
 })
 
-export class CreateTaskComponent {
-  private _actualTask !: Task;
+export class CreateTaskComponent implements OnInit {
+  
+  actualTask: Task = new Task('','','',new Date(),new Date());
 
-  private dateAtual!: Date;
-
-  private _actualUser : Observable<User> ;
+  dateAtual!: Date;
   
   dateStart:Date;
   dateFinal:Date |undefined;
 
   minDateFinal!:Date;
 
+  @Input() actualUser !: User;
 
-  constructor(private authService:AuthService, private taskService:TaskService){
+  constructor( private taskService:TaskService){
     this.dateStart= this.dateAtual;
     this.dateFinal= this.dateAtual;
-    this.minDateFinal= this.dateAtual;
+    this.actualTask.author = this.actualUser; // Esteja sempre com o usuario que foi selecionado.
   }
   
   ngOnInit() {
     this.dateAtual = new Date();
-    this._actualUser = this.authService.currentUser;
-    this._actualTask = new Task('','','',this._actualUser,  this.dateStart, this.dateFinal)
-
+    this.minDateFinal= this.dateAtual;
   }
   
   create(): void {
-    
-    const taskCreated= this.taskService.createTask(
-      this._actualTask.title,
-      this._actualTask.description,
-      this._actualTask.imageLink,
-      this._actualTask.author,
-      this._actualTask.dateStart,
-      this._actualTask.dateFinal,
-      this._actualTask.state,
-      this._actualTask.category);
-      this.authService.currentUser?.addTask(taskCreated);
-      console.log(this.authService.currentUser)
-
+    if(this.actualUser)
+    this.taskService.registerTask(this.actualTask, this.actualUser);
+    console.log(this.actualTask);
     }
-
-  get actualTask():Task{
-    return this._actualTask;
-  }
+    
 
 }

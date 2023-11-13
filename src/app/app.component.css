@@ -5,7 +5,7 @@ app-header {
   }
   
   mat-sidenav-container {
-    padding-top: 64px; /* Ajuste esta altura de acordo com a altura do app-header. */
+    padding-top: 64px; 
   }
 
 .mat-sidenav{

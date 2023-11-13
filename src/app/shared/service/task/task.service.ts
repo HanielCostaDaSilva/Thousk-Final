@@ -1,43 +1,27 @@
 import { Injectable } from '@angular/core';
 
 import Task from '../../model/Task';
-import TASKS from '../../TASKS';
 import User from '../../model/User';
+import { UserApiService } from '../api/user-api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export default class TaskService {
-  
-  tasks: Task[] = TASKS;
-  
-  constructor() { }
+    
+  constructor( private userApi:UserApiService) { }
 
-  createTask(
-    title: string,
-    description: string,
-    imageLink: string,
-    author: User | undefined,
-    dateStart: Date,
-    dateFinal: Date | undefined,
-    state: string = 'waiting',
-    category: string = ''
+  registerTask(task: Task, userDestiny: User
   ): Task {
-
-    const newTask = new Task(title, description, imageLink, author, dateStart, dateFinal, state, category);
-    return newTask;
+    userDestiny.addTask(task);
+    this.updateTaskInAuthor(userDestiny);
+    return task;
   
   }
 
   removeTask(task: Task): void{
     const author = task.author;
-    
-    const index = this.tasks.indexOf(task);
-    this.tasks.splice(index, 1);
-    
-    author?.removeTask(task); // remove a task da lista do usuário;
-
-
+    author.removeTask(task); 
   }
 
   editTask(
@@ -57,6 +41,11 @@ export default class TaskService {
       task.dateFinal = newDateFinal;
       task.category = newCategory;
     }
+    this.updateTaskInAuthor(task.author);
     return task;
+  }
+
+  updateTaskInAuthor(user: User){
+    this.userApi.update(user);
   }
 }

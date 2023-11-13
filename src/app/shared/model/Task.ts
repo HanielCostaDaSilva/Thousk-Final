@@ -2,6 +2,7 @@ import User from "./User";
 
 class Task {
     id !: string;
+    author!: User;
 
     /*The state can be:
 
@@ -16,13 +17,11 @@ class Task {
         public title: string,
         public description: string,
         public imageLink: string,
-        public author: User | undefined,
         public dateStart: Date, 
         public dateFinal: Date | undefined, 
         public state: string = "waiting", 
         public category: string = "") {
     }
-
 
 }
 

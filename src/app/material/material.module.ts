@@ -15,6 +15,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [],
@@ -34,8 +35,8 @@ import {MatListModule} from '@angular/material/list';
     MatNativeDateModule,
     MatSidenavModule,
     MatListModule,
-    MatDividerModule
-
+    MatDividerModule,
+    MatSelectModule
   ],
   exports: [
     MatIconModule,
@@ -52,7 +53,8 @@ import {MatListModule} from '@angular/material/list';
     MatNativeDateModule,
     MatSidenavModule,
     MatListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSelectModule
 
   ]
 })

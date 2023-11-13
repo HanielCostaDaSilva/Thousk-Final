@@ -1,15 +1,18 @@
 <section class="section">
   <section class="container" [ngClass]="{ 'success': loggedUser>0, 'failed': loggedUser==0 }">
     <h2 class="titlePage">Login</h2>
+    
     <form (ngSubmit)="login()">
       <mat-form-field class="formCamp">
         <mat-label for="nickname">Nickname:</mat-label>
         <input matInput type="text" id="nickname" name="nickname" [(ngModel)]="nickname" required>
       </mat-form-field>
+    
       <mat-form-field class="formCamp">
         <mat-label for="password">Senha:</mat-label>
         <input matInput type="password" id="password" name="password" [(ngModel)]="password" required>
       </mat-form-field>
+    
       <button mat-button color="accent" type="submit">Entrar</button>
     </form>
     <div *ngIf="statusMessage">

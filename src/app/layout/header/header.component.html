@@ -1,7 +1,7 @@
 <mat-toolbar id="Header">
   <div class="logo">
     <button mat-button (click)="toggleSidenav()"> <mat-icon>menu</mat-icon></button>
-    <div [routerLink]="['PrincipalPage']">
+    <div [routerLink]="['home']">
       <mat-icon>task</mat-icon>
       <span>{{titleCompany}}</span>
     </div>
@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <div class="choiceBox" *ngIf="!this.currentUser">
+  <div class="choiceBox">
     <button mat-button [matMenuTriggerFor]="menu">
       <mat-icon>account_circle</mat-icon>
     </button>
@@ -25,8 +25,5 @@
     <button mat-button>
       <mat-icon>event</mat-icon>
     </button>
-  </div>
-  <div *ngIf="currentUser !== undefined">
-    <p>Olá, {{ currentUser.nickname }}!</p>
   </div>
 </mat-toolbar>

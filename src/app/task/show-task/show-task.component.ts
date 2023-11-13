@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import Task from '../../shared/model/Task';
-import TASKS from '../../shared/TASKS';
 import { EditTaskComponent } from '../edit-task/edit-task.component';
 import { MatDialog } from '@angular/material/dialog'; // Import MatDialog
 import User from '../../shared/model/User';
@@ -15,8 +14,8 @@ import TaskService from '../../shared/service/task/task.service';
 })
 export class ShowTaskComponent {
 
-  @Input() userActual !: User;
-  tasks: Task[] = (this.userActual == null ? TASKS : this.userActual.tasks); //Mostra todas as tasks do sistema caso não tenha tasks 
+  @Input() actualUser !: User;
+  tasks: Task[] =  (this.actualUser == null ? [] : this.actualUser.tasks); //Mostra todas as tasks do sistema caso não tenha tasks 
 
 
 

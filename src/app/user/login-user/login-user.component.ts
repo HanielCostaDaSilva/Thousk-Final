@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import AuthService from '../../shared/service/auth/auth.service';
+import UserService from '../../shared/service/user/user.service';
 
 @Component({
   selector: 'app-login-user',
@@ -11,9 +11,10 @@ export class LoginUserComponent {
   statusMessage: string ='';
   private _nickname: string = '';
   private _password: string = '';
-  loggedUser :number = -1;
+  loggedUser=-1;
 
-  constructor(private authService: AuthService){
+
+  constructor(private userService: UserService){
   }
 
   login() {
@@ -25,24 +26,17 @@ export class LoginUserComponent {
       else if(!this._password){
         throw new Error('Please enter a password');  
       }
-
-      this.authService.login(this._nickname, this._password);
-      
-      if(this.authService.currentUser){
-
-        this.loggedUser = 1;
-        const userNickname = this.authService.currentUser.subscribe(user => user.nickname)
-        this.statusMessage = `Welcome ${userNickname}!`
-      }
-     
-      else{
+      const userLogged =this.userService.login(this._nickname, this._password);
+      if (!userLogged){
         throw new Error(`User ${this._nickname} not found.`);  
-
       }
+      this.loggedUser = 1;
+      this.statusMessage = `Welcome ${this._nickname}!`
+
     }
     catch(error:any){
       this.statusMessage = error.message;
-      this.loggedUser = 0
+      this.loggedUser=0
     }
   }
   

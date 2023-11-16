@@ -30,6 +30,15 @@ export default class UserService {
     return user;
 
   }
+
+  login(nickname: string, password: string):User | undefined {
+    const userFinded = this.users.find(
+      user => user.nickname === nickname && user.password === password);
+      if (userFinded){
+        return userFinded;
+      }
+    return;
+  }
   
   getAll():Observable<User[]>{
     return this.userApi.getAll();
@@ -47,5 +56,7 @@ export default class UserService {
     }
 
   }
+
+  
 
 }

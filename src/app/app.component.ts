@@ -10,7 +10,6 @@ export class AppComponent {
   openMenu = false;
   
   toggleSidenavBar(){
-    console.log(this.openMenu)
     this.openMenu = !this.openMenu;
   }
 }

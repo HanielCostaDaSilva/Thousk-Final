@@ -56,6 +56,10 @@ class Group {
         return this.tasks.indexOf(task);
     }
 
+    getIndexModerator(moderator: User): number {
+        return this.moderators.indexOf(moderator);
+    }
+
     addmoderator(moderator: User) {
         this.moderators.push(moderator);
     }

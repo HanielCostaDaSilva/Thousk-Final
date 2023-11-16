@@ -21,7 +21,6 @@ export default class AuthService {
         this._users = usuarios;
       }
     )
-    console.log(this._users);
   }
 
   login(nickname: string, password: string):Observable<User> | undefined {
@@ -56,10 +55,11 @@ export default class AuthService {
     const user = new User(nickname, email, password);
 
     this.userApi.create(user).subscribe(user =>{
-      console.log(user);
+      this._users.push(user);
+      console.log(user)
+      return user;
     }
     );
-    this._users.push(user);
 
     return user;
 

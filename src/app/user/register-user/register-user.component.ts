@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import User from "../../shared/model/User"
-import AuthService from '../../shared/service/auth/auth.service';
+import UserService from '../../shared/service/user/user.service';
 
 @Component({
   selector: 'app-register-user',
@@ -17,14 +17,14 @@ export class RegisterUserComponent {
   registeredUser: number = -1;
   statusMessage: string = '';
 
-  constructor(private authService: AuthService){
+  constructor(private userService: UserService){
 
   }
   registerUser() {
     try {
       if (!this._email || !this._password || !this._nickname)
         throw new Error(`Fill all the requireds fields`);
-      const user:User = this.authService.register(this._nickname,this._email,this._password);
+      const user:User = this.userService.register(this._nickname,this._email,this._password);
       this.registeredUser=1;
       this.statusMessage="User registered successfully"
     } 

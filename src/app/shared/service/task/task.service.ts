@@ -3,18 +3,20 @@ import { Injectable } from '@angular/core';
 import Task from '../../model/Task';
 import User from '../../model/User';
 import { UserApiService } from '../api/user-api.service';
+import Group from '../../model/Group';
+import { GroupApiService } from '../api/group-api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export default class TaskService {
     
-  constructor( private userApi:UserApiService) { }
+  constructor( private userApi:UserApiService, private groupApi:GroupApiService) { }
 
-  registerTask(task: Task, userDestiny: User
+  registerTask(task: Task, Destiny: User | Group
   ): Task {
-    userDestiny.addTask(task);
-    this.updateTaskInAuthor(userDestiny);
+    Destiny.addTask(task);
+    this.updateTaskInAuthor(Destiny);
     return task;
   
   }
@@ -45,7 +47,12 @@ export default class TaskService {
     return task;
   }
 
-  updateTaskInAuthor(user: User){
-    this.userApi.update(user);
+  updateTaskInAuthor(destiny: User | Group){
+    if(destiny instanceof  User){
+      this.userApi.update(destiny);
+    }
+    else{
+      this.groupApi.update(destiny);
+    }
   }
 }

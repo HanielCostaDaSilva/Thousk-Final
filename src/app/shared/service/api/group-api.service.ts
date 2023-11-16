@@ -13,7 +13,7 @@ export class GroupApiService {
 
   constructor(private http: HttpClient) {}
 
-  getById(id: number): Observable<Group>{
+  getById(id: string): Observable<Group>{
     return this.http.get<Group>(`${this._url}/${id}`).pipe(
       catchError(this.handleError));
   }
@@ -34,7 +34,7 @@ export class GroupApiService {
       catchError(this.handleError));
   }
 
-  delete(id: number): Observable<void> {
+  delete(id: string): Observable<void> {
     return this.http.delete<void>(`${this._url}/${id}`).pipe(
       catchError(this.handleError));
   }

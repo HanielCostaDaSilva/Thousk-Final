@@ -5,9 +5,10 @@ app-header {
   }
   
   mat-sidenav-container {
-    padding-top: 64px; 
+    padding-top: 104px; 
   }
 
+  
 .mat-sidenav{
     position: absolute;
     margin-top: 15vh;

@@ -22,4 +22,4 @@ import { ComboUserComponent } from './combo-user/combo-user.component';
     ComboUserComponent
   ]
 })
-export class UserModule { }
+export  class UserModule { }

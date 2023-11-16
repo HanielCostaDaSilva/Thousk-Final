@@ -1,18 +1,16 @@
 <mat-toolbar id="Header">
+  <mat-toolbar-row id ="First-Row" >
   <div class="logo">
-    <button mat-button (click)="toggleSidenav()"> <mat-icon>menu</mat-icon></button>
+    <button mat-button (click)="toggleSidenav()"> <mat-icon class="mat-icon-lg">menu</mat-icon></button>
     <div [routerLink]="['home']">
-      <mat-icon>task</mat-icon>
+      <mat-icon class="mat-icon-lg">task</mat-icon>
       <span>{{titleCompany}}</span>
-    </div>
-    <div>
-      <p class="pageDescription"></p>
     </div>
   </div>
 
   <div class="choiceBox">
     <button mat-button [matMenuTriggerFor]="menu">
-      <mat-icon>account_circle</mat-icon>
+      <mat-icon class="mat-icon-lg">account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item [routerLink]="['RegisterUser']" >
@@ -23,7 +21,13 @@
       </button>
     </mat-menu>
     <button mat-button>
-      <mat-icon>event</mat-icon>
+      <mat-icon class="mat-icon-lg">event</mat-icon>
     </button>
   </div>
+</mat-toolbar-row>
+
+<mat-toolbar-row id="Second-Row">
+<p> Selecione um usuário</p>
+<app-combo-user></app-combo-user>
+</mat-toolbar-row>
 </mat-toolbar>

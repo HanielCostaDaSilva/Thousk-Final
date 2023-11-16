@@ -12,28 +12,50 @@ export class GroupService {
   constructor(private groupApi:GroupApiService) { 
     this.groupApi.getAll().subscribe(
       usuarios => {
-        console.log(usuarios)
-        this.groups = usuarios
-        console.log(this.groups)
+          this.groups = usuarios
       }
     );
   }
 
-  createGroup(name: string, description: string, dateCreated: string, author: User): Group {
-    const newGroup = new Group(name, description, dateCreated, author);
-
-    return newGroup;
+  createGroup(group:Group): Group {
+    this.groupApi.create(group);
+    return group;
   }
 
   removeGroup(group: Group): Group | undefined {
-    const groupIndex = this.groups.indexOf(group);
 
+    const groupIndex = this.groups.indexOf(group);
     if (groupIndex < 0) {
-      this.groups.splice(groupIndex, 1);
-      return group;
+      throw new Error("Group: "+ group.name+ " not found!");
     }
-    return undefined;
+
+    this.groups.splice(groupIndex, 1);
+    this.groupApi.delete(group.id);
+    return group;
   }
+
+  addParticipant(group: Group, participant: User) {
+    const participantIndex = group.getIndexParticiapnt(participant);
+    
+    if (participantIndex < 0) {
+      group.addParticipant(participant);
+    }
+    else
+      throw new Error(`Participarnt ${participant.nickname} already added! `);
+  }
+  
+  editGroup(group:Group,name:string,description:string):Group{
+    
+    const groupIndex = this.groups.indexOf(group);
+    if (groupIndex < 0) {
+      throw new Error("Group not Found!");
+    }
+
+    group.name = name;
+    group.description = description;
+    return group
+  }
+
 
   removeParticipant(group: Group, participant: User): User | undefined {
     const groupIndex = this.groups.indexOf(group);
@@ -49,32 +71,43 @@ export class GroupService {
     }
 
     group.participants.splice(participantIndex, 1);
-
+    this.groupApi.update(group);
     participant.removeGroup(group); // O participante remove o grupo de sua lista.
 
     return participant;
   }
 
-  editGroup(group:Group,name:string,description:string):Group{
+  addModerator(group: Group, moderator: User){
     
+    if (group.getIndexParticiapnt(moderator) < 0) {
+      throw new Error("Participant "+ moderator.nickname + "not found!");
+    }
+    if(group.getIndexModerator(moderator)>0 )
+      throw new Error("Participant "+ moderator.nickname + "already a moderator!");
+
+    this.groupApi.update(group);
+    
+    return group;
+
+  }
+
+  removeModerator(group: Group, moderator: User) : User{
     const groupIndex = this.groups.indexOf(group);
+
     if (groupIndex < 0) {
       throw new Error("Group not Found!");
     }
 
-    group.name = name;
-    group.description = description;
-    return group
-  }
+    const moderatorIndex = group.getIndexModerator(moderator);
 
-  addParticipant(group: Group, participant: User) {
-    const participantIndex = group.getIndexParticiapnt(participant);
-    
-    if (participantIndex < 0) {
-      group.addParticipant(participant);
+    if (moderatorIndex < 0) {
+      throw new Error(`Moderator: ${moderator.nickname} not Found!`);
     }
-    else
-      throw new Error(`Participarnt ${participant.nickname} already added`);
+
+    group.moderators.splice(moderatorIndex, 1);
+    this.groupApi.update(group);
+    
+    return moderator;
   }
 
 }

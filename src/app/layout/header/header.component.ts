@@ -1,28 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
-import  AuthService from '../../shared/service/auth/auth.service';
-import User from '../../shared/model/User';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent{
   
   @Input() titleCompany !: string;
+  @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
   
-  
-  private __currentUser !: User| undefined
+  //private _currentUser !: User| undefined
 
-  constructor(private authService: AuthService) {}
+  constructor() {}
 
-  get currentUser(){
-    return this.__currentUser
+  toggleSidenav() {
+    this.toggle.emit();
   }
-
-  ngOnInit(): void {
-    this.__currentUser= this.authService.currentUser
-  }
-  
-
 }

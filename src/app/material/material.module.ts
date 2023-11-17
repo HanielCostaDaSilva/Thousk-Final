@@ -12,6 +12,10 @@ import {MatMenuModule} from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [],
@@ -28,8 +32,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatMenuModule,
     MatDatepickerModule,
     RouterLink,
-    MatNativeDateModule
-
+    MatNativeDateModule,
+    MatSidenavModule,
+    MatListModule,
+    MatDividerModule,
+    MatSelectModule
   ],
   exports: [
     MatIconModule,
@@ -43,7 +50,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatMenuModule,
     MatDatepickerModule,
     RouterLink,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSidenavModule,
+    MatListModule,
+    MatDividerModule,
+    MatSelectModule
 
   ]
 })

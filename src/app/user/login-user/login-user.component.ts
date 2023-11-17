@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import AuthService from '../../shared/service/auth/auth.service';
+import UserService from '../../shared/service/user/user.service';
 
 @Component({
   selector: 'app-login-user',
@@ -9,51 +9,50 @@ import AuthService from '../../shared/service/auth/auth.service';
 export class LoginUserComponent {
 
   statusMessage: string ='';
-  private __nickname: string = '';
-  private __password: string = '';
-  loggedUser :number = -1;
+  private _nickname: string = '';
+  private _password: string = '';
+  loggedUser=-1;
 
-  constructor(private authService: AuthService){
+
+  constructor(private userService: UserService){
   }
 
   login() {
     try{
-      if(!this.__nickname){
+      
+      if(!this._nickname){
        throw new Error('Please enter a nickname')
       }
-      else if(!this.__password){
+      else if(!this._password){
         throw new Error('Please enter a password');  
       }
-      const user= this.authService.login(this.__nickname, this.__password);
-      if(user){
-
-        this.loggedUser = 1;
-        this.statusMessage = `Welcome ${this.authService.currentUser?.nickname}!`
+      const userLogged =this.userService.login(this._nickname, this._password);
+      if (!userLogged){
+        throw new Error(`User ${this._nickname} not found.`);  
       }
-     
-      else{
-        throw new Error(`User ${this.__nickname} not found.`);  
+      this.loggedUser = 1;
+      this.statusMessage = `Welcome ${this._nickname}!`
 
-      }
     }
     catch(error:any){
       this.statusMessage = error.message;
-      this.loggedUser = 0
+      this.loggedUser=0
     }
   }
   
   get nickname(){
-    return this.__nickname    
+    return this._nickname    
   }
   get password(){
-    return this.__password    
+    return this._password    
   }
 
   set nickname(newNickname){
-    this.__nickname= newNickname;
+    this._nickname= newNickname;
   }
   set password(newPassword){
-    this.__password= newPassword;
+    this._password= newPassword;
   }  
+  
 }
 

@@ -1,57 +1,79 @@
 import User from "./User";
 import Task from "./Task";
 
-class Group{
-    private __id !: number;
-    private __name!: string;
-    private __description !: string;
-    private __dateCreaton !: string;
-    private __category !: string;
-    
+class Group {
+    id !: string;
+
     //============Relationship
-    private __userCreator !:User;  
-    private __participants !:User[];
-    private __tasks !: Task[];
+    participants !: User[];
+    moderators !: User[];
+    tasks !: Task[];
 
-    constructor(id:number, name :string , description :string , dateCreaton :string , category:string){
-    this.__id = id 
-    this.__name = name 
-    this.__description = description 
-    this.__dateCreaton = dateCreaton
-    this.__category = category 
-    }
+    constructor(
+        public name: string,
+        public description: string,
+        public dateCreated: string,
+        public author: User) { }
 
-    get id(){
-        return this.__id
-    }
-    get name(){
-        return this.__name
-    }
-    get description(){
-        return this.__description
-    }
-    get dateCreaton(){
-        return this.__dateCreaton
-    }
-    get category(){
-        return this.__category
+
+    addParticipant(user: User): User | undefined {
+        if (!this.participants.find((participant) => user.id == participant.id)) {
+            this.participants.push(user);
+            return user
+        }
+        return;
     }
 
-    set id(newId:number){
-        this.__id = newId;
+    removeParticipant(participant: User): User | undefined {
+        const participantIndex = this.participants.indexOf(participant);
+
+        if (participantIndex >= 0) {
+            return this.participants.splice(participantIndex, 1)[0];
+        }
+
+        throw new Error(`participant ${participant.nickname}} not found!`)
     }
-    set name(newname:string){
-        this.__name = newname;
+
+    addTask(task: Task) {
+        this.tasks.push(task);
     }
-    set description(newdescription:string){
-        this.__description = newdescription;
+
+
+    removeTask(task: Task): Task | undefined {
+        const taskIndex = this.tasks.indexOf(task);
+
+        if (taskIndex >= 0) {
+            return this.tasks.splice(taskIndex, 1)[0];
+        }
+        throw new Error(`task ${task.title} not found!`)
     }
-    set dateCreaton(newdateCreaton:string){
-        this.__dateCreaton = newdateCreaton;
+
+    getIndexParticiapnt(user: User): number {
+        return this.participants.indexOf(user);
     }
-    set category(newcategory:string){
-        this.__category = newcategory;
+
+    getIndexTask(task: Task): number {
+        return this.tasks.indexOf(task);
     }
+
+    getIndexModerator(moderator: User): number {
+        return this.moderators.indexOf(moderator);
+    }
+
+    addmoderator(moderator: User) {
+        this.moderators.push(moderator);
+    }
+
+
+    removemoderator(moderator: User): User | undefined {
+        const moderatorIndex = this.moderators.indexOf(moderator);
+
+        if (moderatorIndex >= 0) {
+            return this.moderators.splice(moderatorIndex, 1)[0];
+        }
+        throw new Error(`moderator ${moderator.nickname} not found!`)
+    }
+
 }
 
 export default Group

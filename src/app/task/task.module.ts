@@ -5,6 +5,7 @@ import { EditTaskComponent } from './edit-task/edit-task.component';
 import { TaskBoxComponent } from './task-box/task-box.component';
 import { MaterialModule } from '../material/material.module';
 import { ShowTaskComponent } from './show-task/show-task.component';
+import { TaskWindowComponent } from './task-window/task-window.component';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ShowTaskComponent } from './show-task/show-task.component';
     CreateTaskComponent,
     EditTaskComponent,
     TaskBoxComponent,
-    ShowTaskComponent
+    ShowTaskComponent,
+    TaskWindowComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { ShowTaskComponent } from './show-task/show-task.component';
     CreateTaskComponent,
     EditTaskComponent,
     TaskBoxComponent,
-    ShowTaskComponent
+    ShowTaskComponent,
+    TaskWindowComponent
   ]
 })
 export class TaskModule { }

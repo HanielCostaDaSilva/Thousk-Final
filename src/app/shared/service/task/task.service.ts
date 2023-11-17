@@ -1,40 +1,48 @@
 import { Injectable } from '@angular/core';
 
 import Task from '../../model/Task';
-import TASKS from '../../TASKS';
+import User from '../../model/User';
+import { UserApiService } from '../api/user-api.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export default class TaskService {
-  
-  tasks: Task[] = TASKS;
-  
-  constructor() { }
+    
+  constructor( private userApi:UserApiService) { }
 
-  createTask(task :Task) :Task{
-    
-    this.tasks.push(task);
-    task.userCreator?.inserirTask(task);
-    
-    return task;
+  registerTask(task: Task, destiny: User){
+    destiny.tasks.push(task);
+    return this.userApi.updateTasks(destiny);  
+  }
+
+  removeTask(task: Task, destiny:User): Observable<User>{
+    if (destiny.tasks && destiny.tasks.indexOf(task) !== -1) {
+      destiny.tasks.splice(destiny.tasks.indexOf(task), 1);
+    }
+    return this.userApi.updateTasks(destiny);  
 
   }
 
-  removeTask(task: Task): void{
-    const userCreator = task.userCreator;
-    
-    const index = this.tasks.indexOf(task);
-    this.tasks.splice(index, 1);
-    
-    userCreator?.removerTask(task); // remove a task da lista do usuário;
-  }
-
-  editTask(task: Task,newTitleTask:string, newDescriptionTask:string, 
-    newImageLinkTask:string ):void{
+  editTask(
+    task: Task,
+    newTitleTask: string,
+    newDescriptionTask: string,
+    newImageLinkTask: string,
+    newDateStart: Date,
+    newDateFinal: Date | undefined,
+    destiny: User,
+    newCategory: string = ''
+  ):Observable<User> {
+    if (task) {
       task.title = newTitleTask;
       task.description = newDescriptionTask;
-      task.imageLink = newImageLinkTask; 
-      
+      task.imageLink = newImageLinkTask;
+      task.dateStart = newDateStart;
+      task.dateFinal = newDateFinal;
+      task.category = newCategory;
     }
+    return this.userApi.updateTasks(destiny);  
+  }
 }

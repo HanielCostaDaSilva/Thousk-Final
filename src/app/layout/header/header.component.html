@@ -1,33 +1,28 @@
 <mat-toolbar id="Header">
-  <div>
-    <div [routerLink]="['PrincipalPage']" class="logo">
-      <mat-icon>task</mat-icon>
+  <mat-toolbar-row id ="First-Row" >
+  <div class="logo">
+    <button mat-button (click)="toggleSidenav()"> <mat-icon class="mat-icon-lg">menu</mat-icon></button>
+    <div [routerLink]="['home']">
+      <mat-icon class="mat-icon-lg">task</mat-icon>
       <span>{{titleCompany}}</span>
-      <span *ngIf="currentUser">| {{currentUser.nickname}}</span>
-    </div>
-    <div>
-      <p class="pageDescription"></p>
     </div>
   </div>
 
   <div class="choiceBox">
     <button mat-button [matMenuTriggerFor]="menu">
-      <mat-icon>account-circle</mat-icon>
+      <mat-icon class="mat-icon-lg">account_circle</mat-icon>
     </button>
-
     <mat-menu #menu="matMenu">
-      <button mat-menu-item [routerLink]="['RegisterUser']" mat-menu-item>
+      <button mat-menu-item [routerLink]="['RegisterUser']" >
         Registrar
       </button>
       <button mat-menu-item [routerLink]="['Login']">
         Login
       </button>
     </mat-menu>
-    <button mat-button >
-      <mat-icon>event</mat-icon>
-    </button>
     <button mat-button>
-      <mat-icon>apps</mat-icon>
+      <mat-icon class="mat-icon-lg">event</mat-icon>
     </button>
   </div>
+</mat-toolbar-row>
 </mat-toolbar>

@@ -1,19 +1,19 @@
 app-header {
-    position: absolute;
-    width: 100%;
-    z-index: 100; 
-  }
-  
-  mat-sidenav-container {
-    padding-top: 104px; 
-  }
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+}
 
+#page {
+  margin-top: 10vh;
+}
   
-.mat-sidenav{
-    position: absolute;
-    margin-top: 15vh;
-    height: calc(205vh - 105vh);
-    width: 300px;
-    background-color:#233850;
-    color: white;
+.mat-sidenav {
+  position: fixed;
+  top: 10vh;
+  height: 100%;
+  width: 300px;
+  background-color: #233850;
+  color: white;
 }

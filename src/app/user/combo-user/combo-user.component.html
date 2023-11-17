@@ -1,5 +1,5 @@
 <mat-form-field>
-    <mat-label>Selecione um usuário</mat-label>
+    <mat-label>Usuário</mat-label>
     <mat-select [(ngModel)]="userSelected">
         <mat-option *ngFor="let user of users" [value]="user">
             {{ user.nickname }}

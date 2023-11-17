@@ -3,27 +3,26 @@ import { Injectable } from '@angular/core';
 import Task from '../../model/Task';
 import User from '../../model/User';
 import { UserApiService } from '../api/user-api.service';
-import Group from '../../model/Group';
-import { GroupApiService } from '../api/group-api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export default class TaskService {
     
-  constructor( private userApi:UserApiService, private groupApi:GroupApiService) { }
+  constructor( private userApi:UserApiService) { }
 
-  registerTask(task: Task, Destiny: User | Group
+  registerTask(task: Task, destiny: User
   ): Task {
-    Destiny.addTask(task);
-    this.updateTaskInAuthor(Destiny);
+    this.updateTaskInAuthor(destiny);
+    destiny.addTask(task);
     return task;
   
   }
 
-  removeTask(task: Task): void{
-    const author = task.author;
-    author.removeTask(task); 
+  removeTask(task: Task, destiny:User): void{
+    this.updateTaskInAuthor(destiny);
+    destiny.removeTask(task); 
+
   }
 
   editTask(
@@ -33,6 +32,7 @@ export default class TaskService {
     newImageLinkTask: string,
     newDateStart: Date,
     newDateFinal: Date | undefined,
+    destiny: User,
     newCategory: string = ''
   ): Task {
     if (task) {
@@ -43,16 +43,13 @@ export default class TaskService {
       task.dateFinal = newDateFinal;
       task.category = newCategory;
     }
-    this.updateTaskInAuthor(task.author);
+    this.updateTaskInAuthor(destiny);
     return task;
   }
 
-  updateTaskInAuthor(destiny: User | Group){
-    if(destiny instanceof  User){
-      this.userApi.update(destiny);
-    }
-    else{
-      this.groupApi.update(destiny);
-    }
+  updateTaskInAuthor(destiny: User){
+    this.userApi.update(destiny);
+
+
   }
 }

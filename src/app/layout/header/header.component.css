@@ -1,4 +1,4 @@
-#Header #First-Row, #Header #Second-Row{
+#Header #First-Row{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -20,5 +20,6 @@
 .logo{
     display: flex;
     font-size: 2rem;
+    cursor:pointer;
 }
 

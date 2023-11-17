@@ -17,10 +17,12 @@ class User {
         this.tasks.push(task);
     }
 
-    removeTask(task: Task) {
-        this.tasks.splice(this.tasks.indexOf(task), 1);
-    }
-
+    removeTask(task: Task): void {
+        if (this.tasks && this.tasks.indexOf(task) !== -1) {
+          this.tasks.splice(this.tasks.indexOf(task), 1);
+        }
+      }
+      
     getIndexTask(task:Task) :number{
         return this.tasks.indexOf(task);
     }

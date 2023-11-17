@@ -15,14 +15,12 @@ import TaskService from '../../shared/service/task/task.service';
 export class ShowTaskComponent {
 
   @Input() actualUser !: User;
-  tasks: Task[] =  (this.actualUser == null ? [] : this.actualUser.tasks); //Mostra todas as tasks do sistema caso não tenha tasks 
-
-
+  //tasks: Task[] =  (this.actualUser == null ? [] : this.actualUser.tasks); //Mostra todas as tasks do sistema caso não tenha tasks 
 
   constructor(private dialog: MatDialog, private taskService: TaskService) { }
 
   removeTask(task: Task) {
-    this.taskService.removeTask(task);
+    this.taskService.removeTask(task,this.actualUser);
   }
 
   editTask(task: Task) {
@@ -43,7 +41,7 @@ export class ShowTaskComponent {
       if (result) {
         this.taskService.editTask(task, result.title, result.description, 
           result.imageLink,result.dateStart,
-          result.dateFinal);
+          result.dateFinal,this.actualUser);
       }
     });
   }

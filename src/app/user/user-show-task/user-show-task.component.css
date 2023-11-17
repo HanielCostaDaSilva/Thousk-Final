@@ -1,0 +1,24 @@
+#comboToggleComponent{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color:#233850;
+}
+#comboBoxSection{
+    display: flex;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+#comboUser{
+    background: #233850;
+    margin-left: 10%;
+}   
+
+p{
+    font-size: 1.2rem;
+}

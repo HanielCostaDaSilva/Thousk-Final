@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterUserComponent } from './user/register-user/register-user.component';
 import { LoginUserComponent } from './user/login-user/login-user.component';
-import { HomePageComponent } from './home-page/home-page.component';
+import { UserShowTaskComponent } from './user/user-show-task/user-show-task.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {path:'RegisterUser', component: RegisterUserComponent},
   {path:'Login', component: LoginUserComponent},
-  {path:'home', component: HomePageComponent}
+  {path:'home', component: UserShowTaskComponent}
 
 ];
 

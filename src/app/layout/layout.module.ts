@@ -11,7 +11,6 @@ import {  UserModule } from '../user/user.module';
   imports: [
     CommonModule,
     MaterialModule,
-    UserModule
     
   ],
   exports: [

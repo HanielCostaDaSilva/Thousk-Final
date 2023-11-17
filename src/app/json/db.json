@@ -9,8 +9,8 @@
         {
           "id": 1,
           "author": 1,
-          "title": "Projetar o SideNavBar",
-          "imageLink": "#FF034",
+          "title": "Estudar para a prova de Ética",
+          "imageLink": "https://conceito.de/wp-content/uploads/2013/05/homework-2521144_1280.jpg",
           "description": "É necessário acessar o angualar material e colocá-lo no módulo de layout",
           "state": "waiting",
           "dateStart": "20-10-2023",
@@ -20,8 +20,8 @@
         {
           "id": 2,
           "author": 1,
-          "title": "Estudar para a prova de Legislação",
-          "imageLink": "#FF054",
+          "title": "Preparar para a prova da autoEscola",
+          "imageLink": "https://vetorauto.s3.amazonaws.com/uploads/2022/05/Noticia-LADV.jpg",
           "description": "",
           "state": "doing",
           "dateStart": "20-10-2023",
@@ -29,7 +29,9 @@
           "category": "study"
         }
       ],
-      "groups": 1
+      "groups": [
+        1
+      ]
     },
     {
       "id": 2,
@@ -56,6 +58,14 @@
       "tasks": [],
       "groups": [],
       "id": 4
+    },
+    {
+      "nickname": "FERNANDO_COLLOR",
+      "email": "Haniel",
+      "password": "1234",
+      "tasks": [],
+      "groups": [],
+      "id": 5
     }
   ],
   "groups": [

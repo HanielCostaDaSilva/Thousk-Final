@@ -27,7 +27,6 @@ export class CreateTaskComponent implements OnInit {
   constructor( private taskService:TaskService){
     this.dateStart= this.dateAtual;
     this.dateFinal= this.dateAtual;
-    this.actualTask.author = this.actualUser; // Esteja sempre com o usuario que foi selecionado.
   }
   
   ngOnInit() {
@@ -38,7 +37,6 @@ export class CreateTaskComponent implements OnInit {
   create(): void {
     if(this.actualUser)
     this.taskService.registerTask(this.actualTask, this.actualUser);
-    console.log(this.actualTask);
     }
     
 

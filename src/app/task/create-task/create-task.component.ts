@@ -37,6 +37,7 @@ export class CreateTaskComponent implements OnInit {
   create(): void {
     if(this.actualUser)
     this.taskService.registerTask(this.actualTask, this.actualUser);
+  alert("Task created successfully")
     }
     
 

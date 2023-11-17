@@ -8,8 +8,8 @@ export interface DialogData {
   title: string;
   description: string;
   imageLink: string;
-  dateStart: string;
-  dateFinal: string;
+  dateStart: Date;
+  dateFinal: Date;
   category: string;
 }
 
@@ -22,11 +22,16 @@ export interface DialogData {
 export class EditTaskComponent {
 
   @Input() task!: Task;
+  dateAtual !: Date;
+  minDateFinal!:Date;
 
 
   constructor(public dialogRef: MatDialogRef<EditTaskComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
+    this.dateAtual = new Date();
+    this.minDateFinal=this.dateAtual;
     this.carregarData();
+    
   }
   
   carregarData(){
@@ -38,7 +43,9 @@ export class EditTaskComponent {
     }
     if (!this.data.imageLink) {
       this.data.imageLink = '';
-    }
+    }    
+    this.data.dateStart= this.dateAtual;
+    this.data.dateFinal= this.dateAtual;
   }
   
   saveChanges() {

@@ -7,6 +7,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export default class UserService {
+  getUserById(userId: string): Observable<User> {
+
+    return this.userApi.getById(userId);
+  }
 
   users: User[] = [];
   usersUpdated = new EventEmitter<User[]>(); // Evento para notificar sobre a atualização de usuários
@@ -41,7 +45,6 @@ export default class UserService {
     const user = new User(nickname, email, password);
 
     this.userApi.create(user).subscribe(createdUser => {
-      console.log(createdUser);
     });
 
     this.users.push(user);

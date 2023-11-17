@@ -30,7 +30,6 @@ export default class AuthService {
         this._loggedIn = true;
         this._currentUserSubject.next(userFinded);
       }
-    console.log(this._currentUser$)
     return this._currentUser$;
   }
 

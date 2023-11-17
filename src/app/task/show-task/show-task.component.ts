@@ -41,7 +41,7 @@ export class ShowTaskComponent {
       if (result) {
         this.taskService.editTask(task, result.title, result.description, 
           result.imageLink,result.dateStart,
-          result.dateFinal,this.actualUser);
+          result.dateFinal,this.actualUser).subscribe();
       }
     });
   }

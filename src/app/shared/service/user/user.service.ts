@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export default class UserService {
+  
   getUserById(userId: string): Observable<User> {
 
     return this.userApi.getById(userId);
@@ -27,13 +28,7 @@ export default class UserService {
       }
   
       this.users = users;
-  
-      this.users.forEach(user => {
-        if (user.tasks) {
-          user.tasks.forEach(task => task.author = user);
-        }
-      });
-      
+
       this.usersUpdated.emit(this.users);
     });
   }

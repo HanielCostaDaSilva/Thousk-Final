@@ -2,33 +2,27 @@
 <mat-sidenav-container>
     <mat-sidenav [(opened)]="openMenu">
         
-        <mat-icon>home</mat-icon> Home
         <button mat-button [routerLink]="['home']">
-            home
+            <mat-icon>home</mat-icon> Home
         </button>
         <mat-divider />
         
-        <mat-icon>task</mat-icon> Tasks
+        <button mat-button [routerLink]="['home']">
+            <mat-icon>task</mat-icon> Atividades
+        </button>
+        <mat-divider />
         <button mat-button [routerLink]="['RegisterUser']">
-            atividades
+            <mat-icon>event</mat-icon> calendario
         </button>
         <mat-divider />
         
-        <mat-icon>event</mat-icon> Calendar
-        <button mat-button [routerLink]="['RegisterUser']">
-            calendario
-        </button>
-        <mat-divider />
-        
-        <mat-icon>group</mat-icon> Groups
-        <button mat-button [routerLink]="['RegisterUser']">
-            Grupos
+        <button mat-button disabled>
+            <mat-icon>group</mat-icon> Grupos
         </button>
 
         <mat-divider />
-        <mat-icon>settings</mat-icon> Settings
-        <button mat-button [routerLink]="['RegisterUser']">
-            configurações
+        <button mat-button disabled>
+            <mat-icon>settings</mat-icon> configurações
         </button>
 
     </mat-sidenav>

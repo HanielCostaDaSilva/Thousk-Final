@@ -1,4 +1,4 @@
-.taskCard{
+.userCard{
     min-width: 250px;
     max-width: 450px;
     height: 450px;
@@ -11,10 +11,6 @@
     overflow: hidden;
 
   }
-img{
-  max-height:200px;
-  overflow: hidden;
-}
 .buttonBox{
   display: flex;
   width: 100%;

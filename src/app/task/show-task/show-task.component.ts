@@ -29,7 +29,7 @@ export class ShowTaskComponent {
       width: '400px',
       data: {
         title: task.title,
-        descrption: task.description,
+        description: task.description,
         imageLink: task.imageLink,
         taskDateStart: task.dateStart,
         taskDateFinal: task.dateFinal,
@@ -41,7 +41,7 @@ export class ShowTaskComponent {
       if (result) {
         this.taskService.editTask(task, result.title, result.description, 
           result.imageLink,result.dateStart,
-          result.dateFinal,this.actualUser).subscribe();
+          result.dateFinal,this.actualUser);
       }
     });
   }

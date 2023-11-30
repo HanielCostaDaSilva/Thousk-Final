@@ -1,0 +1,5 @@
+
+<app-create-task *ngIf="isCreatingTask" [actualUser]="this.user"></app-create-task>
+<button id="toggleCreateTask" mat-button (click)="toggleCreateTask()">{{toogleMessageList[posicao]}}</button>
+
+<app-show-task [actualUser]="this.user"></app-show-task>

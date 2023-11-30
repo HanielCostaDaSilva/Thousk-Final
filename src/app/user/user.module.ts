@@ -3,21 +3,24 @@ import { CommonModule } from '@angular/common';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { LoginUserComponent } from './login-user/login-user.component';
 import { MaterialModule } from '../material/material.module';
-import { ComboUserComponent } from './combo-user/combo-user.component';
-import { UserShowTaskComponent } from './user-show-task/user-show-task.component';
+import { UserPageComponent } from './user-page/user-page.component';
 import { TaskModule } from "../task/task.module";
+import { ShowUsersComponent } from './show-users/show-users.component';
+import { UserBoxComponent } from './user-box/user-box.component';
 
 @NgModule({
     declarations: [
         RegisterUserComponent,
         LoginUserComponent,
-        ComboUserComponent,
-        UserShowTaskComponent
+        UserPageComponent,
+        ShowUsersComponent,
+        UserBoxComponent
     ],
     exports: [
         RegisterUserComponent,
         LoginUserComponent,
-        ComboUserComponent
+        UserPageComponent,
+        ShowUsersComponent
     ],
     imports: [
         CommonModule,

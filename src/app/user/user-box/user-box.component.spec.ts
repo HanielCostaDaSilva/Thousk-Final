@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ComboUserComponent } from './combo-user.component';
+import { UserBoxComponent } from './user-box.component';
 
-describe('ComboUserComponent', () => {
-  let component: ComboUserComponent;
-  let fixture: ComponentFixture<ComboUserComponent>;
+describe('UserBoxComponent', () => {
+  let component: UserBoxComponent;
+  let fixture: ComponentFixture<UserBoxComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ComboUserComponent]
+      declarations: [UserBoxComponent]
     });
-    fixture = TestBed.createComponent(ComboUserComponent);
+    fixture = TestBed.createComponent(UserBoxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

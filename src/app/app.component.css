@@ -17,3 +17,6 @@ app-header {
   background-color: #233850;
   color: white;
 }
+button{
+  color: white !important;
+}

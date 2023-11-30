@@ -44,15 +44,13 @@ export class UserApiService {
     console.log('Updating user:', user);
     return this.http.put<User>(`${this._url}/${user.id}`, user)
   }
+
   updateTasks(user:User): Observable<User> {
     const updateObject = {
       tasks: user.tasks
-    };  
-    
+    };    
     console.log('Update Object:', updateObject);
-
-  
-    return this.http.patch<User>(`${this._url}/users/${user.id}`, updateObject);
+    return this.http.patch<User>(`${this._url}/${user.id}`, updateObject);
   }
 
 

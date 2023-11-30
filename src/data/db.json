@@ -1,0 +1,88 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "nickname": "Haniel",
+      "email": "hanielcostadasilva@gmail.com",
+      "password": "1234",
+      "tasks": [
+        {
+          "id": 1,
+          "author": 1,
+          "title": "Estudar para a prova de Ética",
+          "imageLink": "https://conceito.de/wp-content/uploads/2013/05/homework-2521144_1280.jpg",
+          "description": "aaaaa",
+          "state": "waiting",
+          "dateStart": "2023-11-17T19:14:10.372Z",
+          "dateFinal": "2023-11-17T19:14:10.372Z",
+          "category": ""
+        },
+        {
+          "id": 2,
+          "author": 1,
+          "title": "Treinar para A auto-escola",
+          "description": "",
+          "imageLink": "https://cdn.appdealersites.com.br/apec/vw-apec/conteudo-online/autoescola.png",
+          "state": "waiting",
+          "dateStart": "2023-11-17T18:59:05.597Z",
+          "dateFinal": "2023-11-17T18:59:05.597Z",
+          "category": ""
+        }
+      ],
+      "groups": [
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "nickname": "Robo",
+      "email": "gpt4@gmail.com",
+      "password": "1234",
+      "tasks": [],
+      "groups": []
+    },
+    {
+      "id": 3,
+      "nickname": "Maria",
+      "email": "Assert@gmail.com",
+      "password": "1234",
+      "tasks": [],
+      "groups": [
+        1
+      ]
+    },
+    {
+      "nickname": "JohnDoe",
+      "email": "JohnDoe.com",
+      "password": "1234",
+      "tasks": [],
+      "groups": [],
+      "id": 4
+    },
+    {
+      "nickname": "Haniel2",
+      "email": "A@gmail.com",
+      "password": "23343",
+      "tasks": [],
+      "groups": [],
+      "id": 5
+    }
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "name": "Projeto Thousk",
+      "description": "Grupo fundado para a realização do projeto de gerenciamento de tarefas.",
+      "dateCreated": "12-09-2023",
+      "authorID": 1,
+      "participants": [
+        1,
+        3
+      ],
+      "moderators": [
+        1
+      ],
+      "tasks": []
+    }
+  ]
+}

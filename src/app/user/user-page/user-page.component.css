@@ -1,0 +1,16 @@
+#toggleCreateTask{
+    color: white;
+    background: #233850;
+    display: flex;
+    height: 10vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 0%;
+
+}
+
+p{
+    font-size: 1.2rem;
+}

@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import User from '../../model/User';
-import { UserApiService } from '../api/user-api.service';
 import { Observable } from 'rxjs';
+import { UserFirestoreService } from '../api/firestore/user-firestore.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export default class UserService {
   users: User[] = [];
   usersUpdated = new EventEmitter<User[]>(); // Evento para notificar sobre a atualização de usuários
     
-  constructor(private userApi: UserApiService) {
+  constructor(private userApi: UserFirestoreService) {
     this.fetchUsers();
   }
 
@@ -65,7 +65,7 @@ export default class UserService {
     const userIndex = this.users.indexOf(user);
 
     if (userIndex > -1) {
-      this.userApi.delete(user);
+      this.userApi.delete(user.id);
       this.users.splice(userIndex, 1);
       return user;
     } else {

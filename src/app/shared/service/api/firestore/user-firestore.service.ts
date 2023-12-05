@@ -4,15 +4,14 @@ import User from '../../../model/User';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { catchError, map } from 'rxjs/operators';
 
-import { getFirestore, arrayUnion, updateDoc } from 'firebase/firestore';  // Importe as funções necessárias do pacote firebase
-
+import { arrayUnion, updateDoc } from 'firebase/firestore';
+import Task from 'src/app/shared/model/Task';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserFirestoreService {
-
 
   colecaoUsers: AngularFirestoreCollection<User>;
   private _collectionName = 'users';
@@ -68,11 +67,39 @@ export class UserFirestoreService {
     );
   }
 
-  updateTasks(id: string, tasks: any[]): Observable<void> {
+  updateTasks(id: string, tasks: Task[]): Observable<void> {
+    console.log(tasks);
+
+    // Mapeie os objetos tasks para um formato suportado pelo Firestore
+    const formattedTasks = tasks.map(task => {
+      return {
+        author: task.author?.id || null, // Adicione uma verificação para o autor
+        category: task.category || null,
+        dateFinal: task.dateFinal,
+        dateStart: task.dateStart,
+        description: task.description || null,
+        id: task.id || tasks.length + 1,
+        imageLink: task.imageLink || null,
+        state: task.state || "waiting",
+        title: task.title || null,
+      };
+    });
+
     const userRef = this.firestore.collection(this._collectionName).doc(id).ref;
 
-    return from(updateDoc(userRef, {
-      tasks: arrayUnion(...tasks)
+    return from(this.firestore.firestore.runTransaction(async (transaction) => {
+      const userDoc = await transaction.get(userRef);
+      const userTasks = userDoc.get('tasks') || [];
+
+      // Verifique se os itens já existem para evitar duplicatas
+      const updatedTasks = [...userTasks, ...formattedTasks].filter((task, index, self) =>
+        index === self.findIndex((t) => t.id === task.id)
+      );
+
+      // Certifique-se de que todos os valores não são nulos antes de tentar realizar a atualização
+
+      transaction.update(userRef, { tasks: updatedTasks });
+
     })).pipe(
       catchError(this.handleError)
     );

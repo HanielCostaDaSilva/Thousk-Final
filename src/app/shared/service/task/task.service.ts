@@ -2,26 +2,29 @@ import { Injectable } from '@angular/core';
 
 import Task from '../../model/Task';
 import User from '../../model/User';
-import { UserApiService } from '../api/user-api.service';
+//import { UserApiService } from '../api/user-api.service';
+
 import { Observable } from 'rxjs';
+import { UserFirestoreService } from '../api/firestore/user-firestore.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export default class TaskService {
-    
-  constructor( private userApi:UserApiService) { }
 
-  registerTask(task: Task, destiny: User){
+  constructor(private userApi: UserFirestoreService) { }
+
+  registerTask(task: Task, destiny: User) {
     destiny.tasks.push(task);
-    return this.userApi.updateTasks(destiny);  
+    task.author= destiny;
+    return this.userApi.updateTasks(destiny.id, destiny.tasks);
   }
 
-  removeTask(task: Task, destiny:User): Observable<User>{
+  removeTask(task: Task, destiny: User): void {
     if (destiny.tasks && destiny.tasks.indexOf(task) !== -1) {
       destiny.tasks.splice(destiny.tasks.indexOf(task), 1);
     }
-    return this.userApi.updateTasks(destiny);  
+    this.userApi.updateTasks(destiny.id, destiny.tasks);
 
   }
 
@@ -34,7 +37,7 @@ export default class TaskService {
     newDateFinal: Date | undefined,
     destiny: User,
     newCategory: string = ''
-  ):Observable<User> {
+  ): void {
     if (task) {
       task.title = newTitleTask;
       task.description = newDescriptionTask;
@@ -43,6 +46,6 @@ export default class TaskService {
       task.dateFinal = newDateFinal;
       task.category = newCategory;
     }
-    return this.userApi.updateTasks(destiny);  
+    this.userApi.updateTasks(destiny.id, destiny.tasks);
   }
 }

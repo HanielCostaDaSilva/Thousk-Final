@@ -15,9 +15,9 @@ import TaskService from '../../shared/service/task/task.service';
 export class ShowTaskComponent {
 
   @Input() actualUser !: User;
-  //tasks: Task[] =  (this.actualUser == null ? [] : this.actualUser.tasks); //Mostra todas as tasks do sistema caso não tenha tasks 
 
-  constructor(private dialog: MatDialog, private taskService: TaskService) { }
+  constructor(private dialog: MatDialog, private taskService: TaskService) { 
+  }
 
   removeTask(task: Task) {
     this.taskService.removeTask(task,this.actualUser);

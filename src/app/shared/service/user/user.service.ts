@@ -17,21 +17,8 @@ export default class UserService {
   usersUpdated = new EventEmitter<User[]>(); // Evento para notificar sobre a atualização de usuários
     
   constructor(private userApi: UserFirestoreService) {
-    this.fetchUsers();
   }
 
-  private fetchUsers(): void {
-    this.userApi.getAll().subscribe(users => {
-  
-      if (!users) {
-        return;
-      }
-  
-      this.users = users;
-
-      this.usersUpdated.emit(this.users);
-    });
-  }
     
   register(nickname: string, email: string, password: string): User {
     if (this.users.filter(user => user.nickname == nickname).length > 0)
@@ -58,7 +45,11 @@ export default class UserService {
   }
   
   getAll(): Observable<User[]> {
-    return this.userApi.getAll();
+    const observableUsers= this.userApi.getAll();
+    observableUsers.subscribe(user => {
+      console.log(user);
+    })
+    return observableUsers;
   }
 
   remove(user: User): User {

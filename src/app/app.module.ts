@@ -11,6 +11,8 @@ import AuthService from './shared/service/auth/auth.service';
 import TaskService from './shared/service/task/task.service';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ThouskFirestoreModule } from './thouskFirestore/ThouskFirestore.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     LayoutModule,
     MaterialModule,
     TaskModule,
-    UserModule
+    UserModule,
+    ThouskFirestoreModule
   ],
   providers: [AuthService,TaskService],
   bootstrap: [AppComponent]

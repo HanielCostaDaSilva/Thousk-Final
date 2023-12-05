@@ -1,4 +1,4 @@
-#CreateTask{
+#CreateTask {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,20 +9,22 @@
     background-color: rgb(230, 230, 230);
 }
 
-.formCamp, .createTaskButton{
+.formCamp,
+.createTaskButton {
     width: 60%;
     margin: 5px 0;
 }
 
-.createTaskButton{
+.createTaskButton {
     font-size: 2.2rem;
     background: rgb(28, 28, 29);
-    margin:5px 0px;
+    margin: 5px 0px;
 }
 
-.dateBox{
+.dateBox {
     display: flex;
     align-items: center;
     justify-content: space-around;
     width: 50%;
 }
+

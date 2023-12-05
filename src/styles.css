@@ -20,3 +20,13 @@ font-family: Roboto, "Helvetica Neue", sans-serif;
     height: auto !important;
     width: auto !important;
 }
+
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+}

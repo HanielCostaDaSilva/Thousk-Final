@@ -1,9 +1,15 @@
 import User from "./User";
 
 class Task {
-    id !: string;
-    author!: User;
-
+    id ?: string;
+    author?: User;
+    title ?: string;
+    description ?: string;
+    imageLink ?: string;
+    dateStart ?: Date; 
+    dateFinal ?: Date | undefined; 
+    state ?: string = "waiting"; 
+    category ?: string = ""
     /*The state can be:
 
     { "waiting": when the task is waiting be executed,
@@ -13,14 +19,8 @@ class Task {
 
     */
 
-    constructor(
-        public title: string,
-        public description: string,
-        public imageLink: string,
-        public dateStart: Date, 
-        public dateFinal: Date | undefined, 
-        public state: string = "waiting", 
-        public category: string = "") {
+    constructor(id?:string, task?:Task){
+
     }
 
 }

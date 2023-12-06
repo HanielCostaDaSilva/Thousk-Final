@@ -4,8 +4,8 @@ import User from '../../../model/User';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { catchError, map } from 'rxjs/operators';
 
-import { arrayUnion, updateDoc } from 'firebase/firestore';
-import Task from 'src/app/shared/model/Task';
+//import Task from 'src/app/shared/model/Task';
+import Task from '../../../model/Task';
 
 @Injectable({
   providedIn: 'root'
@@ -21,18 +21,12 @@ export class UserFirestoreService {
     this.colecaoUsers = firestore.collection(this._collectionName);
   }
 
-  getById(id: string): Observable<User> {
-    return this.firestore.collection(this._collectionName).doc(id).get().pipe(
-      map(document => {
-        const data = document.data() as User;
-        const user = new User(data.nickname, data.email, data.password); // Substitua pelos campos reais do seu modelo
-        user.id = document.id;
-        return user;
-      }),
-      catchError(this.handleError)
-    );
-  }
-
+  getById(id: string): Observable<User> 
+    {
+      return this.colecaoUsers.doc(id).get().pipe(
+        map(document =>
+        new User(id, document.data())));
+    }
 
   getAll(): Observable<User[]> {
     return this.colecaoUsers.valueChanges({ idField: 'id' });
@@ -58,17 +52,13 @@ export class UserFirestoreService {
     );
   }
 
-  update(user: any): Observable<void> {
-    const id = user.id;
-    const userWithoutId = { ...user }; // Cria uma cópia do usuário sem a propriedade 'id'
-    delete userWithoutId.id;
-    return from(this.firestore.collection(this._collectionName).doc(id).set(userWithoutId)).pipe(
-      catchError(this.handleError)
-    );
+  update(user: User): Observable<void> {
+    console.log(user+" updated")
+    return from(this.colecaoUsers.doc(user.id).update({...user}));
   }
 
   updateTasks(id: string, tasks: Task[]): Observable<void> {
-    console.log(tasks);
+    console.log();
 
     // Mapeie os objetos tasks para um formato suportado pelo Firestore
     const formattedTasks = tasks.map(task => {

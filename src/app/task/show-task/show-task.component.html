@@ -1,4 +1,4 @@
-<section *ngIf="actualUser && actualUser.tasks.length >0; else noTasks" class="taskSection" id="TaskSection">
+<section *ngIf="actualUser && actualUser.tasks?.length >0; else noTasks" class="taskSection" id="TaskSection">
     <app-task-box class="taskBoxes" *ngFor="let task of actualUser.tasks " [task]="task"
         (removeTaskEvent)="removeTask(task)" (editTaskEvent)="editTask(task)">
     </app-task-box>

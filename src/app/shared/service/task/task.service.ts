@@ -15,16 +15,17 @@ export default class TaskService {
   constructor(private userApi: UserFirestoreService) { }
 
   registerTask(task: Task, destiny: User) {
-    destiny.tasks.push(task);
-    task.author= destiny;
-    return this.userApi.updateTasks(destiny.id, destiny.tasks);
+    console.log("oi")
+    destiny.tasks?.push(task);
+    //task.author= destiny.id;
+    return this.userApi.update(destiny);
   }
 
   removeTask(task: Task, destiny: User): void {
     if (destiny.tasks && destiny.tasks.indexOf(task) !== -1) {
       destiny.tasks.splice(destiny.tasks.indexOf(task), 1);
     }
-    this.userApi.updateTasks(destiny.id, destiny.tasks);
+    this.userApi.update(destiny);
 
   }
 
@@ -46,6 +47,6 @@ export default class TaskService {
       task.dateFinal = newDateFinal;
       task.category = newCategory;
     }
-    this.userApi.updateTasks(destiny.id, destiny.tasks);
+    this.userApi.update(destiny);
   }
 }

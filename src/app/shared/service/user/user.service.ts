@@ -24,7 +24,10 @@ export default class UserService {
     if (this.users.filter(user => user.nickname == nickname).length > 0)
       throw new Error(`User ${nickname} already registered!`);
 
-    const user = new User(nickname, email, password);
+    const user = new User();
+    user.nickname = nickname;
+    user.email = email;
+    user.password = password;
 
     this.userApi.create(user).subscribe(createdUser => {
     });
@@ -55,7 +58,7 @@ export default class UserService {
   remove(user: User): User {
     const userIndex = this.users.indexOf(user);
 
-    if (userIndex > -1) {
+    if (userIndex > -1 && user.id != null)  {
       this.userApi.delete(user.id);
       this.users.splice(userIndex, 1);
       return user;

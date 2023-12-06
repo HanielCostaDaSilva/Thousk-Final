@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import User from '../../shared/model/User';
-import UserService from 'src/app/shared/service/user/user.service';
-import TaskService from 'src/app/shared/service/task/task.service';
+import TaskService from '../../shared/service/task/task.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import UserService from '../../shared/service/user/user.service';
 
 @Component({
   selector: 'app-user-page',
@@ -17,18 +17,20 @@ export class UserPageComponent {
   posicao: number = 0;
 
   user!: User;
+  userId!: String;
 
 
-  constructor(private userService: UserService, private taskService: TaskService,
+  constructor(private userService: UserService,
       private router: Router, private actualRouter: ActivatedRoute) {
 
     const id = this.actualRouter.snapshot.paramMap.get('userId');
 
     if (id) {
-      this.userService.getUserById(id).subscribe(user => {
+      this.userId= id;
+/*       this.userService.getUserById(id).subscribe(user => {
         this.user = user;
-      });
-    }
+      }); */
+    } 
   }
 
   toggleCreateTask() {

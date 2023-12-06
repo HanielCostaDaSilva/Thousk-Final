@@ -4,7 +4,8 @@ import { EditTaskComponent } from '../edit-task/edit-task.component';
 import { MatDialog } from '@angular/material/dialog'; // Import MatDialog
 import User from '../../shared/model/User';
 import TaskService from '../../shared/service/task/task.service';
-
+import { OnInit } from '@angular/core';
+import UserService from '../../shared/service/user/user.service';
 
 
 @Component({
@@ -12,11 +13,12 @@ import TaskService from '../../shared/service/task/task.service';
   templateUrl: './show-task.component.html',
   styleUrls: ['./show-task.component.css']
 })
-export class ShowTaskComponent {
+export class ShowTaskComponent implements OnInit {
 
-  @Input() actualUser !: User;
+  actualUser !: User;
+  @Input() userID !: string;
 
-  constructor(private dialog: MatDialog, private taskService: TaskService) { 
+  constructor(private dialog: MatDialog, private userService:UserService, private taskService: TaskService) { 
   }
 
   removeTask(task: Task) {
@@ -45,4 +47,16 @@ export class ShowTaskComponent {
       }
     });
   }
+
+  ngOnInit(): void {
+    this.userService.getUserById(this.userID).subscribe(user =>{
+      
+      this.actualUser= user;
+      console.log(user);
+
+    } 
+    )
+
+  }
+
 }

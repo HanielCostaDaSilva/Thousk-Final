@@ -57,42 +57,12 @@ export class UserFirestoreService {
     return from(this.colecaoUsers.doc(user.id).update({...user}));
   }
 
-  updateTasks(id: string, tasks: Task[]): Observable<void> {
-    console.log();
+  updateTasks(userID: string, tasks: Array<any>): Observable<void> {
+    console.log(tasks);
 
     // Mapeie os objetos tasks para um formato suportado pelo Firestore
-    const formattedTasks = tasks.map(task => {
-      return {
-        author: task.author?.id || null, // Adicione uma verificação para o autor
-        category: task.category || null,
-        dateFinal: task.dateFinal,
-        dateStart: task.dateStart,
-        description: task.description || null,
-        id: task.id || tasks.length + 1,
-        imageLink: task.imageLink || null,
-        state: task.state || "waiting",
-        title: task.title || null,
-      };
-    });
-
-    const userRef = this.firestore.collection(this._collectionName).doc(id).ref;
-
-    return from(this.firestore.firestore.runTransaction(async (transaction) => {
-      const userDoc = await transaction.get(userRef);
-      const userTasks = userDoc.get('tasks') || [];
-
-      // Verifique se os itens já existem para evitar duplicatas
-      const updatedTasks = [...userTasks, ...formattedTasks].filter((task, index, self) =>
-        index === self.findIndex((t) => t.id === task.id)
-      );
-
-      // Certifique-se de que todos os valores não são nulos antes de tentar realizar a atualização
-
-      transaction.update(userRef, { tasks: updatedTasks });
-
-    })).pipe(
-      catchError(this.handleError)
-    );
+    const tasksMap = tasks.map((obj)=> {return Object.assign({}, obj)});
+    return from(this.colecaoUsers.doc(userID).set(Object.assign({})))
   }
 
   private handleError(error: any) {

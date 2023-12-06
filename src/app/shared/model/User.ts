@@ -6,7 +6,7 @@ class User {
     nickname ?: string;
     email ?: string;
     password ?: string;
-    tasks ?: Task[] = [];
+    tasks ?: Array<any> = [];
     groups ?: Group[] = [];
 
     constructor(id?: string, user:User ={}){

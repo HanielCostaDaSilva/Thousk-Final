@@ -1,9 +1,14 @@
-<mat-card class="userCard" [routerLink]="['/user', user.id]">
+<mat-card class="userCard">
+  <div [routerLink]="['/user', user.id]" class="userDescription">
     <mat-card-header>
       <mat-card-title>{{user.nickname}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <p>Tarefas: {{user.tasks?.length}}</p>
     </mat-card-content>
+  </div>
+  <mat-card-actions class="buttonBox">
+      <button mat-button mat-raised-button color="warn" (click)="removeUser()"><mat-icon>delete</mat-icon></button>
+    </mat-card-actions>
   </mat-card>
   

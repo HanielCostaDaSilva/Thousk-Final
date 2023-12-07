@@ -41,7 +41,6 @@ export class UserApiService {
   }
 
   update(user: User): Observable<User> {
-    console.log('Updating user:', user);
     return this.http.put<User>(`${this._url}/${user.id}`, user)
   }
 
@@ -49,7 +48,6 @@ export class UserApiService {
     const updateObject = {
       tasks: user.tasks
     };    
-    console.log('Update Object:', updateObject);
     return this.http.patch<User>(`${this._url}/${user.id}`, updateObject);
   }
 

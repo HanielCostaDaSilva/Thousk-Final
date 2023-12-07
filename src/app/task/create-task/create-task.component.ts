@@ -35,16 +35,12 @@ export class CreateTaskComponent implements OnInit {
   ngOnInit() {
     this.dateAtual = new Date();
     this.minDateFinal= this.dateAtual;
-    console.log(this.userID);
     this.userService.getUserById(this.userID).subscribe(user =>{
       this.actualUser = user; 
-      console.log("Create-Task aqui")
-      console.log(this.actualUser);
     })
   }
   
   create(): void {
-    console.log(this.actualTask)
     if(this.actualUser)
     this.taskService.registerTask(this.actualTask, this.actualUser);
     }

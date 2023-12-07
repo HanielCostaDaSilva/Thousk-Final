@@ -21,12 +21,16 @@ export class UserFirestoreService {
     this.colecaoUsers = firestore.collection(this._collectionName);
   }
 
-  getById(id: string): Observable<User> 
-    {
-      return this.colecaoUsers.doc(id).get().pipe(
-        map(document =>
-        new User(id, document.data())));
-    }
+  getById(id: string): Observable<User> {
+    return this.colecaoUsers.doc(id).get().pipe(
+      
+      map(document => {
+      const user= new User(id, document.data());
+      user.tasks = document.data()?.tasks || [];
+      return user;
+    })
+    );
+  }
 
   getAll(): Observable<User[]> {
     return this.colecaoUsers.valueChanges({ idField: 'id' });
@@ -53,17 +57,18 @@ export class UserFirestoreService {
   }
 
   update(user: User): Observable<void> {
-    console.log(user+" updated")
-    return from(this.colecaoUsers.doc(user.id).update({...user}));
+    return from(this.colecaoUsers.doc(user.id).update({ ...user }));
   }
 
-  updateTasks(userID: string, tasks: Array<any>): Observable<void> {
-    console.log(tasks);
+  updateTasks(user: User): Observable<void> {
+    if (user.tasks) {
+      const tasksMap = user.tasks.map(obj => ({ ...obj }));
+      return from(this.colecaoUsers.doc(user.id).update({ tasks: tasksMap }));
+    }
+    return new Observable<void>;
 
-    // Mapeie os objetos tasks para um formato suportado pelo Firestore
-    const tasksMap = tasks.map((obj)=> {return Object.assign({}, obj)});
-    return from(this.colecaoUsers.doc(userID).set(Object.assign({})))
   }
+
 
   private handleError(error: any) {
     console.error('Firestore Error:', error);

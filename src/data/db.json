@@ -11,22 +11,22 @@
           "author": 1,
           "title": "Estudar para a prova de Ética",
           "imageLink": "https://conceito.de/wp-content/uploads/2013/05/homework-2521144_1280.jpg",
-          "description": "aaaaa",
+          "description": "É necessário acessar o angualar material e colocá-lo no módulo de layout",
           "state": "waiting",
-          "dateStart": "2023-11-17T19:14:10.372Z",
-          "dateFinal": "2023-11-17T19:14:10.372Z",
-          "category": ""
+          "dateStart": "20-10-2023",
+          "dateFinal": "30-10-2023",
+          "category": "work"
         },
         {
           "id": 2,
           "author": 1,
-          "title": "Treinar para A auto-escola",
+          "title": "Preparar para a prova da autoEscola",
+          "imageLink": "https://vetorauto.s3.amazonaws.com/uploads/2022/05/Noticia-LADV.jpg",
           "description": "",
-          "imageLink": "https://cdn.appdealersites.com.br/apec/vw-apec/conteudo-online/autoescola.png",
-          "state": "waiting",
-          "dateStart": "2023-11-17T18:59:05.597Z",
-          "dateFinal": "2023-11-17T18:59:05.597Z",
-          "category": ""
+          "state": "doing",
+          "dateStart": "20-10-2023",
+          "dateFinal": "1-11-2023",
+          "category": "study"
         }
       ],
       "groups": [
@@ -60,9 +60,9 @@
       "id": 4
     },
     {
-      "nickname": "Haniel2",
-      "email": "A@gmail.com",
-      "password": "23343",
+      "nickname": "FERNANDO_COLLOR",
+      "email": "Haniel",
+      "password": "1234",
       "tasks": [],
       "groups": [],
       "id": 5

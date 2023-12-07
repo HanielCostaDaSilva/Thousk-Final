@@ -50,6 +50,7 @@ export class ShowTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUserById(this.userID).subscribe(user =>{
+      
       this.actualUser= user;
     } 
     )

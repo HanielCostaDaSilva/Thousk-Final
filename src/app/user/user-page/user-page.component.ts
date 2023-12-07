@@ -27,9 +27,9 @@ export class UserPageComponent {
 
     if (id) {
       this.userId= id;
-/*       this.userService.getUserById(id).subscribe(user => {
+       this.userService.getUserById(id).subscribe(user => {
         this.user = user;
-      }); */
+      }); 
     } 
   }
 

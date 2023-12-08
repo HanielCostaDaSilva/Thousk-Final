@@ -9,7 +9,7 @@ import UserService from '../../shared/service/user/user.service';
 @Component({
   selector: 'app-create-task',
   templateUrl: './create-task.component.html',
-  styleUrls: ['./create-task.component.css',/* '../../../styles.css' */]
+  styleUrls: ['./create-task.component.css',/* '../../styles.css' */]
 })
 
 export class CreateTaskComponent implements OnInit {

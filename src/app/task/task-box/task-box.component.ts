@@ -5,7 +5,7 @@ import Task from '../../shared/model/Task';
 @Component({
   selector: 'app-task-box',
   templateUrl: './task-box.component.html',
-  styleUrls: ['./task-box.component.css','../../../styles.css']
+  styleUrls: ['./task-box.component.css','../../styles.css']
 })
 export class TaskBoxComponent {
 

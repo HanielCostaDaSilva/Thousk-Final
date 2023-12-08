@@ -16,7 +16,7 @@ export interface DialogData {
 @Component({
   selector: 'app-edit-task',
   templateUrl: './edit-task.component.html',
-  styleUrls: ['./edit-task.component.css','../../../styles.css']
+  styleUrls: ['./edit-task.component.css','../../styles.css']
 })
 
 export class EditTaskComponent {

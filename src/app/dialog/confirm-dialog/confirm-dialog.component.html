@@ -1,0 +1,15 @@
+<div class="dialog">
+    <div class="titleBox">
+        <h1 class="dialogTitle">{{data.title}}</h1>
+
+    </div>
+    <p>{{data.description}}</p>
+    <div class="buttonBox">
+        <button mat-raised-button id="ConfirmBtn" (click)="confirm()">
+            Confirmar
+        </button>
+        <button mat-raised-button id="CancelBtn" (click)="cancel()" >
+            Cancelar
+        </button>
+    </div>
+</div>

@@ -42,9 +42,9 @@ export class UserFirestoreService {
     );
   }
 
-  create(user: any): Observable<any> {
-    const userWithoutId = { ...user }; // Cria uma cópia do usuário sem a propriedade 'id'
-    delete userWithoutId.id;
+  create(user: any): Observable<User> {
+    const userWithoutId = { ...user }; 
+    delete userWithoutId.id; //remove o id do objeto
     return from(this.firestore.collection(this._collectionName).add(userWithoutId)).pipe(
       catchError(this.handleError)
     );

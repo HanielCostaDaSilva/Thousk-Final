@@ -6,6 +6,7 @@ import { TaskBoxComponent } from './task-box/task-box.component';
 import { MaterialModule } from '../material/material.module';
 import { ShowTaskComponent } from './show-task/show-task.component';
 import { TaskWindowComponent } from './task-window/task-window.component';
+import { PipesModule } from '../shared/pipes/pipes.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { TaskWindowComponent } from './task-window/task-window.component';
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    PipesModule
 
   ],
   exports: [

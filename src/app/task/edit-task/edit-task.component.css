@@ -1,17 +1,29 @@
-.dataBox{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-}
+
 .data{
-    width:100%;
+    padding: 20px;
+    height: 100%;
+    width:80%;
 }
 
 .data mat-form-field{
     width: 100%;
 }
-.button-container{
+
+ .button-box{
+    align-items: center;
     padding:10px;
+}
+
+.button-box button{
+    margin: 0 2%;
+    width: 45%;
+    
+}
+
+.dateBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+    height: 100%;
 }

@@ -23,8 +23,8 @@ export class CreateTaskComponent implements OnInit {
 
   minDateFinal!:Date;
 
-  actualUser !: User;
-  @Input() userID !: string;
+  @Input()actualUser !: User;
+  //userID !: string;
 
   constructor( private taskService:TaskService, private userService:UserService){
     this.dateStart= this.dateAtual;
@@ -35,9 +35,9 @@ export class CreateTaskComponent implements OnInit {
   ngOnInit() {
     this.dateAtual = new Date();
     this.minDateFinal= this.dateAtual;
-    this.userService.getUserById(this.userID).subscribe(user =>{
+    /* this.userService.getUserById(this.userID).subscribe(user =>{
       this.actualUser = user; 
-    })
+    }) */
   }
   
   create(): void {

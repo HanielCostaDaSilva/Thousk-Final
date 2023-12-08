@@ -7,10 +7,15 @@
     <p>
       {{task.description}}
     </p>
+<!--     <div class="dateBox">
+      <p *ngIf="task.dateStart">Inicio:{{task.dateStart | date}}</p>      
+      <p *ngIf="task.dateFinal">Término:{{task.dateFinal| date }}</p>      
+    </div>   -->
+
   </mat-card-content>
   <mat-card-actions class="buttonBox">
-    <button mat-button (click)="viewTask()"><mat-icon>visibility</mat-icon></button>
-    <button mat-button (click)="editTask()"><mat-icon>edit</mat-icon></button>
-    <button mat-button (click)="removeTask()"><mat-icon>delete</mat-icon></button>
+    <button mat-button (click)="viewTask()" class="checkBtn"><mat-icon>check</mat-icon></button>
+    <button mat-button (click)="editTask()" class="editBtn"><mat-icon>edit</mat-icon></button>
+    <button mat-button (click)="removeTask()" class="removeBtn"><mat-icon>delete</mat-icon></button>
   </mat-card-actions>
 </mat-card>

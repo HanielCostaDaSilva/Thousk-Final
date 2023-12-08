@@ -4,7 +4,6 @@
     justify-content: center;
     flex-direction: column;
     height: fit-content;
-    margin: 15px;
     padding: 10px;
     background-color: rgb(230, 230, 230);
 }
@@ -27,4 +26,5 @@
     justify-content: space-around;
     width: 50%;
 }
+
 

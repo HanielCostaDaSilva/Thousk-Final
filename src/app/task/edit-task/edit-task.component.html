@@ -1,11 +1,11 @@
 <div class="data">
 
-  <h1>Edit Task</h1>
+  <h1 class="dialogTitle">Edit Task</h1>
 
   <!-- Campos de edição -->
   <mat-form-field>
     <mat-label>Título</mat-label>
-    <input matInput [(ngModel)]="data.title" placeholder="Título">
+    <input matInput required [(ngModel)]="data.title" placeholder="Título">
   </mat-form-field>
 
   <mat-form-field>
@@ -19,7 +19,7 @@
     <input matInput [(ngModel)]="data.imageLink" placeholder="Link da Imagem">
   </mat-form-field>
 
-  <div class="dataBox">
+  <div class="dateBox">
     <mat-form-field>
       <mat-label>Início:</mat-label>
       <input matInput [matDatepicker]="pickerStart" [(ngModel)]="data.dateStart">
@@ -38,8 +38,8 @@
 
   </div>
   <!-- Botões de ação -->
-  <div class="button-container">
-    <button mat-button (click)="saveChanges()">Salvar</button>
-    <button mat-button (click)="cancel()">Cancelar</button>
+  <div class="button-box">
+    <button id="ConfirmBtn"mat-button (click)="saveChanges()">Salvar</button>
+    <button id="CancelBtn" mat-button (click)="cancel()">Cancelar</button>
   </div>
 </div>

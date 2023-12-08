@@ -1,5 +1,7 @@
-<app-create-task *ngIf="isCreatingTask" [userID]="this.userId"></app-create-task>
-<button id="toggleCreateTask" mat-button (click)="toggleCreateTask()">{{toogleMessageList[posicao]}}</button>
 
-<p>Espaço de {{this.user?.nickname}}</p>
-<app-show-task [userID]="this.userId"></app-show-task>
+<button id="toggleCreateTask" mat-button (click)="toggleCreateTask()">{{toogleMessageList[posicao]}}</button>
+<app-create-task *ngIf="isCreatingTask" [actualUser]="this.user"></app-create-task>
+<h3 id="UserSpaceName">Espaço de {{this.user?.nickname}}</h3>
+
+
+<app-show-task [actualUser]="this.user"></app-show-task>

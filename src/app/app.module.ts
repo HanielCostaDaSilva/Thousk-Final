@@ -11,10 +11,12 @@ import TaskService from './shared/service/task/task.service';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ThouskFirestoreModule } from './thouskFirestore/ThouskFirestore.module';
-
+import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.component';
+import { PipesModule } from './shared/pipes/pipes.module';
 @NgModule({
   declarations: [
     AppComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,7 @@ import { ThouskFirestoreModule } from './thouskFirestore/ThouskFirestore.module'
     MaterialModule,
     TaskModule,
     UserModule,
+    PipesModule,
     ThouskFirestoreModule
   ],
   providers: [TaskService],

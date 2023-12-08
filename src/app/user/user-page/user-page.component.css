@@ -11,6 +11,7 @@
 
 }
 
-p{
-    font-size: 1.2rem;
+#UserSpaceName{
+    padding: 10px;
+    font-size: 2rem;
 }

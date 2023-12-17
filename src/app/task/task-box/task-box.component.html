@@ -1,4 +1,4 @@
-<mat-card class="taskCard">
+<mat-card class="taskCard {{ 'task'+ task.state}}">
   <mat-card-header>
     <mat-card-title>{{task.title}}</mat-card-title>
   </mat-card-header>
@@ -7,14 +7,16 @@
     <p>
       {{task.description}}
     </p>
-<!--     <div class="dateBox">
-      <p *ngIf="task.dateStart">Inicio:{{task.dateStart | date}}</p>      
-      <p *ngIf="task.dateFinal">Término:{{task.dateFinal| date }}</p>      
-    </div>   -->
-
+    <mat-select [(ngModel)]="task.state" value="{{task.state}}" (valueChange)=" changeTaskState()">
+      <mat-option value="waiting">Esperando</mat-option>
+      <mat-option value="doing">Fazendo</mat-option>
+      <mat-option value="done">Terminado</mat-option>
+    </mat-select>
   </mat-card-content>
+
+
   <mat-card-actions class="buttonBox">
-    <button mat-button (click)="viewTask()" class="checkBtn"><mat-icon>check</mat-icon></button>
+
     <button mat-button (click)="editTask()" class="editBtn"><mat-icon>edit</mat-icon></button>
     <button mat-button (click)="removeTask()" class="removeBtn"><mat-icon>delete</mat-icon></button>
   </mat-card-actions>

@@ -69,7 +69,6 @@ export class UserFirestoreService {
 
   }
 
-
   private handleError(error: any) {
     console.error('Firestore Error:', error);
     return throwError('Erro ao acessar o Firestore. Verifique o console para mais detalhes.');

@@ -14,21 +14,31 @@ export default class TaskService {
 
   constructor(private userApi: UserFirestoreService) { }
 
-  registerTask(task: Task, destiny: User) :Observable<void> {
+  registerTask(task: Task, destiny: User): Observable<void> {
     console.log(destiny.tasks);
     destiny.tasks?.push(task);
     console.log(destiny.tasks);
-      return this.userApi.updateTasks(destiny);
+    return this.userApi.updateTasks(destiny);
   }
 
   removeTask(task: Task, destiny: User): void {
     if (destiny.tasks && destiny.tasks.indexOf(task) !== -1) {
       destiny.tasks.splice(destiny.tasks.indexOf(task), 1);
     }
-      this.userApi.updateTasks(destiny);
+    this.userApi.updateTasks(destiny);
 
   }
-
+  /**
+   * Edita a tarefa e envia
+   * @param task 
+   * @param newTitleTask 
+   * @param newDescriptionTask 
+   * @param newImageLinkTask 
+   * @param newDateStart 
+   * @param newDateFinal 
+   * @param destiny 
+   * @param newCategory 
+   */
   editTask(
     task: Task,
     newTitleTask: string,
@@ -47,6 +57,21 @@ export default class TaskService {
       task.dateFinal = newDateFinal;
       task.category = newCategory;
     }
-      this.userApi.updateTasks(destiny);
+    this.userApi.updateTasks(destiny);
   }
+
+  refreshTask(destiny: User): void {
+
+    this.userApi.updateTasks(destiny);
+  }
+
+  findTasksByState(user: User, stateToFind: string): Task[] {
+    if (user.tasks)
+      return user.tasks.filter(
+        task => task.state === stateToFind
+
+      );
+    return [];
+  }
+
 }

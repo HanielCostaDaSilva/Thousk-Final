@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import Task from '../../shared/model/Task';
 import { EditTaskComponent } from '../edit-task/edit-task.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -15,16 +15,22 @@ import { ConfirmDialogComponent } from 'src/app/dialog/confirm-dialog/confirm-di
 })
 export class ShowTaskComponent {
 
-  @Input() actualUser !: User;
-
+  @Input() userOwner !: User; //Usuário que sofrerá as alterações 
+  @Input() tasksToShow !: Task[]; // Tarefas que vão ser mostradas 
+  
   constructor(private dialog: MatDialog, private taskService: TaskService) {
+  }
+
+  changeTaskState(task: Task) {
+    console.log(task);
+    this.taskService.refreshTask(this.userOwner);
   }
 
   removeTask(task: Task) {
     const dialogRef = this.dialog.open(
       ConfirmDialogComponent, {
 
-        data: {
+      data: {
         title: `Deseja excluir: ${task.title}`,
         description: `Operação não poderá ser desfeita.`
       }
@@ -33,7 +39,7 @@ export class ShowTaskComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.taskService.removeTask(task, this.actualUser);
+        this.taskService.removeTask(task, this.userOwner);
       }
     });
   }
@@ -55,9 +61,10 @@ export class ShowTaskComponent {
       if (result) {
         this.taskService.editTask(task, result.title, result.description,
           result.imageLink, result.dateStart,
-          result.dateFinal, this.actualUser);
+          result.dateFinal, this.userOwner);
       }
     });
   }
+
 
 }

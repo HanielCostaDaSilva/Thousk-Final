@@ -14,6 +14,11 @@ export class UserPageComponent {
 
 
   isCreatingTask: boolean = false; //False if is not creating task, True if is creating Task
+  isShowDoingTasks = false;
+  isShowDoneTasks = false;
+  isShowAllTasks = false;
+
+  
   toogleMessageList: string[] = ["Adicionar Tarefa", "Esconder"];
 
   posicao: number = 0;
@@ -39,13 +44,15 @@ export class UserPageComponent {
     this.posicao = (this.posicao + 1) % this.toogleMessageList.length;
   }
 
-  filterTaskState(stateToFind: string=""): Task[] {
-    if (stateToFind)
-      return this.taskService.findTasksByState(this.user, stateToFind);
+  filterTaskState(stateToFind: string = ""): Task[] {
+    
+    if (this.user && this.user.tasks) {
+      if (stateToFind)
+        return this.taskService.findTasksByState(this.user, stateToFind);
 
-    else if (this.user.tasks)
       return this.user.tasks;
-    else
-      return [];
+    }
+
+    return [];
   }
 }

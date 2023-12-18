@@ -15,7 +15,7 @@ export class LoginUserComponent {
 
   userToLogin: User = new User();
 
-  loggedUser = -1;
+  loginSucessCheck= -1;
 
 
   constructor(private userService: UserService, private messageService: MessageSnackService, private router: Router) {
@@ -37,21 +37,21 @@ export class LoginUserComponent {
 
         if (users.length == 0) {
           this.messageService.error(`Usuário ${this.userToLogin.nickname} Não encontrado!`);
-          this.loggedUser = 0;
+          this.loginSucessCheck= 0;
 
           return;
         }
         else {
           this.messageService.sucess(`Seja bem vindo ${users[0].nickname}!`)
-          this.loggedUser = 1;
-          this.router.navigate(['/user', { userId: users[0].id }]);
+          this.loginSucessCheck= 1;
+          this.router.navigate(['/user', users[0].id]);
 
         }
       })
     }
 
     catch (error: any) {
-      this.loggedUser = 0
+      this.loginSucessCheck= 0
       this.messageService.error(error.message);
     }
   }

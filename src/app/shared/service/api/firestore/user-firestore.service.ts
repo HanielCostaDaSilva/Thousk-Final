@@ -23,27 +23,27 @@ export class UserFirestoreService {
 
   getById(id: string): Observable<User> {
     return this.colecaoUsers.doc(id).get().pipe(
-      
+
       map(document => {
-      const user= new User(id, document.data());
-      user.tasks = document.data()?.tasks || [];
-      return user;
-    })
+        const user = new User(id, document.data());
+        user.tasks = document.data()?.tasks || [];
+        return user;
+      })
     );
   }
 
   getAll(): Observable<User[]> {
     return this.colecaoUsers.valueChanges({ idField: 'id' });
   }
-
-  getUserByNickname(nickname: string): Observable<any[]> {
-    return this.firestore.collection(this._collectionName, ref => ref.where('nickname', '==', nickname)).valueChanges().pipe(
-      catchError(this.handleError)
-    );
+  getUserByNickname(nickname: string): Observable<any> {
+    return this.firestore.collection(this._collectionName, ref => ref
+      .where('nickname', '==', nickname))
+      .valueChanges({ idField: 'id' })
+      .pipe(
+        catchError(this.handleError));
   }
-
   create(user: any): Observable<User> {
-    const userWithoutId = { ...user }; 
+    const userWithoutId = { ...user };
     delete userWithoutId.id; //remove o id do objeto
     return from(this.firestore.collection(this._collectionName).add(userWithoutId)).pipe(
       catchError(this.handleError)

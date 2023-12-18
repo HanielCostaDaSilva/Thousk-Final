@@ -27,6 +27,7 @@ export class RegisterUserComponent {
       const userFinded = this.userService.getUserByNickName(this.userToRegister.nickname);
 
       userFinded.subscribe(users => {
+        console.log(users);
         if (users.length > 0) {
           this.registeredUser = 0;
           this.messageService.error(`Usuário ${users[0].nickname} Já registrado!`);

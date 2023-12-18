@@ -3,16 +3,29 @@
 <h3 id="UserSpaceName">Espaço de {{this.user?.nickname}}</h3>
 
 <section>
-    <h2>Em andamento</h2>
-    <app-show-task [tasksToShow]="this.filterTaskState('doing')" [userOwner]="this.user"></app-show-task>
-</section>
-
+<h1> Suas Tarefas</h1>    
 <section>
-    <h2>Concluídas</h2>
-    <app-show-task [tasksToShow]="this.filterTaskState('done')" [userOwner]="this.user"></app-show-task>
+    <div class="showTaskTitle" (click)="isShowDoingTasks = !isShowDoingTasks">
+        <h2 >Em andamento</h2>
+        <span class="quantyTasksShow">{{filterTaskState('doing').length}} </span>
+    </div>
+    <app-show-task *ngIf="isShowDoingTasks" [tasksToShow]="filterTaskState('doing')" [userOwner]="user"></app-show-task>
+  </section>
+  
+  <section>
+    <div class="showTaskTitle" (click)="isShowDoneTasks = !isShowDoneTasks">
+        <h2 >Concluídas</h2>
+        <span class="quantyTasksShow">{{filterTaskState('done').length}} </span>
+    </div>
+    <app-show-task *ngIf="isShowDoneTasks" [tasksToShow]="filterTaskState('done')" [userOwner]="user"></app-show-task>
+  </section>
+  
+  <section>
+    <div class="showTaskTitle" (click)="isShowAllTasks = !isShowAllTasks">
+        <h2 >Todas</h2>
+        <span class="quantyTasksShow">{{filterTaskState().length}} </span>
+    </div>
+    <app-show-task *ngIf="isShowAllTasks" [tasksToShow]="filterTaskState()" [userOwner]="user"></app-show-task>
+  </section>
 </section>
-
-<section>
-    <h2>Todas</h2>
-    <app-show-task [tasksToShow]="this.filterTaskState()" [userOwner]="this.user"></app-show-task>
-</section>
+  

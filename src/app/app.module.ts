@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ThouskFirestoreModule } from './thouskFirestore/ThouskFirestore.module';
 import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.component';
 import { PipesModule } from './shared/pipes/pipes.module';
+import { AuthModule } from './auth/auth.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { PipesModule } from './shared/pipes/pipes.module';
     TaskModule,
     UserModule,
     PipesModule,
+    AuthModule,
     ThouskFirestoreModule
   ],
   providers: [TaskService],

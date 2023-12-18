@@ -15,17 +15,15 @@ export default class TaskService {
   constructor(private userApi: UserFirestoreService) { }
 
   registerTask(task: Task, destiny: User): Observable<void> {
-    console.log(destiny.tasks);
     destiny.tasks?.push(task);
-    console.log(destiny.tasks);
     return this.userApi.updateTasks(destiny);
   }
 
-  removeTask(task: Task, destiny: User): void {
+  removeTask(task: Task, destiny: User): Observable<void> {
     if (destiny.tasks && destiny.tasks.indexOf(task) !== -1) {
       destiny.tasks.splice(destiny.tasks.indexOf(task), 1);
     }
-    this.userApi.updateTasks(destiny);
+    return this.userApi.updateTasks(destiny);
 
   }
   /**

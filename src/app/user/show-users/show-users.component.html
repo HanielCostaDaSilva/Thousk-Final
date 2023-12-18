@@ -1,9 +1,9 @@
 <section *ngIf="users.length >0; else noUsers" id="UserSection">
-    <app-user-box class="userBoxes" *ngFor="let user of users " [user]="user"> </app-user-box> 
+    <app-user-box class="userBoxes" *ngFor="let user of users " [user]="user"> </app-user-box>
 </section>
 
 <ng-template #noUsers>
-<!--     <section id="noUsershowSection">
+    <!--     <section id="noUsershowSection">
         <h1>Sem usuários, Por favor registre ao menos um </h1>
     </section> -->
 </ng-template>

@@ -36,7 +36,7 @@ export class UserFirestoreService {
     return this.colecaoUsers.valueChanges({ idField: 'id' });
   }
 
-  getByNickname(nickname: string): Observable<any[]> {
+  getUserByNickname(nickname: string): Observable<any[]> {
     return this.firestore.collection(this._collectionName, ref => ref.where('nickname', '==', nickname)).valueChanges().pipe(
       catchError(this.handleError)
     );

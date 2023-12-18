@@ -1,20 +1,21 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'date'
+  name: 'ddMMAAAA',
 })
 export class DatePipe implements PipeTransform {
 
-  transform(date?: Date): string {
-    console.log("date: " + date);
-    if(date){
-      const day = date.getDate();
-      const month = date.getMonth() + 1;
-      const year = date.getFullYear();
-      return `${day}-${month}-${year}`;
+  transform(value: number): string {
+    if (!value) {
+      return '';
     }
-    return'';
 
+    const date = new Date(value);
+    return date.toLocaleDateString('pt-BR', {
+      day: 'numeric',
+      month: 'numeric',
+      year: 'numeric',
+    });
   }
 
 }

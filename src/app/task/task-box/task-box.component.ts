@@ -16,7 +16,6 @@ export class TaskBoxComponent {
   constructor() {
   }
   changeTaskState() {
-    console.log(this.task);
     this.changeTaskStateEvent.emit(this.task);
   }
 

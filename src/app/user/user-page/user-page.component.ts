@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import User from '../../shared/model/User';
 import { ActivatedRoute } from '@angular/router';
 import UserService from '../../shared/service/user/user.service';
-import TaskService from 'src/app/shared/service/task/task.service';
-import Task from 'src/app/shared/model/Task';
+import TaskService from '../../shared/service/task/task.service';
+import Task from '../../shared/model/Task';
 
 @Component({
   selector: 'app-user-page',

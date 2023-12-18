@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import User from '../../shared/model/User';
-import { ConfirmDialogComponent } from 'src/app/dialog/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../dialog/confirm-dialog/confirm-dialog.component';
 import UserService from '../../shared/service/user/user.service';
 import { MatDialog } from '@angular/material/dialog';
+import { MessageSnackService } from '../../shared/service/message/snack-bar.service';
 
 @Component({
   selector: 'app-user-box',
@@ -14,7 +15,7 @@ export class UserBoxComponent {
 
   @Input() user !: User;
 
-  constructor(private dialog: MatDialog, private router: Router, private userService: UserService) {
+  constructor(private dialog: MatDialog, private router: Router, private userService: UserService, private messageService: MessageSnackService) {
 
   }
 
@@ -36,6 +37,10 @@ export class UserBoxComponent {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.userService.remove(this.user);
+        this.messageService.sucess(`Usuário ${this.user.nickname} removido com sucesso`);
+      }else{
+        this.messageService.inform(`Remoção do usuário${this.user.nickname} cancelada`);
+
       }
     })
   }

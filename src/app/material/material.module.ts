@@ -16,6 +16,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -36,7 +37,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatSidenavModule,
     MatListModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
+    
   ],
   exports: [
     MatIconModule,
@@ -54,7 +57,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatSidenavModule,
     MatListModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
 
   ]
 })

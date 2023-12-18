@@ -5,12 +5,12 @@
     <form (ngSubmit)="login()">
       <mat-form-field class="formCamp">
         <mat-label for="nickname">Nickname:</mat-label>
-        <input matInput type="text" id="nickname" name="nickname" [(ngModel)]="nickname" required>
+        <input matInput type="text" id="nickname" name="nickname" [(ngModel)]="userToLogin.nickname" required>
       </mat-form-field>
     
       <mat-form-field class="formCamp">
         <mat-label for="password">Senha:</mat-label>
-        <input matInput type="password" id="password" name="password" [(ngModel)]="password" required>
+        <input matInput type="password" id="password" name="password" [(ngModel)]="userToLogin.password" required>
       </mat-form-field>
     
       <button mat-button color="accent" type="submit">Entrar</button>

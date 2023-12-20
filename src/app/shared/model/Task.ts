@@ -20,7 +20,15 @@ class Task {
     */
 
     constructor(id?:string, task?:Task){
-
+        this.id= task?.id;
+        this.author= task?.author;
+        this.title= task?.title;
+        this.description= task?.description;
+        this.imageLink= task?.imageLink;
+        this.dateStart= task?.dateStart;
+        this.dateFinal= task?.dateFinal;
+        this.state= task?.state;
+        this.category= task?.category;
     }
 
 }

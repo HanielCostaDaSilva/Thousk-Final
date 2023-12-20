@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import UserService from '../../shared/service/user/user.service';
 import TaskService from '../../shared/service/task/task.service';
 import Task from '../../shared/model/Task';
+import Group from '../../shared/model/Group';
 
 @Component({
   selector: 'app-user-page',
@@ -13,15 +14,20 @@ import Task from '../../shared/model/Task';
 export class UserPageComponent {
 
 
+
   isCreatingTask: boolean = false; //False if is not creating task, True if is creating Task
+  isCreatingGroup: boolean = false; //False if is not creating group, True if is creating Group
   isShowDoingTasks = false;
   isShowDoneTasks = false;
   isShowAllTasks = false;
 
   
-  toogleMessageList: string[] = ["Adicionar Tarefa", "Esconder"];
+  toogleMsgListTask: string[] = ["Adicionar Tarefa", "Esconder"];
+  positionMsgListTask: number = 0;
 
-  posicao: number = 0;
+  
+  toogleMsgListGroup: string[] = ["Criar Um grupo", "Esconder"];
+  positionMsgListGroup: number = 0;
 
   user!: User;
   userId!: String;
@@ -41,8 +47,15 @@ export class UserPageComponent {
 
   toggleCreateTask() {
     this.isCreatingTask = !this.isCreatingTask;
-    this.posicao = (this.posicao + 1) % this.toogleMessageList.length;
+    this.positionMsgListTask = (this.positionMsgListTask + 1) % this.toogleMsgListTask.length;
   }
+
+  toggleCreateGroup() {
+    this.isCreatingGroup = !this.isCreatingGroup;
+    console.log(this.isCreatingGroup);
+    this.positionMsgListGroup = (this.positionMsgListGroup + 1) % this.toogleMsgListGroup.length;
+  }
+
 
   filterTaskState(stateToFind: string = ""): Task[] {
     
@@ -55,4 +68,5 @@ export class UserPageComponent {
 
     return [];
   }
+
 }

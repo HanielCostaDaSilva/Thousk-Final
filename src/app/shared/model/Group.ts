@@ -1,20 +1,19 @@
-import User from "./User";
-import Task from "./Task";
-
 class Group {
-    id !: string;
 
-    //============Relationship
-    participants !: User[];
-    moderators !: User[];
-    tasks !: Task[];
+    participants?: string[] = [];
+    tasks?: Array<any> = [];
+    name?: string;
+    description?: string;
+    dateCreated?: string="";
+    authorID?: string;
 
-    constructor(
-        public name: string,
-        public description: string,
-        public dateCreated: string,
-        public author: User) { }
-        
+    constructor(public id?: string, group: Group = {}) {
+        this.name = group.name;
+        this.description = group.description;
+        this.authorID = group.authorID;
+
+    }
+
 }
 
-export default Group
+export default Group;

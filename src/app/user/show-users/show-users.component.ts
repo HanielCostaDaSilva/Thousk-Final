@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 
 import User from '../../shared/model/User';
@@ -9,16 +9,28 @@ import UserService from '../../shared/service/user/user.service';
   templateUrl: './show-users.component.html',
   styleUrls: ['./show-users.component.css']
 })
-export class ShowUsersComponent{
+export class ShowUsersComponent implements OnInit {
 
-  users:User[] =[];
+  @Input() usersToShow: User[] = [];
+  @Output() removeUserEvent = new EventEmitter();
 
-  constructor( private userService: UserService){
-  }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-  
-    this.userService.getAll().subscribe(users => this.users = users);
-    
+    if (this.usersToShow.length == 0) {
+      this.userService.getAll().subscribe(users => {
+        this.usersToShow = users;
+        console.log(this.usersToShow);
+
+      })
+    }
+  }
+
+  removeUser(user: User): void {
+    if (this.removeUserEvent.observers.length > 0) {
+      this.removeUserEvent.emit(user);
+    } else {
+      this.userService.remove(user);
+    }
   }
 }

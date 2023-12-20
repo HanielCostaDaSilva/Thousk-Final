@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import User from '../../shared/model/User';
 import { ConfirmDialogComponent } from '../../dialog/confirm-dialog/confirm-dialog.component';
@@ -14,8 +14,9 @@ import { MessageSnackService } from '../../shared/service/message/snack-bar.serv
 export class UserBoxComponent {
 
   @Input() user !: User;
+  @Output() removeUserEvent= new EventEmitter();
 
-  constructor(private dialog: MatDialog, private router: Router, private userService: UserService, private messageService: MessageSnackService) {
+  constructor(private dialog: MatDialog, private router: Router, private messageService: MessageSnackService) {
 
   }
 
@@ -33,10 +34,10 @@ export class UserBoxComponent {
       }
     }
     );
-
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.userService.remove(this.user);
+        this.removeUserEvent.emit(this.user);
+        
         this.messageService.sucess(`Usuário ${this.user.nickname} removido com sucesso`);
       }else{
         this.messageService.inform(`Remoção do usuário${this.user.nickname} cancelada`);
@@ -44,4 +45,5 @@ export class UserBoxComponent {
       }
     })
   }
+  
 }

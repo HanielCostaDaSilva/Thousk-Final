@@ -1,0 +1,36 @@
+.groupCard {
+    background-color: #f5f5f5;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    padding: 16px;
+  }
+  
+  .groupDescription {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .groupCard mat-card-title {
+    color: #212121;
+    font-weight: bold;
+  }
+  
+  .groupCard p {
+    margin-bottom: 8px;
+  }
+  
+  .groupCard mat-card-actions {
+    justify-content: flex-end;
+  }
+  
+  .groupCard mat-button {
+    background-color: #f44336;
+  }
+  
+  .groupCard p {
+    display: flex;
+    align-items: center;
+  }
+  
+  .groupCard p mat-icon {
+    margin-right: 8px;
+  }

@@ -75,3 +75,13 @@ body {
   #CancelBtn:hover {
     background-color: #d9d9d9;
   }
+
+button{
+    background-color: rgb(17, 33, 52) !important;
+    color: white;
+}
+button:hover{
+    background-color: rgb(48, 111, 189);
+    color: rgb(18, 17, 17);
+  }
+  

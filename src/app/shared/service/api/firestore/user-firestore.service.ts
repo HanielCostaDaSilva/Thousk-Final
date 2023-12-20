@@ -69,6 +69,15 @@ export class UserFirestoreService {
 
   }
 
+  updateGroups(user: User): Observable<void> {
+    if (user.groups) {
+      return from(this.colecaoUsers.doc(user.id).update({ groups: user.groups }));
+    }
+    return new Observable<void>;
+
+  }
+
+
   private handleError(error: any) {
     console.error('Firestore Error:', error);
     return throwError('Erro ao acessar o Firestore. Verifique o console para mais detalhes.');

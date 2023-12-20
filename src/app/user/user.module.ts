@@ -5,6 +5,7 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { TaskModule } from "../task/task.module";
 import { ShowUsersComponent } from './show-users/show-users.component';
 import { UserBoxComponent } from './user-box/user-box.component';
+import { GroupsModule } from '../groups/groups.module';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { UserBoxComponent } from './user-box/user-box.component';
     imports: [
         CommonModule,
         MaterialModule,
-        TaskModule
+        TaskModule,
+        GroupsModule
     ]
 })
 export  class UserModule { }

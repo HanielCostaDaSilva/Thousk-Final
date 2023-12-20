@@ -1,5 +1,10 @@
-<button id="toggleCreateTask" mat-button (click)="toggleCreateTask()">{{toogleMessageList[posicao]}}</button>
+<button id="toggleCreateTask" mat-button (click)="toggleCreateTask()">{{toogleMsgListTask[positionMsgListTask]}}</button>
 <app-create-task *ngIf="isCreatingTask" [actualUser]="this.user"></app-create-task>
+
+<button id="toggleCreateGroup" mat-button (click)="toggleCreateGroup()">{{toogleMsgListGroup[positionMsgListGroup]}}</button>
+<app-create-group *ngIf="isCreatingGroup" [actualUser]="this.user"></app-create-group>
+
+
 <h3 id="UserSpaceName">Espaço de {{this.user?.nickname}}</h3>
 
 <section>
@@ -28,4 +33,8 @@
     <app-show-task *ngIf="isShowAllTasks" [tasksToShow]="filterTaskState()" [userOwner]="user"></app-show-task>
   </section>
 </section>
-  
+<h1> Seus Grupos</h1>    
+<section>
+  <app-show-group [groupsToShow]="user.groups"[currentUser]="user">
+  </app-show-group>
+</section>

@@ -1,0 +1,33 @@
+section.fade {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    width: 500px;
+    padding: 32px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+  
+  #CreateGroup {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: fit-content;
+    padding: 10px;
+    background-color: rgb(230, 230, 230);
+}
+
+.formCamp,
+.createGroupButton {
+    width: 60%;
+    margin: 5px 0;
+}
+
+.createGroupButton {
+    font-size: 2.2rem;
+    background: rgb(28, 28, 29);
+    margin: 5px 0px;
+}

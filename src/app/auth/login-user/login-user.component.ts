@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
 import UserService from '../../shared/service/user/user.service';
 import { MessageSnackService } from '../../shared/service/message/snack-bar.service';
 import { Router } from '@angular/router';
 import User from '../../shared/model/User';
+import { Component } from '@angular/core';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-login-user',
@@ -15,7 +16,7 @@ export class LoginUserComponent {
 
   userToLogin: User = new User();
 
-  loginSucessCheck= -1;
+  loginSucessCheck = -1;
 
 
   constructor(private userService: UserService, private messageService: MessageSnackService, private router: Router) {
@@ -31,30 +32,29 @@ export class LoginUserComponent {
         throw new Error('Please enter a password');
       }
 
-      const usersFound = this.userService.getUserByNickName(this.userToLogin.nickname);
+      const usersFound = this.userService.getUserByNickName(this.userToLogin.nickname).pipe( take(1));
 
       usersFound.subscribe(users => {
 
         if (users.length == 0) {
           this.messageService.error(`Usuário ${this.userToLogin.nickname} Não encontrado!`);
-          this.loginSucessCheck= 0;
+          this.loginSucessCheck = 0;
 
           return;
         }
         else {
           this.messageService.sucess(`Seja bem vindo ${users[0].nickname}!`)
-          this.loginSucessCheck= 1;
+          this.loginSucessCheck = 1;
           this.router.navigate(['/user', users[0].id]);
-
         }
       })
     }
 
     catch (error: any) {
-      this.loginSucessCheck= 0
+      this.loginSucessCheck = 0
       this.messageService.error(error.message);
     }
   }
 
-}
 
+}

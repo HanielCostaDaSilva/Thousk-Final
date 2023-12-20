@@ -1,0 +1,16 @@
+<mat-card class="groupCard">
+    <div [routerLink]="['/group', group.id]" class="groupDescription">
+      <mat-card-header>
+        <mat-card-title>{{group.name}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          <p *ngIf="group.description"> Descrição: {{group.description}}</p>
+          <p>{{group.participants?.length}} participantes</p>
+          <p> {{group.tasks?.length}} Tarefas</p>
+      </mat-card-content>
+    </div>
+    <mat-card-actions class="buttonBox">
+        <button mat-button mat-raised-button color="warn" (click)="removeGroup()"><mat-icon>delete</mat-icon></button>
+      </mat-card-actions>
+    </mat-card>
+    

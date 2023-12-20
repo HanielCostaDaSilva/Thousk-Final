@@ -1,21 +1,28 @@
 <app-header titleCompany="{{title}}" (toggle)="toggleSidenavBar()"> </app-header>
 <mat-sidenav-container>
     <mat-sidenav [(opened)]="openMenu">
-        
+
         <button mat-button [routerLink]="['home']">
             <mat-icon>home</mat-icon> Home
         </button>
         <mat-divider />
-        
+        <p>
+            <mat-icon>user</mat-icon> User
+        </p>
+        <button mat-button [routerLink]="['users']">
+            Todos os usuários
+        </button>
+        <mat-divider />
+
         <button mat-button [routerLink]="['home']">
             <mat-icon>task</mat-icon> Atividades
         </button>
         <mat-divider />
-        <button mat-button [routerLink]="['RegisterUser']">
+        <button mat-button [routerLink]="['register']">
             <mat-icon>event</mat-icon> calendario
         </button>
         <mat-divider />
-        
+
         <button mat-button disabled>
             <mat-icon>group</mat-icon> Grupos
         </button>
@@ -27,6 +34,6 @@
 
     </mat-sidenav>
     <mat-sidenav-content id="page">
-        <router-outlet ></router-outlet>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

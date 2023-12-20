@@ -4,7 +4,6 @@ import Task from '../../shared/model/Task';
 
 import TaskService from '../../shared/service/task/task.service';
 import User from '../../shared/model/User';
-import UserService from '../../shared/service/user/user.service';
 import { MessageSnackService } from '../../shared/service/message/snack-bar.service';
 
 @Component({

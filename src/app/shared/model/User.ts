@@ -1,19 +1,17 @@
-import Group from "./Group";
-import Task from "./Task";
-
 class User {
     id ?: string; 
     nickname ?: string;
     email ?: string;
     password ?: string;
     tasks ?: Array<any> = [];
-    groups ?: Group[] = [];
+    groups ?: string[] = [];
 
     constructor(id?: string, user:User ={}){
         this.id = id;
         this.nickname = user.nickname;
         this.email = user.email;
         this.password = user.password;
+        
     }
 
     /* constructor(

@@ -14,10 +14,12 @@ import { ThouskFirestoreModule } from './thouskFirestore/ThouskFirestore.module'
 import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.component';
 import { PipesModule } from './shared/pipes/pipes.module';
 import { AuthModule } from './auth/auth.module';
+import { HomePageComponent } from './home-page/home-page.component';
 @NgModule({
   declarations: [
     AppComponent,
     ConfirmDialogComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,

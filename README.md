@@ -1,27 +1,37 @@
-# Thatsyourtask
+# Projeto: That's Your Task — Thousk
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+## Propósito
+---
+O projeto foi realizado para a obtenção da nota na disciplina de Programação Web I (PWEB I). Mas este trabalho é mais que uma nota, visa proporcionar um apronfudamento em diversas tecnologias e conceitos fundamentais do desenvolvimento web.
 
-## Development server
+## Objetivo
+---
+O Thousk tem como objetivo central:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Promover o aprendizado prático e aprofundado em tecnologias essenciais para o desenvolvimento web moderno.
+- Aprender mais sobre o Framework do Angular e TypeScript.
+- Aprimorar habilidades na implementação de requisições HTTP.
+- Explorar o funcionamento de bancos de dados na nuvem, com ênfase no uso do Firestore.
+- Desenvolver uma compreensão sólida de boas práticas de programação web.
 
-## Code scaffolding
+## Descrição
+---
+O Thousk é um sistema de gerenciamento de tarefas, que oferece aos usuários a capacidade de   organizar suas tarefas pessoais, mas também de colaborar efetivamente com outros por meio de um sistema de grupos. Os ambientes personalizados proporcionam uma experiência única, permitindo que cada usuário molde o Thousk de acordo com suas necessidades específicas.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Funcionalidades Principais
+---
+- **Gerenciamento Individual de Tarefas:** Os usuários podem criar, editar e excluir suas próprias tarefas.
+- **Sistema de Grupos:** Funcionalidade que permite aos usuários criar e compartilhar tarefas em um ambiente colaborativo.
+- **Integração Angular:** Desenvolvido usando o poderoso Framework Angular para uma arquitetura robusta e eficiente.
 
-## Build
+## Ferramentas
+O Thousk foi construído utilizando o Framework Angular, proporcionando aos participantes uma imersão prática em uma das tecnologias mais relevantes para o desenvolvimento front-end. O banco de dados, hospedado no Firestore, permite que os participantes explorem os desafios e benefícios de lidar com dados na nuvem.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Tecnologias e Conceitos Envolvidos
+- **Angular:** Desenvolvimento front-end avançado.
+- **TypeScript:** Desenvolvimento mais seguro e preciso.
+- **SpringBoot:** *Ainda aprendendo...*
+- **Requisições HTTP:** Interação eficaz com servidores para atualizações dinâmicas.
+- **Firestore:** Banco de dados na nuvem para armazenamento eficiente e escalável.
+- **Vercel:** Plataforma de hospedagem e deployment do projeto.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

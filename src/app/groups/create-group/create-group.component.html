@@ -1,0 +1,14 @@
+<section id="CreateGroup" class="fade">
+    <h2 class="titlePage">Criar Grupo</h2>
+    <mat-form-field class="formCamp">
+        <mat-label>Nome: </mat-label>
+        <input matInput required [(ngModel)]="newGroup.name">
+    </mat-form-field>
+
+    <mat-form-field class="formCamp">
+        <mat-label>Descrição: </mat-label>
+        <textarea matInput [(ngModel)]="newGroup.description"></textarea>
+    </mat-form-field>
+
+    <button class="createGroupButton" mat-button color="accent" (click)="create()">Criar Grupo</button>
+</section>

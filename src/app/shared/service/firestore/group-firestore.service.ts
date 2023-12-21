@@ -21,6 +21,8 @@ export class GroupFirestoreService {
     return this.colecaoGroups.doc(id).get().pipe(
       map(document => {
         const group = new Group(id, document.data());
+        group.tasks = document.data()?.tasks || [];
+        group.participants = document.data()?.participants || [];
         return group;
       })
     );

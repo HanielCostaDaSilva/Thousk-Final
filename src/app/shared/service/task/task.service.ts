@@ -86,8 +86,8 @@ export default class TaskService {
   }
 
   findTasksByState(owner: User | Group, stateToFind: string): Task[] {
+    console.log(owner.tasks);
     if (owner.tasks) {
-
       return owner.tasks.filter(
         task => task.state === stateToFind
       );

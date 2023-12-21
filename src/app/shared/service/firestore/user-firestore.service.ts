@@ -5,7 +5,6 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import { catchError, map } from 'rxjs/operators';
 
 //import Task from 'src/app/shared/model/Task';
-import Task from '../../model/Task';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +22,6 @@ export class UserFirestoreService {
 
   getById(id: string): Observable<User> {
     return this.colecaoUsers.doc(id).get().pipe(
-
       map(document => {
         const user = new User(id, document.data());
         user.tasks = document.data()?.tasks || [];

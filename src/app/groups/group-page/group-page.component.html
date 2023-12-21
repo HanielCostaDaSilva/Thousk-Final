@@ -13,7 +13,7 @@
       <h2>Em andamento</h2>
       <span class="quantyTasksShow">{{filterTaskState('doing').length}} </span>
     </div>
-    
+
     <app-show-task *ngIf="isShowDoingTasks" [tasksToShow]="filterTaskState('doing')" [owner]="group"></app-show-task>
   </section>
 
@@ -31,16 +31,28 @@
       <h2>Todas</h2>
       <span class="quantyTasksShow">{{filterTaskState().length}} </span>
     </div>
-    <app-show-task *ngIf="isShowAllTasks" [tasksToShow]="filterTaskState('')" [owner]="group"></app-show-task>
+    <app-show-task *ngIf="isShowAllTasks" [tasksToShow]="(currentGroup? filterTaskState(''): [])" [owner]="group"></app-show-task>
   </section>
 
   <section>
-    <div class="showTaskTitle" (click)="isShowAllMembers = !isShowAllMembers">
-      <h2>Membros</h2>
-      <span class="quantyTasksShow">{{filterTaskState().length}} </span>
+    <h1>Membros</h1>
+    <div class="showTaskTitle">
+    <h2>Administradores</h2>
+      <span class="quantyParticipantShow">{{0}} </span>
     </div>
-    <ol>
-      <li *ngFor="let user of filterparticipants() || []">{{ user }}</li>
-    </ol>
-
+    
+    <div class="showTaskTitle" (click)="isShowAllMembers = !isShowAllMembers">
+      <h2>Todos</h2>
+      <span class="quantyParticipantShow">{{filterparticipants().length}} </span>
+    </div>
+    <mat-card *ngFor="let user of (currentGroup? filterparticipants() : [])" class="participant">
+      <mat-card-title>
+        <h2>{{user}}</h2>
+      </mat-card-title>
+      <mat-card-actions>
+        <button mat-button (click)="removeParticipant(user)">
+          Remover
+        </button>
+      </mat-card-actions>
+    </mat-card>
   </section>

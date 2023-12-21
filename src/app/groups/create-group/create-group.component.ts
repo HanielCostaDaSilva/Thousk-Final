@@ -21,8 +21,6 @@ export class CreateGroupComponent {
 
   create(): void {
     try {
-      console.log(this.creator);
-      console.log(this.newGroup);
       if (this.creator) {
         this.newGroup.authorID = this.creator.id;
         this.groupService.create(this.newGroup).subscribe(group => {

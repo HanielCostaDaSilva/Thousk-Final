@@ -51,9 +51,9 @@ export class GroupPageComponent {
 
   filterTaskState(stateToFind: string = ""): Task[] {
     if (this.currentGroup && this.currentGroup.tasks) {
-      return stateToFind
-        ? this.taskService.findTasksByState(this.currentGroup, stateToFind)
-        : this.currentGroup.tasks;
+      return stateToFind ?
+        this.taskService.findTasksByState(this.currentGroup, stateToFind) :
+        this.currentGroup.tasks;
     }
 
     return [];
@@ -63,7 +63,6 @@ export class GroupPageComponent {
   filterparticipants(): string[] {
 
     if (this.currentGroup && this.currentGroup.participants) {
-
       return this.currentGroup.participants;
     }
 
@@ -117,4 +116,16 @@ export class GroupPageComponent {
     });
   }
 
+  removeParticipant(userId: string) {
+    this.userService.getUserById(userId).subscribe(user => {
+      try {
+        this.groupService.removeParticipant(this.currentGroup, user);
+        this.userService.removeGroup(user, this.currentGroup);
+        this.messageService.sucess(`Usuário ${user.nickname} removido`);
+      } catch (err: any) {
+        this.messageService.error(err.message);
+      }
+    }
+    )
+  }
 }

@@ -1,1 +1,46 @@
-<p>group-page works!</p>
+<button id="toggleCreateTask" mat-button
+  (click)="toggleCreateTask()">{{toogleMsgListTask[positionMsgListTask]}}</button>
+<app-create-task *ngIf="isCreatingTask" [creator]="this.currentGroup"></app-create-task>
+
+<button id="toggleAddMember" mat-button (click)="addNewMember()">Adicionar Membro</button>
+
+<h3 id="GroupSpaceName">Grupo: {{this.currentGroup?.name}}</h3>
+
+<section>
+  <h1> Tarefas Adicionadas</h1>
+  <section>
+    <div class="showTaskTitle" (click)="isShowDoingTasks = !isShowDoingTasks">
+      <h2>Em andamento</h2>
+      <span class="quantyTasksShow">{{filterTaskState('doing').length}} </span>
+    </div>
+    
+    <app-show-task *ngIf="isShowDoingTasks" [tasksToShow]="filterTaskState('doing')" [owner]="group"></app-show-task>
+  </section>
+
+  <section>
+    <div class="showTaskTitle" (click)="isShowDoneTasks = !isShowDoneTasks">
+      <h2>Concluídas</h2>
+      <span class="quantyTasksShow">{{filterTaskState('done').length}} </span>
+    </div>
+
+    <app-show-task *ngIf="isShowDoneTasks" [tasksToShow]="filterTaskState('done')" [owner]="group"></app-show-task>
+  </section>
+
+  <section>
+    <div class="showTaskTitle" (click)="isShowAllTasks = !isShowAllTasks">
+      <h2>Todas</h2>
+      <span class="quantyTasksShow">{{filterTaskState().length}} </span>
+    </div>
+    <app-show-task *ngIf="isShowAllTasks" [tasksToShow]="filterTaskState('')" [owner]="group"></app-show-task>
+  </section>
+
+  <section>
+    <div class="showTaskTitle" (click)="isShowAllMembers = !isShowAllMembers">
+      <h2>Membros</h2>
+      <span class="quantyTasksShow">{{filterTaskState().length}} </span>
+    </div>
+    <ol>
+      <li *ngFor="let user of filterparticipants() || []">{{ user }}</li>
+    </ol>
+
+  </section>

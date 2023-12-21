@@ -1,0 +1,34 @@
+.dialog {
+    flex: 1;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dialog h1 {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  
+  .dialog p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+  
+  .buttonBox {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .buttonBox button {
+    margin: 20px 10px;
+  }
+  
+  
+  

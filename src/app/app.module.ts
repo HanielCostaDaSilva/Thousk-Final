@@ -15,11 +15,13 @@ import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.c
 import { PipesModule } from './shared/pipes/pipes.module';
 import { AuthModule } from './auth/auth.module';
 import { HomePageComponent } from './home-page/home-page.component';
+import { OneInputDialogComponent } from './dialog/one-input-dialog/one-input-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     ConfirmDialogComponent,
     HomePageComponent,
+    OneInputDialogComponent,
   ],
   imports: [
     BrowserModule,

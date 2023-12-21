@@ -5,6 +5,7 @@ import UserService from '../../shared/service/user/user.service';
 import TaskService from '../../shared/service/task/task.service';
 import Task from '../../shared/model/Task';
 import Group from '../../shared/model/Group';
+import { GroupService } from '../../shared/service/group/group.service';
 
 @Component({
   selector: 'app-user-page',
@@ -13,19 +14,19 @@ import Group from '../../shared/model/Group';
 })
 export class UserPageComponent {
 
-
-
   isCreatingTask: boolean = false; //False if is not creating task, True if is creating Task
+  
   isCreatingGroup: boolean = false; //False if is not creating group, True if is creating Group
+  
   isShowDoingTasks = false;
   isShowDoneTasks = false;
   isShowAllTasks = false;
 
-  
+
   toogleMsgListTask: string[] = ["Adicionar Tarefa", "Esconder"];
   positionMsgListTask: number = 0;
 
-  
+
   toogleMsgListGroup: string[] = ["Criar Um grupo", "Esconder"];
   positionMsgListGroup: number = 0;
 
@@ -33,7 +34,7 @@ export class UserPageComponent {
   userId!: String;
 
 
-  constructor(private userService: UserService, private taskService: TaskService, private actualRouter: ActivatedRoute) {
+  constructor(private userService: UserService, private groupService: GroupService, private taskService: TaskService, private actualRouter: ActivatedRoute) {
 
     const id = this.actualRouter.snapshot.paramMap.get('userId');
 
@@ -52,13 +53,12 @@ export class UserPageComponent {
 
   toggleCreateGroup() {
     this.isCreatingGroup = !this.isCreatingGroup;
-    console.log(this.isCreatingGroup);
     this.positionMsgListGroup = (this.positionMsgListGroup + 1) % this.toogleMsgListGroup.length;
   }
 
 
   filterTaskState(stateToFind: string = ""): Task[] {
-    
+
     if (this.user && this.user.tasks) {
       if (stateToFind)
         return this.taskService.findTasksByState(this.user, stateToFind);
@@ -68,5 +68,13 @@ export class UserPageComponent {
 
     return [];
   }
+  filterGroups(): string[] {
+
+  if (this.user && this.user.groups) {
+    return this.user.groups;
+  }
+
+  return [];
+}
 
 }

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {from, Observable, throwError } from 'rxjs';
+import {from, Observable, of, throwError } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { catchError, map } from 'rxjs/operators';
-import Group from '../../../model/Group';
-import UserService from '../../user/user.service';
+import { catchError, map, switchMap } from 'rxjs/operators';
+import Group from '../../model/Group';
+import UserService from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +32,15 @@ export class GroupFirestoreService {
 
   create(group: any): Observable<Group> {
     const groupWithoutId = { ...group };
-    console.log(group);
+  
     delete groupWithoutId.id; 
+  
     return from(this.firestore.collection(this._collectionName).add(groupWithoutId)).pipe(
+      switchMap(docRef => {
+        const createdGroup = new Group(docRef.id, groupWithoutId);
+        console.log(createdGroup);
+        return of(createdGroup);
+      }),
       catchError(this.handleError)
     );
   }

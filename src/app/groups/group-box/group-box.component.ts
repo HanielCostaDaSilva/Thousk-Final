@@ -12,7 +12,7 @@ import { MessageSnackService } from '../../shared/service/message/snack-bar.serv
   styleUrls: ['./group-box.component.css']
 })
 export class GroupBoxComponent {
-
+  @Input() isRemovingGroup: boolean = true;
   @Input() group !: Group;
   @Output() removeGroupEvent = new EventEmitter();
 

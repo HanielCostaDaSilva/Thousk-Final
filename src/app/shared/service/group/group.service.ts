@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import User from '../../model/User';
 import Group from '../../model/Group';
-import { GroupFirestoreService } from '../api/firestore/group-firestore.service';
+import { GroupFirestoreService } from '../firestore/group-firestore.service';
 import { Observable } from 'rxjs';
 import UserService from '../user/user.service';
 
@@ -13,12 +13,15 @@ export class GroupService {
   constructor(private userService: UserService, private groupApi: GroupFirestoreService) {
   }
 
+  getById(id: string):Observable<Group>{
+    return this.groupApi.getById(id);
+  }
   getAll(): Observable<Group[]> {
     return this.groupApi.getAll();
   }
-  create(group: Group): Group {
-    this.groupApi.create(group);
-    return group;
+  create(group: Group): Observable<Group> {
+    return this.groupApi.create(group);
+    
   }
 
   remove(group: Group): Group {
@@ -28,25 +31,28 @@ export class GroupService {
 
   }
 
-/*   getParticipants(group: Group): Observable<User[]> {
-
-    if (group.participants) {
+  /*   getParticipants(group: Group): Observable<User[]> {
   
-      return group.participants.map(participantId => {
-        return this.userService.getUserById(participantId);
-      });
-    } else {
-      throw new Error(`Grupo ${group.name} não possui participantes`);
-    }
-  } */
+      if (group.participants) {
+    
+        return group.participants.map(participantId => {
+          return this.userService.getUserById(participantId);
+        });
+      } else {
+        throw new Error(`Grupo ${group.name} não possui participantes`);
+      }
+    } */
 
 
-  addParticipant(group: Group, participant: User): Group {
+  addParticipant(group: Group, participant: User): Observable<void> {
+    
     if (group.participants && participant.id) {
       const participantId = group.participants.filter(participantId => participantId === participant.id);
+      
       if (participantId.length == 0) {
         group.participants.push(participant.id);
-        return group;
+        console.log(group.participants);
+        return this.groupApi.updateParticipants(group)
       }
       else
         throw new Error(`Participarnte ${participant.nickname} já adicionado! `);

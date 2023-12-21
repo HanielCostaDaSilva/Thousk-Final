@@ -1,0 +1,18 @@
+<div class="dialog">
+    <div class="titleBox">
+      <h1 class="dialogTitle">{{data.title}}</h1>
+    </div>
+    <p>{{data.description}}</p>
+      <mat-form-field class="formCamp">
+        <mat-label for="textInput">{{data.label}}</mat-label>
+        <input matInput type="text" id="textInput" name="textInput" [(ngModel)]="data.response" required>
+      </mat-form-field>
+    <div class="buttonBox">
+      <button mat-raised-button id="ConfirmBtn" (click)="confirm()">
+        Confirmar
+      </button>
+      <button mat-raised-button id="CancelBtn" (click)="cancel()">
+        Cancelar
+      </button>
+    </div>
+  </div>

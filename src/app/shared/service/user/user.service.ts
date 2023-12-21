@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import User from '../../model/User';
 import { Observable } from 'rxjs';
-import { UserFirestoreService } from '../api/firestore/user-firestore.service';
+import { UserFirestoreService } from '../firestore/user-firestore.service';
 import Group from '../../model/Group';
 @Injectable({
   providedIn: 'root'
@@ -27,24 +27,29 @@ export default class UserService {
 
   }
 
-  remove(user: User): User {
+  remove(user: User): Observable<void> {
+    console.log(user)
     if (user.id)
-      this.userApi.delete(user.id);
-    return user;
+      return this.userApi.delete(user.id);
+    else{
+      throw new Error("User not found")
+    }
   }
 
   getUserByNickName(nickname: string): Observable<User[]> {
     return this.userApi.getUserByNickname(nickname);
   }
 
-  addGroup(user: User, group: Group) {
+  addGroup(user: User, group: Group): Observable<void>{
     if (user.groups && group.id ) {
       const indexGroup = user.groups.indexOf(group.id);
       if(indexGroup > 0){
-        throw new Error( `User ${user.nickname} already in group ${group.name}`)
+        throw new Error( `Usuário ${user.nickname} já no grupo ${group.name}`)
       }
       user.groups.push(group.id);
-      this.userApi.updateGroups(user);
+      return this.userApi.updateGroups(user);
+    }else{
+      throw new Error(`Alguma coisa não deu certo no lado do usuário`);
     }
   }
 

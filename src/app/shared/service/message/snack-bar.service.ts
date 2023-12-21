@@ -16,7 +16,6 @@ export class MessageSnackService extends Message {
   }
 
   error(mensagem: string): void {
-    console.log(mensagem)
     this.openSnack(mensagem, ['error']);
   }
 

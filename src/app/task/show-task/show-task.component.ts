@@ -7,6 +7,7 @@ import TaskService from '../../shared/service/task/task.service';
 
 import { ConfirmDialogComponent } from '../../dialog/confirm-dialog/confirm-dialog.component';
 import { MessageSnackService } from '../../shared/service/message/snack-bar.service';
+import Group from '../../shared/model/Group';
 
 
 @Component({
@@ -16,16 +17,16 @@ import { MessageSnackService } from '../../shared/service/message/snack-bar.serv
 })
 export class ShowTaskComponent {
 
-  @Input() userOwner !: User; //Usuário que sofrerá as alterações 
+  @Input() owner !: User | Group; //Usuário que sofrerá as alterações 
   @Input() tasksToShow !: Task[]; // Tarefas que vão ser mostradas 
 
-  constructor(private dialog: MatDialog, private taskService: TaskService, private messageService: MessageSnackService) {
+  constructor(private dialog: MatDialog, private taskService: TaskService, private messageService: MessageSnackService) {  
   }
 
   changeTaskState(task: Task) {
-    console.log(task);
-    this.taskService.refreshTask(this.userOwner);
-    this.messageService.sucess(`Tarefa alterada para o estado ${task.state}`);
+    this.taskService.refreshTask(this.owner).subscribe(() => {
+      this.messageService.sucess(`Tarefa alterada para o estado ${task.state}`);
+    });
 
   }
 
@@ -43,7 +44,7 @@ export class ShowTaskComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.taskService.removeTask(task, this.userOwner).subscribe(() => {
+        this.taskService.removeTask(task, this.owner).subscribe(() => {
           if (!task.title) {
             return;
           }
@@ -74,10 +75,10 @@ export class ShowTaskComponent {
       if (result) {
         this.taskService.editTask(task, result.title, result.description,
           result.imageLink, result.dateStart,
-          result.dateFinal, this.userOwner);
-          const titleTaskEdited = (result.title.length > 10 ? result.title?.substring(0, 10) + '...' : result.title);
-          
-          this.messageService.sucess(`Tarefa ${titleTaskEdited} alterada com sucesso`);
+          result.dateFinal, this.owner);
+        const titleTaskEdited = (result.title.length > 10 ? result.title?.substring(0, 10) + '...' : result.title);
+
+        this.messageService.sucess(`Tarefa ${titleTaskEdited} alterada com sucesso`);
 
       }
     });

@@ -1,30 +1,35 @@
 <section class="section">
-<section class="container" [ngClass]="{ 'success': registeredUser>0, 'failed': registeredUser==0 }">
-  
-  <h2 class="titlePage">Registre-se</h2>
-  
-  <form (ngSubmit)="registerUser()" >
-    <mat-form-field class="formCamp">
-      <mat-label>Insira um apelido:</mat-label>
-      <input matInput required [(ngModel)]="userToRegister.nickname" type="text" id="nickname" name="nickname">
-    </mat-form-field>
-
-    <mat-form-field class="formCamp">
-      <mat-label>Seu Email:</mat-label>
-      <input matInput required [(ngModel)]="userToRegister.email" type="email" id="email" name="email">
-    </mat-form-field>
-
-    <mat-form-field class="formCamp">
-      <mat-label>Senha:</mat-label>
-      <input matInput required [(ngModel)]="userToRegister.password" type="password" id="password" name="password">
-    </mat-form-field>
-    <button mat-button color="accent" type="submit">Registrar-se</button>
+  <section class="container" [ngClass]="{ 'success': registerSuccessCheck > 0, 'failed': registerSuccessCheck == 0 }">
     
-    <div class='messageBox' *ngIf="statusMessage">  
-      <p [ngClass]="{ 'sucessMessage': registeredUser>0, 'errorMessage': registeredUser==0}">
-        {{statusMessage}}
-      </p>
-    </div>
-  </form>
-</section>
+    <h2 class="titlePage">Registre-se</h2>
+    
+    <form (ngSubmit)="register()">
+      <mat-form-field class="formCamp">
+        <mat-label>Insira um apelido:</mat-label>
+        <input matInput required [(ngModel)]="userToRegister.nickname" type="text" id="nickname" name="nickname" 
+          pattern="[a-zA-Z0-9_-]{3,20}" title="O apelido deve conter de 3 a 20 caracteres alfanuméricos, hífens ou sublinhados">
+      </mat-form-field>
+
+      <mat-form-field class="formCamp">
+        <mat-label>Seu Email:</mat-label>
+        <input matInput required [(ngModel)]="userToRegister.email" type="email" id="email" name="email" 
+          pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Insira um endereço de e-mail válido">
+      </mat-form-field>
+
+      <mat-form-field class="formCamp">
+        <mat-label>Senha:</mat-label>
+        <input matInput required [(ngModel)]="userToRegister.password" type="password" id="password" name="password" 
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{3,}" 
+          title="A senha deve conter pelo menos 3 caracteres, incluindo pelo menos uma letra maiúscula, uma letra minúscula e um número">
+      </mat-form-field>
+      
+      <button mat-button color="accent" type="submit">Registrar-se</button>
+      
+      <div class='messageBox' *ngIf="statusMessage">  
+        <p [ngClass]="{ 'successMessage': registerSuccessCheck > 0, 'errorMessage': registerSuccessCheck == 0}">
+          {{statusMessage}}
+        </p>
+      </div>
+    </form>
+  </section>
 </section>

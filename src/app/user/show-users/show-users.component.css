@@ -1,10 +1,8 @@
-#GroupSection{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+#UsersSection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Cria 3 colunas de tamanho igual */
     align-items: center;
     justify-content: space-around;
     padding: 5px;
-    width: 80vw;
-
-}
+    width: 100vw;
+  }

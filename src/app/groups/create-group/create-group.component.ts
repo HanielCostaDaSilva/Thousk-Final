@@ -12,7 +12,7 @@ import { MessageSnackService } from '../../shared/service/message/snack-bar.serv
 })
 export class CreateGroupComponent {
 
-  @Input() actualUser!: User;
+  @Input() creator!: User;
 
   newGroup: Group = new Group();
 
@@ -21,17 +21,27 @@ export class CreateGroupComponent {
 
   create(): void {
     try {
-      if (this.actualUser) {
-        this.newGroup.authorID = this.actualUser.id;
-        this.groupService.create(this.newGroup);
-        this.userService.addGroup(this.actualUser, this.newGroup);
-        this.groupService.addParticipant(this.newGroup, this.actualUser);
-      }
+      console.log(this.creator);
+      console.log(this.newGroup);
+      if (this.creator) {
+        this.newGroup.authorID = this.creator.id;
+        this.groupService.create(this.newGroup).subscribe(group => {
+          
+          try{
+            this.userService.addGroup(this.creator, group);
+            this.groupService.addParticipant(group, this.creator);
+            this.messageService.sucess(`Grupo ${group.name} criado com sucesso!`);
+          }
+          catch(err:any){
+            this.messageService.error(err.message);
+          }
+        })
 
-    } catch (error: any) {
-      this.messageService.error(error.message);
-    }
-
-
+        };
+    }catch(error: any) {
+    this.messageService.error(error.message);
   }
+
+
+}
 }

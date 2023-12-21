@@ -1,51 +1,79 @@
 import { Component } from '@angular/core';
-
 import UserService from '../../shared/service/user/user.service';
 import { MessageSnackService } from '../../shared/service/message/snack-bar.service';
 import User from '../../shared/model/User';
+import { Observable } from 'rxjs';
+import { ConfirmDialogComponent } from '../../dialog/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { finalize, switchMap, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
-  styleUrls: ['./register-user.component.css', "../container-form.css"]
+  styleUrls: ['./register-user.component.css', '../container-form.css']
 })
 
 export class RegisterUserComponent {
   userToRegister: User = new User();
-
-  registeredUser: number = -1;
+  registerSuccessCheck: number = -1;
   statusMessage: string = '';
 
-  constructor(private userService: UserService, private messageService: MessageSnackService) {
+  constructor(private userService: UserService, private dialog: MatDialog, private messageService: MessageSnackService) { }
 
-  }
-  registerUser() {
+  async register() {
     try {
-      if (!this.userToRegister.email || !this.userToRegister.password || !this.userToRegister.nickname)
-        throw new Error(`Fill all the requireds fields`);
+      this.validateInput();
+      let users;
+      if (this.userToRegister && this.userToRegister.nickname) 
+        users = await this.userService.getUserByNickName(this.userToRegister.nickname).pipe(take(1)).toPromise();
 
-      const userFinded = this.userService.getUserByNickName(this.userToRegister.nickname);
+      if (users && users.length > 0) {
+        this.messageService.error(`Usuário ${this.userToRegister.nickname} já existe!`);
+        this.registerSuccessCheck = 0;
+        return;
+      }
 
-      userFinded.subscribe(users => {
-        console.log(users);
-        if (users.length > 0) {
-          this.registeredUser = 0;
-          this.messageService.error(`Usuário ${users[0].nickname} Já registrado!`);
-          return;
-        }
-        else {
-          this.userService.register(this.userToRegister).subscribe(user => {
-            this.registeredUser = 1;
-            this.messageService.sucess(`Sucesso ao registrar o Usuário ${user.nickname}!`)
-          });
-        }
-      })
-    }
-    catch (error: any) {
-      this.registeredUser = 0;
-      this.messageService.error(error.message);
+      const result = await this.confirmRegister().toPromise();
 
+      if (result) {
+        await this.registerUser();
+      } else {
+        throw new Error('O Cadastramento foi cancelado');
+      }
+    } catch (error: any) {
+      this.handleRegistrationError(error);
     }
   }
 
+  private validateInput() {
+    if (!this.userToRegister.nickname) {
+      throw new Error('Please enter a nickname');
+    } else if (!this.userToRegister.password) {
+      throw new Error('Please enter a password');
+    }
+  }
+
+  private async registerUser() {
+    try {
+      const registeredUser = await this.userService.register(this.userToRegister).toPromise();
+      this.messageService.sucess(`Usuário ${registeredUser?.nickname || ''} registrado com sucesso!`);
+      this.registerSuccessCheck = 1;
+    } catch (error: any) {
+      this.handleRegistrationError(error);
+    }
+  }
+
+  private handleRegistrationError(error: any) {
+    this.registerSuccessCheck = 0;
+    this.messageService.error(`Erro ao registrar usuário: ${error.message}`);
+  }
+
+  private confirmRegister(): Observable<any> {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: `Deseja Se cadastrar? `,
+      }
+    });
+    return dialogRef.afterClosed();
+  }
 }

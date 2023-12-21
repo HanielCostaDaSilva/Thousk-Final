@@ -5,6 +5,7 @@ import Task from '../../shared/model/Task';
 import TaskService from '../../shared/service/task/task.service';
 import User from '../../shared/model/User';
 import { MessageSnackService } from '../../shared/service/message/snack-bar.service';
+import Group from '../../shared/model/Group';
 
 @Component({
   selector: 'app-create-task',
@@ -23,7 +24,7 @@ export class CreateTaskComponent implements OnInit {
 
   minDateFinal!: Date;
 
-  @Input() actualUser !: User;
+  @Input() creator !: User | Group;
   //userID !: string;
 
   constructor(private taskService: TaskService, private messageService: MessageSnackService) {
@@ -38,14 +39,15 @@ export class CreateTaskComponent implements OnInit {
   }
 
   create(): void {
-    if (this.actualUser)
-      this.taskService.registerTask(this.actualTask, this.actualUser).subscribe(() => {
+    if (this.creator)
+    console.log(this.actualTask)
+      this.taskService.registerTask(this.actualTask, this.creator).subscribe(() => {
         let titleTask = this.actualTask.title;
         if (titleTask)
           titleTask = (titleTask.length > 10 ? titleTask.substring(0, 10) + '...' : titleTask);
 
         this.messageService.sucess(`Tarefa ${titleTask} criada com sucesso`);
-
+        console.log(this.creator);
       })
   }
 

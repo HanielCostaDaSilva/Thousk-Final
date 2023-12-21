@@ -20,7 +20,6 @@ export class ShowUsersComponent implements OnInit {
     if (this.usersToShow.length == 0) {
       this.userService.getAll().subscribe(users => {
         this.usersToShow = users;
-        console.log(this.usersToShow);
 
       })
     }

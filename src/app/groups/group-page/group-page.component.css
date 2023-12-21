@@ -1,0 +1,87 @@
+#toggleCreateTask, #toggleAddMember{
+    color: white;
+    background: #233850;
+    display: flex;
+    height: 10vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 0%;
+
+}
+
+#GroupSpaceName{
+    padding: 10px;
+    font-size: 2rem;
+}
+
+section {
+    width: 100%;
+    margin: 20px auto;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .showTaskTitle {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  h2 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .quantyTasksShow {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .app-show-task {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Adicione um efeito de transição suave para a quantidade de tarefas mostradas */
+  .quantyTasksShow {
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Efeito de hover suave para a seção */
+  .showTaskTitle:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Efeito de hover suave para o título */
+  .showTaskTitle:hover {
+    color: #4caf50;
+  }
+  
+  /* Estilo adicional para a seção ativa */
+  .showTaskTitle.active {
+    background-color: #d4ffd4;
+  }
+  
+  /* Adicione um efeito de transição suave para a visibilidade da tarefa */
+  .app-show-task {
+    transition: opacity 0.3s ease;
+  }
+  

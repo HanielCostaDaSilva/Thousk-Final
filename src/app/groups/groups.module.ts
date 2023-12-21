@@ -4,6 +4,7 @@ import { GroupBoxComponent } from './group-box/group-box.component';
 import { ShowGroupComponent } from './show-group/show-group.component';
 import { GroupPageComponent } from './group-page/group-page.component';
 import { MaterialModule } from '../material/material.module';
+
 import { TaskModule } from '../task/task.module';
 import { CreateGroupComponent } from './create-group/create-group.component';
 
@@ -14,7 +15,7 @@ import { CreateGroupComponent } from './create-group/create-group.component';
     GroupBoxComponent,
     ShowGroupComponent,
     GroupPageComponent,
-    CreateGroupComponent
+    CreateGroupComponent,
   ],
   imports: [
     CommonModule,

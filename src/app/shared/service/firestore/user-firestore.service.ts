@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { from, Observable, throwError } from 'rxjs';
-import User from '../../../model/User';
+import User from '../../model/User';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { catchError, map } from 'rxjs/operators';
 
 //import Task from 'src/app/shared/model/Task';
-import Task from '../../../model/Task';
+import Task from '../../model/Task';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +42,7 @@ export class UserFirestoreService {
       .pipe(
         catchError(this.handleError));
   }
+  
   create(user: any): Observable<User> {
     const userWithoutId = { ...user };
     delete userWithoutId.id; //remove o id do objeto

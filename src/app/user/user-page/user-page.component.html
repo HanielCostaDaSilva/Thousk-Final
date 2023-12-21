@@ -1,8 +1,8 @@
 <button id="toggleCreateTask" mat-button (click)="toggleCreateTask()">{{toogleMsgListTask[positionMsgListTask]}}</button>
-<app-create-task *ngIf="isCreatingTask" [actualUser]="this.user"></app-create-task>
+<app-create-task *ngIf="isCreatingTask" [creator]="this.user"></app-create-task>
 
 <button id="toggleCreateGroup" mat-button (click)="toggleCreateGroup()">{{toogleMsgListGroup[positionMsgListGroup]}}</button>
-<app-create-group *ngIf="isCreatingGroup" [actualUser]="this.user"></app-create-group>
+<app-create-group *ngIf="isCreatingGroup" [creator]="this.user"></app-create-group>
 
 
 <h3 id="UserSpaceName">Espaço de {{this.user?.nickname}}</h3>
@@ -14,7 +14,7 @@
         <h2 >Em andamento</h2>
         <span class="quantyTasksShow">{{filterTaskState('doing').length}} </span>
     </div>
-    <app-show-task *ngIf="isShowDoingTasks" [tasksToShow]="filterTaskState('doing')" [userOwner]="user"></app-show-task>
+    <app-show-task *ngIf="isShowDoingTasks" [tasksToShow]="filterTaskState('doing')" [owner]="user"></app-show-task>
   </section>
   
   <section>
@@ -22,7 +22,8 @@
         <h2 >Concluídas</h2>
         <span class="quantyTasksShow">{{filterTaskState('done').length}} </span>
     </div>
-    <app-show-task *ngIf="isShowDoneTasks" [tasksToShow]="filterTaskState('done')" [userOwner]="user"></app-show-task>
+
+    <app-show-task *ngIf="isShowDoneTasks" [tasksToShow]="filterTaskState('done')" [owner]="user"></app-show-task>
   </section>
   
   <section>
@@ -30,11 +31,11 @@
         <h2 >Todas</h2>
         <span class="quantyTasksShow">{{filterTaskState().length}} </span>
     </div>
-    <app-show-task *ngIf="isShowAllTasks" [tasksToShow]="filterTaskState()" [userOwner]="user"></app-show-task>
+    <app-show-task *ngIf="isShowAllTasks" [tasksToShow]="filterTaskState()" [owner]="user"></app-show-task>
   </section>
 </section>
 <h1> Seus Grupos</h1>    
 <section>
-  <app-show-group [groupsToShow]="user.groups"[currentUser]="user">
+  <app-show-group [groupsToShow]="filterGroups()"[currentUser]="user">
   </app-show-group>
 </section>

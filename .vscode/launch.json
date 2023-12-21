@@ -3,6 +3,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "ThouskApplication",
+      "request": "launch",
+      "mainClass": "br.edu.thousk.ThouskApplication",
+      "projectName": "api"
+    },
+    {
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",
@@ -15,6 +22,16 @@
       "request": "launch",
       "preLaunchTask": "npm: test",
       "url": "http://localhost:9876/debug.html"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-ApiApplication<api>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "br.edu.thousk.api.ApiApplication",
+      "projectName": "api",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
     }
   ]
 }
